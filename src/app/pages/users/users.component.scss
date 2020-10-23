@@ -1,0 +1,56 @@
+.add-user-panel{
+    ::ng-deep .mat-expansion-panel-header,::ng-deep.mat-expansion-panel{
+        border-radius: 25px;
+    }
+    ::ng-deep .mat-expansion-panel-header{
+        height: 75px!important;
+    }
+
+}
+
+.panel{
+    padding: 2%;
+    border-radius: 25px;
+    border: 3px solid rgba(252, 174, 7, 0.2);
+    height: 100%;
+    background-color: var(--background-secondray);
+    h4{
+        color: var(--foreground-default);
+    }
+}
+
+.table-panel{
+    padding: 1%;
+    text-align: right;
+    border-radius: var(--round-25);
+    background-color: var(--background-tertiary);
+    box-shadow:0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    ::ng-deep .mat-elevation-z8{
+        box-shadow: none!important;
+    }
+
+}
+th{
+    color: rgb(224, 136, 4);
+}
+input {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border: none;
+    // box-shadow: 0 .22rem .5rem rgba(0,0,0,0.35)!important;
+    box-shadow:0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    background-color: var(--background-input)!important;
+  }
+
+  .submit-btn{
+    width: 100%;
+    background-color: rgb(224, 136, 4);
+    box-shadow:0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+
+  }
+
+  ::ng-deep .mat-table,::ng-deep .mat-expansion-panel{
+    background-color: var(--background-tertiary);
+  }
+  

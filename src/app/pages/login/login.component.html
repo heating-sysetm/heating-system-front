@@ -1,0 +1,78 @@
+<div class="loading" *ngIf="loading">
+  <div class="loader loader--style5">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       width="44px" height="60px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+      <rect x="0" y="0" width="4" height="10" fill="#FF9A00">
+        <animateTransform attributeType="xml"
+          attributeName="transform" type="translate"
+          values="0 0; 0 20; 0 0"
+          begin="0" dur="0.6s" repeatCount="indefinite" />
+      </rect>
+      <rect x="10" y="0" width="4" height="10" fill="#FF9A00">
+        <animateTransform attributeType="xml"
+          attributeName="transform" type="translate"
+          values="0 0; 0 20; 0 0"
+          begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+      </rect>
+      <rect x="20" y="0" width="4" height="10" fill="#FF9A00">
+        <animateTransform attributeType="xml"
+          attributeName="transform" type="translate"
+          values="0 0; 0 20; 0 0"
+          begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+      </rect>
+    </svg>
+  </div>
+</div>
+<div class="main">
+  <div class="container">
+    <div class="login-container">
+      <div class="">
+        <div class="logo-container text-right">
+          <a class="">
+            <img class="logo img-responsive" src="../../../assets/img/logo.png"/>
+          </a>
+        </div>
+        <!-- <div class="logo-container text-left">
+          <a class="">
+            <img class="img-responsive znu-logo" src="../../../assets/img/zan.png"/>
+          </a>
+        </div> -->
+      </div>
+      <div class="">
+        <div class="form-container">
+
+          <!-- title -->
+          <div class="form-title text-center my-4">
+            <h2 class="text"> ورود به سامانه </h2>
+          </div>
+          <!-- form body -->
+          <div class="form-content">
+            <div class="form">
+              <form [formGroup]="userInfo">
+
+                <div class="form-input  mx-2">
+                  <i class="fa fa-lock icons"></i>
+                  <input formControlName="username" pattern="[a-zA-Z0-9-]+"
+                   class="rounded-pill text-center" type="text" placeholder="نام کاربری"/>
+                </div>
+
+                <div class="form-input my-4 mx-2">
+                  <i class="fa fa-key icons"></i>
+                  <input formControlName="password" pattern="[a-zA-Z0-9-]+" 
+                  class="rounded-pill text-center" type="password" placeholder="رمزعبور"/>
+                </div>
+
+                <div class="check-box-container text-right my-2 mr-4">
+                    <mat-checkbox formControlName="autoLogin" class="example-margin text">مرا بخاطر بسپار</mat-checkbox>
+                </div>
+                <div class="form-action mx-2">
+                  <button mat-button class="login-btn rounded-pill" (click)="login()"> ورود </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

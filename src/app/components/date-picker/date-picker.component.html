@@ -1,0 +1,62 @@
+<div id="date-container" class="px-4">
+    <div class="date-picker">
+      <form [formGroup]="dateForm" class="row">
+        <mat-card-content class="col-lg-7 col-md-7 col-sm-8">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                <mat-form-field class="modal-fields text-center w-100 mx-2" appearance="fill">
+                  
+                  <input
+                      matInput
+                      [matDatepicker]="dp1"
+                      placeholder="از تاریخ"
+                      formControlName="start_time"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="dp1"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #dp1></mat-datepicker>
+                  </mat-form-field>
+                
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                <mat-form-field class="modal-fields text-center w-100 mx-2" appearance="fill">
+                  
+                  <input
+                      matInput
+                      [matDatepicker]="dp2"
+                      placeholder="تا تاریخ"
+                      formControlName="end_time"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="dp2"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #dp2></mat-datepicker>
+                  </mat-form-field>
+                
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+  
+        <mat-card-actions class="col-lg-5 col-md-5 col-sm-4">
+          <div class="btn-div">
+            <button
+            mat-raised-button
+            id="add-filter"
+            class="container ml-4 filter-btn"
+            (click)="today(); dateFilter()"
+          >
+            اعمال فیلتر
+          </button>
+          </div>
+          <!-- <button mat-raised-button color="primary">Create</button> -->
+        </mat-card-actions>
+      </form>
+    </div>
+  </div>
+  <hr class="hr"/>
+  

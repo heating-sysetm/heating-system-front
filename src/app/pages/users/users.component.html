@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="user-all">
+        <div class="panels">
+            <div class="row">
+                <div class="col-12">
+                    <div class="add-user-panel panel">
+                        <div class="title text-right my-4 mx-2">
+                            <h4>افزودن کاربر</h4>
+                        </div>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                اطلاعات کاربر جدید
+                              </mat-panel-title>
+                              <mat-panel-description>
+                                نام و نام خانوادگی ، نام کاربری و رمزعبور را وارد کنید.
+                              </mat-panel-description>
+                            </mat-expansion-panel-header>
+                        
+                            <div class="user-form">
+                              <form [formGroup]="userForm" class="w-100 p-4">
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-sm-12">
+                                    <div class="form-input mt-2">
+                                      <input formControlName="name" pattern="[a-zA-Z0-9-]+"
+                                       class="rounded-pill text-center" type="text" placeholder="نام و نام خانوادگی"/>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-lg-4 col-md-4 col-sm-12">
+                                    <div class="form-input mt-2">
+                                      <input formControlName="username" pattern="[a-zA-Z0-9-]+" 
+                                      class="rounded-pill text-center" type="text" placeholder="نام کاربری"/>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-lg-4 col-md-4 col-sm-12">
+                                    <div class="form-input mt-2">
+                                      <input formControlName="password" pattern="[a-zA-Z0-9-]+" 
+                                      class="rounded-pill text-center" type="password" placeholder="رمزعبور"/>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-action mt-4">
+                                  <button mat-button class="submit-btn rounded-pill"> ثبت </button>
+                                </div>
+                              </form>
+                            </div>
+                        
+                          </mat-expansion-panel>
+                    </div>
+                </div>
+                <div class="col-12 mt-4">
+                    <div class="user-table panel">
+                      <div class="title text-right my-4 mx-2">
+                        <h4>کاربران</h4>
+                      </div>
+                      <div class="table-panel">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+
+                          <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef> شناسه </th>
+                            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> نام و نام خانوادگی </th>
+                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="username">
+                            <th mat-header-cell *matHeaderCellDef> نام کاربری </th>
+                            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="password">
+                            <th mat-header-cell *matHeaderCellDef> رمزعبور </th>
+                            <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+                          </ng-container>
+                        
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

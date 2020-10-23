@@ -1,0 +1,13 @@
+::ng-deep #container-line .highcharts-background{
+  fill: var(--background-tertiary)!important;
+}
+::ng-deep   #container-line .highcharts-plot-background{
+  fill: var(--background-tertiary)!important;
+}
+
+  
+  #container-line {
+    height: 300px;
+  }
+ 
+  

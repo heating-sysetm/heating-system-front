@@ -1,0 +1,88 @@
+<div class="s-layout">
+    <!-- Sidebar -->
+    <div class="s-layout__sidebar">
+        <div class="logo-back">
+            <h3 class="mobile-logo">دانشگاه زنجان</h3>
+        </div>
+            <a class="s-sidebar__trigger">
+                <i class="fa fa-bars"></i>
+            </a>
+        
+
+
+    <nav class="s-sidebar__nav">
+        <div class="dark-mode">
+                <mat-slide-toggle checked="checked" (click)="toggleTheme()">
+                    <i class="fa fa-moon"></i>
+                </mat-slide-toggle>
+        </div>
+        
+        <ul>
+            <li>
+                <div class="logo-container">
+                    <a class="">
+                      <img class="logo img-responsive" src="../../../assets/img/logo.png"/>
+                    </a>
+                  </div>
+            </li>
+            <li>
+            <a class="s-sidebar__nav-link" [routerLink]="['home']">
+                <i class="fa fa-home"></i>خانه
+            </a>
+            </li>
+            <li>
+            <a class="s-sidebar__nav-link" [routerLink]="['users']">
+                <i class="fa fa-users"></i>کاربران
+            </a>
+            </li>
+            <!-- <li>
+            <a class="s-sidebar__nav-link" [routerLink]="['calendar']">
+                <i class="fa fa-calendar-week"></i>برنامه هفتگی
+            </a>
+            </li> -->
+            <li>
+            <a class="s-sidebar__nav-link" [routerLink]="['charts']">
+                <i class="fa fa-chart-pie"></i>نمودار ها
+            </a>
+            </li>
+            <hr/>
+            <li>
+                <a class="s-sidebar__nav-link">
+                <i class="fa fa-power-off"></i>خروج
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+    </div>
+    <!-- Content -->
+    <main class="s-layout__content d-block">
+        <div class="header">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 text-right">
+                    <mat-form-field class="home-selector" appearance="fill">
+                        <mat-label>خوابگاه</mat-label>
+                        <mat-select [(value)]="selected">
+                            <mat-option [value]="option.value" *ngFor="let option of allHouses">{{ option.viewValue }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="clock-card">
+                        <app-clock></app-clock>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 ">
+
+                        <div class="znu-card">
+                            <h5> دانشگاه زنجان </h5>
+                        </div>
+               
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

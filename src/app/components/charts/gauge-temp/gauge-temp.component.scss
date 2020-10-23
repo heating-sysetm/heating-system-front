@@ -1,0 +1,14 @@
+
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 110px; 
+    max-width: 500px;
+    margin: 1em auto;
+}
+
+
+::ng-deep .highcharts-background{
+    fill: #303030;
+}
+::ng-deep .highcharts-credits{
+    display: none;
+}

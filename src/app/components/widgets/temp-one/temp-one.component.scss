@@ -1,0 +1,25 @@
+
+::ng-deep .polar .highcharts-background{
+    fill: var(--background-secondary)!important;
+}
+::ng-deep  .polar .highcharts-plot-background{
+    fill: var(--background-secondary)!important;
+}
+::ng-deep .highcharts-credits{
+    display: none;
+}
+.title-one{
+    position: absolute;
+    top: 25%;
+    right: 37%;
+    text-align: center;
+    // background-color: var(--background-secondary);
+    color: var(--foreground-default);
+    h5{
+        font-size: 3vw;
+    }
+}
+
+.temp-desc{
+    color:var(--foreground-default);
+}

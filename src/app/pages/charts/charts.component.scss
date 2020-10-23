@@ -1,0 +1,9 @@
+.chart-card{
+    border-radius: 25px;
+    border: 2px solid rgba(252, 174, 7, 0.2);
+    height: 100%;
+    background-color: var(--background-tertiary);
+}
+::ng-deep .mat-datepicker-content{
+    background-color:var(--background-tertiary) ;
+}
