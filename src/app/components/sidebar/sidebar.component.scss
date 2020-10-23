@@ -144,6 +144,7 @@ a {
  }
  
  .s-sidebar__nav-link:hover {
+   cursor: pointer;
     background: var(--background-ul-hover);
     width: 90%;
     transition: all .2s ease-in;

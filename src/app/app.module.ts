@@ -1,3 +1,11 @@
+import { ChartjsAreaComponent } from './components/charts/chartjs-area/chartjs-area.component';
+import { SolidGaugeThreeComponent } from './components/charts/solid-gauge-three/solid-gauge-three.component';
+import { SolidGaugeTwoComponent } from './components/charts/solid-gauge-two/solid-gauge-two.component';
+import { SolidGaugeComponent } from './components/charts/solid-gauge/solid-gauge.component';
+import { TempThreeComponent } from './components/widgets/temp-three/temp-three.component';
+import { TempTwoComponent } from './components/widgets/temp-two/temp-two.component';
+import { TempOneComponent } from './components/widgets/temp-one/temp-one.component';
+import { GaugeTempComponent } from './components/charts/gauge-temp/gauge-temp.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -51,22 +59,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
 import { AreaChartComponent } from './components/charts/area-chart/area-chart.component';
 import { ColumnBasicComponent } from './components/charts/column-basic/column-basic.component';
-import { HttpClientModule } from '@angular/common/http';
-import { GaugeTempComponent } from './components/charts/gauge-temp/gauge-temp.component';
-import { ClockComponent } from './components/charts/clock/clock.component';
-import { SolidGaugeComponent } from './components/charts/solid-gauge/solid-gauge.component';
-import { DashboardModule } from './pages/dashboard/dashboard.module';
-import { TempOneComponent } from './components/widgets/temp-one/temp-one.component';
-import { TempTwoComponent } from './components/widgets/temp-two/temp-two.component';
-import { TempThreeComponent } from './components/widgets/temp-three/temp-three.component';
-import { SolidGaugeTwoComponent } from './components/charts/solid-gauge-two/solid-gauge-two.component';
-import { SolidGaugeThreeComponent } from './components/charts/solid-gauge-three/solid-gauge-three.component';
-import { ChartjsAreaComponent } from './components/charts/chartjs-area/chartjs-area.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DatePickerComponent,PERSIAN_DATE_FORMATS } from './components/date-picker/date-picker.component';
 import { ColumnRotatedComponent } from './components/charts/column-rotated/column-rotated.component';
 import { LineRotatedComponent } from './components/charts/line-rotated/line-rotated.component';
 import { ColumnRotatedTwoComponent } from './components/charts/column-rotated-two/column-rotated-two.component';
 import { ColumnRotatedThreeComponent } from './components/charts/column-rotated-three/column-rotated-three.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,9 +80,12 @@ import { ColumnRotatedThreeComponent } from './components/charts/column-rotated-
     ColumnRotatedComponent,
     LineRotatedComponent,
     ColumnRotatedTwoComponent,
-    ColumnRotatedThreeComponent
-    // GaugeTempComponent,
-    // DashboardComponent,
+    ColumnRotatedThreeComponent,
+    DashboardComponent,GaugeTempComponent,TempOneComponent,
+    TempTwoComponent,
+    TempThreeComponent,    SolidGaugeComponent,
+    SolidGaugeTwoComponent,
+    SolidGaugeThreeComponent,ChartjsAreaComponent,LineChartComponent
 
 
     
@@ -135,7 +138,10 @@ import { ColumnRotatedThreeComponent } from './components/charts/column-rotated-
     MatTreeModule
   ],
   providers:[{ provide: DateAdapter, useClass: DatePickerComponent },
-    { provide: MAT_DATE_FORMATS, useValue: PERSIAN_DATE_FORMATS }],
+    { provide: MAT_DATE_FORMATS, useValue: PERSIAN_DATE_FORMATS },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

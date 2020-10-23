@@ -52,13 +52,15 @@
 
                 <div class="form-input  mx-2">
                   <i class="fa fa-lock icons"></i>
-                  <input formControlName="username" pattern="[a-zA-Z0-9-]+"
+                  <input formControlName="username" pattern="[a-zA-Z0-9-]+" minlength="4" maxlength="16"
+                  matTooltip="تنها حروف و اعداد مجاز می باشند" matTooltipPosition="right"
                    class="rounded-pill text-center" type="text" placeholder="نام کاربری"/>
                 </div>
 
                 <div class="form-input my-4 mx-2">
                   <i class="fa fa-key icons"></i>
-                  <input formControlName="password" pattern="[a-zA-Z0-9-]+" 
+                  <input formControlName="password" pattern="[a-zA-Z0-9-]+" minlength="4" maxlength="16"
+                  matTooltip="تنها حروف و اعداد مجاز می باشند" matTooltipPosition="right"
                   class="rounded-pill text-center" type="password" placeholder="رمزعبور"/>
                 </div>
 

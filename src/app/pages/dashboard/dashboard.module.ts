@@ -7,7 +7,7 @@ import { TempOneComponent } from './../../components/widgets/temp-one/temp-one.c
 import { LineChartComponent } from './../../components/charts/line-chart/line-chart.component';
 import { ColumnBasicComponent } from './../../components/charts/column-basic/column-basic.component';
 import { SolidGaugeComponent } from './../../components/charts/solid-gauge/solid-gauge.component';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { GaugeTempComponent } from 'src/app/components/charts/gauge-temp/gauge-temp.component';
@@ -16,13 +16,11 @@ import { AreaChartComponent } from 'src/app/components/charts/area-chart/area-ch
 
 
 @NgModule({
-  declarations: [DashboardComponent,GaugeTempComponent,    TempOneComponent,
-    TempTwoComponent,
-    TempThreeComponent,    SolidGaugeComponent,
-    SolidGaugeTwoComponent,
-    SolidGaugeThreeComponent,ChartjsAreaComponent,LineChartComponent],
+  declarations: [],
   imports: [
     CommonModule,
-  ]
+  ],
+  exports:[],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DashboardModule { }

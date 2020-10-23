@@ -41,13 +41,13 @@
             </a>
             </li> -->
             <li>
-            <a class="s-sidebar__nav-link" [routerLink]="['charts']">
+            <a class="s-sidebar__nav-link cursor-pointer" [routerLink]="['charts']">
                 <i class="fa fa-chart-pie"></i>نمودار ها
             </a>
             </li>
             <hr/>
-            <li>
-                <a class="s-sidebar__nav-link">
+            <li >
+                <a class="s-sidebar__nav-link" (click)="logout()" >
                 <i class="fa fa-power-off"></i>خروج
                 </a>
             </li>
