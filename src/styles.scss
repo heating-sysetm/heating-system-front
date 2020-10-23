@@ -1,1 +1,138 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Avini;
+  src: url(./assets/fonts/aviny.ttf);
+}
+@font-face {
+  font-family: Dima;
+  src: url(./assets/fonts/DimaBarf.ttf);
+}
+@font-face {
+  font-family: iran;
+  src: url(./assets/fonts/iran.ttf);
+}
+@font-face {
+  font-family: shabnam;
+  src: url(./assets/fonts/Shabnam.ttf);
+}
+@font-face {
+  font-family: yekan;
+  src: url(./assets/fonts/yekanbold.ttf);
+}
+/* Primary Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 1em;
+  color: #333;
+}
+
+h1 {
+ font-size: 1.4em;
+}
+
+em {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+} 
+.row{
+  margin: auto 0;
+}
+
+// input:-webkit-autofill,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+*{
+  font-family: iran;
+}
+i{
+  font-family: "Font Awesome 5 Free";
+}
+
+:root {
+    /* Colors */
+    --foreground-default:#fff;
+    --foreground-secondary: #FF9A00;
+    --foreground-tertiary:#F97676;
+    --foreground-quaternary: #FFB749;
+    --foreground-light: #fff;
+    --foreground-input:#000;
+    --foreground-white:#fff;
+  
+    --background-default: #686767;
+    --background-secondary: #424242;
+    --background-tertiary: #2e2e2e;
+    --background-light: #FF9A00;
+    --background-input:#f3f3f3;
+    --background-ul-li:#686767;
+    --background-ul-hover: rgb(88, 95, 91);
+  
+    --primary-default: #5dfdcb;
+    --primary-dark: #24b286;
+    --primary-light: #b2ffe7;
+  
+    --error-default: #ef3e36;
+    --error-dark: #800600;
+    --error-light: #ffcecc;
+    --round-25:25px;
+    --round-50:50px;
+    --round-100:100px;
+    /* Shadows */
+    --background-tertiary-shadow: 0 1px 3px 0 rgba(92, 125, 153, 0.5);
+  }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.loading{
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+.loader{
+  position: absolute;
+  top: 40%;
+  right: 50%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  float: right;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--background-ul);
+  border-radius: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(207, 158, 85);
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9A00;
+}
+
+figure {
+  margin: 0 0 0rem;
+}
