@@ -69,6 +69,8 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { WebsocketService } from './services/websocket.service';
+import { PathLocationStrategy, LocationStrategy } from '@angular/common';
+
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {
   'Access-Control-Allow-Origin': 'http://localhost:00'
 } };
@@ -146,7 +148,8 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {
   providers:[WebsocketService,{ provide: DateAdapter, useClass: DatePickerComponent },
     { provide: MAT_DATE_FORMATS, useValue: PERSIAN_DATE_FORMATS },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: PathLocationStrategy } ],
 
   bootstrap: [AppComponent]
 })

@@ -44,22 +44,23 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.check()) {
-      return;
-    }
-    this.loading = true;
-    this.authenticationService
-      .login(this.f.username.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        (data) => {
-          this.router.navigate(['/pages/home']);
-        },
-        (error) => {
-          this.notif.createError('خطا', 'نام کاربری و یا رمزعبور نادرست می باشد ');
-          this.loading = false;
-        }
-      );
+    this.router.navigate(['/pages/home']);
+    // if (this.check()) {
+    //   return;
+    // }
+    // this.loading = true;
+    // this.authenticationService
+    //   .login(this.f.username.value, this.f.password.value)
+    //   .pipe(first())
+    //   .subscribe(
+    //     (data) => {
+    //       this.router.navigate(['/pages/home']);
+    //     },
+    //     (error) => {
+    //       this.notif.createError('خطا', 'نام کاربری و یا رمزعبور نادرست می باشد ');
+    //       this.loading = false;
+    //     }
+    //   );
   }
 
   check() {
