@@ -11,12 +11,7 @@ export class ApiService {
   constructor(private http: HttpClient,private authenticationService: AuthenticationService) { }
 
   getHomes(){
-    return this.http.get<any>(`${environment.apiUrl}/homes/all`)
-            .pipe(map(homes => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                console.log(homes);
-                
-            }));
+    return this.http.get<any>(`${environment.apiUrl}/homes/all`);
   }
 
 

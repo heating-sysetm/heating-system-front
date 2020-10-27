@@ -11,7 +11,7 @@ export class DataShareService {
   public end_time:BehaviorSubject<any>;
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-
+  // public soketData:BehaviorSubject<any>;
   constructor() {
     this.start_time=new BehaviorSubject(this.format(this.today(),"jYYYY-jMM-jDD"));
     this.end_time=new BehaviorSubject(this.format(this.today(),"jYYYY-jMM-jDD"));

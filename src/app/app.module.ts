@@ -67,6 +67,11 @@ import { ColumnRotatedTwoComponent } from './components/charts/column-rotated-tw
 import { ColumnRotatedThreeComponent } from './components/charts/column-rotated-three/column-rotated-three.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { WebsocketService } from './services/websocket.service';
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {
+  'Access-Control-Allow-Origin': 'http://localhost:00'
+} };
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,6 +101,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     SimpleNotificationsModule.forRoot(),
+    SocketIoModule.forRoot(config),
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
@@ -137,7 +143,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     MatTooltipModule,
     MatTreeModule
   ],
-  providers:[{ provide: DateAdapter, useClass: DatePickerComponent },
+  providers:[WebsocketService,{ provide: DateAdapter, useClass: DatePickerComponent },
     { provide: MAT_DATE_FORMATS, useValue: PERSIAN_DATE_FORMATS },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
