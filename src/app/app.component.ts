@@ -1,3 +1,4 @@
+import { DataShareService } from 'src/app/services/data-share.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Heating-Monitoring-System';
+  constructor(private dataservice:DataShareService){
+
+  }
+
+  changeData(){
+    this.dataservice.changeMytext(5);
+  }
 }

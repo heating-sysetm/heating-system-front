@@ -88,7 +88,7 @@ a {
     right: -22em;
     overflow: hidden;
     transition: all .3s ease-in;
-    width: 18em;
+    width: 22em;
     background: var(--background-tertiary);
     color: rgba(255, 255, 255, 0.7);
     height: 95%;
@@ -113,7 +113,7 @@ a {
     right: 0;
     margin: 0;
     padding: 0;
-    width: 18em;
+    width: 22em;
     max-height: calc(100vh - 8rem);
     overflow-y: auto;
  }
@@ -126,6 +126,7 @@ a {
  .s-sidebar__nav-link {
     position: relative;
     width: 80%;
+    font-size: 18px;
     text-align: center;
     line-height: 50px;
     height: 3em;
@@ -156,13 +157,13 @@ a {
  }
  
  .s-sidebar__nav-link > i {
-    position: absolute;
-    top: 0;
-    font-size: large;
-    right: -15px;
-    display: inline-block;
-    width: 4em;
-    height: 4em;
+   position: absolute;
+   top: 0;
+   font-size: 24px;
+   right: -15px;
+   display: inline-block;
+   width: 3em;
+   height: 3em;
     color: #9E9E9E;
  }
  
@@ -194,13 +195,13 @@ a {
     .s-sidebar__nav:focus,
     .s-sidebar__trigger:hover + .s-sidebar__nav,
     .s-sidebar__trigger:focus + .s-sidebar__nav {
-       width: 18em;
+       width: 22em;
     }
  }
  
  @media (min-width: 68em) {
     .s-layout__content {
-       margin-right: 20em;
+       margin-right: 24em;
        margin-bottom: 4em;
        margin-top: 1em;
        margin-left: 1em;
@@ -213,7 +214,7 @@ a {
     }
     
     .s-sidebar__nav {
-       width: 18em;
+       width: 22em;
        right: 0;
     }
     
@@ -224,8 +225,8 @@ a {
  }
  
  .s-sidebar__nav hr{
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+    margin-top: 10rem;
+    margin-bottom: 6rem;
     margin-right: 2em;
     margin-left: 2em;
     border: 0;
