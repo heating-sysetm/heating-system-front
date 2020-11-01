@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import * as moment from 'jalali-moment';
 import { User } from '../model/User';
+import { interval, Subscription } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +15,8 @@ export class DataShareService {
 
   private mytextSource = new Subject<number>();
   currentMytext = this.mytextSource.asObservable();
-
+  subscription: Subscription;
+  
   constructor() {
     this.start_time = new BehaviorSubject(
       this.format(this.today(), 'jYYYY-jMM-jDD')
@@ -55,6 +58,8 @@ export class DataShareService {
   }
 
   changeMytext(mytext: number) {
-    this.mytextSource.next(Math.round((Math.random() - 0.5) * 20)+40);
+    // const source = interval(4000);
+    // source.subscribe(() => this.mytextSource.next(Math.round((Math.random() - 0.5) * 20)+40));
   }
+
 }

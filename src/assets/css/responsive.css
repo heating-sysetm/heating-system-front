@@ -1,17 +1,30 @@
-@media (max-width: 1290px) {
-  
+ 
+@media only screen and (min-width: 1408px) and (max-width: 1600px) {
+  .title-one, .title-two, .title-three {
+    top: 23%!important;
+    right: 35%!important;
 }
+.title-one h5, .title-two h5, .title-three h5{
+  font-size: 2vw!important;
+}
+}
+
+@media (max-width: 1407px) {
+  .header{
+    margin-right: 4em!important;
+    margin-top: 1em;
+  }
+}
+
 
 @media only screen and (min-width: 1087px) and (max-width: 1280px) {
   .title-one h5,.title-two h5,.title-three h5{
-    font-size: 1.5vw!important;
+    font-size: 2.5vw!important;
   }
-  .title-one p, .title-two p, .title-three p {
-    font-size: 1vw!important;
-  }
+
   .title-one ,.title-two ,.title-three {
     right: 37%!important;
-    top: 17%!important;
+    top: 27%!important;
   }
   .s-layout__content{
     margin-left: 1em!important;
@@ -26,12 +39,10 @@
 /************************* 1087px *************************/
 @media (max-width: 1087px) {
   .title-one ,.title-two ,.title-three {
-    right: 35%!important;
-    top: 18%!important;
+    right: 33%!important;
+    top: 17%!important;
   }
-  .header{
-    margin-right: 4em!important;
-  }
+
   .content{
     padding: 1em!important;
   }
@@ -41,20 +52,35 @@
 
 }
 
-
-@media (min-width: 992px){
+@media only screen and (min-width: 992) and (max-width: 1080px){
   .container, .container-lg, .container-md, .container-sm {
       max-width: 1050px!important;
+  }
+  .title-one h5,.title-two h5,.title-three h5{
+    font-size: 2.5vw!important;
+  }
+
+  .title-one ,.title-two ,.title-three {
+    right: 37%!important;
+    top: 27%!important;
   }
 }
 
 @media (max-width: 992px) {
+  .power{
+    width: 6rem!important;
+    height: 6rem!important;
+  }
   .title-one ,.title-two ,.title-three {
-    right: 35%!important;
+    right: 32%!important;
     top: 15%!important;
+    text-align: center;
   }
   .title-one h5,.title-two h5,.title-three h5{
-    font-size: 4vw!important;
+    font-size: 2.5vw!important;
+  }
+  .title-one p,.title-two p,.title-three p{
+    font-size: 1.5vw!important;
   }
   .w1,.w2,.w3,.w0{
     max-width:25%!important;
@@ -62,9 +88,16 @@
   }
 }
 @media (max-width: 900px) {
+  .power{
+    width: 10rem!important;
+    height: 10rem!important;
+  }
+  .res-padd{
+    padding: 2rem;
+  }
   .title-one ,.title-two ,.title-three {
-    right: 30%!important;
-    top: 20%!important;
+    right: 32%!important;
+    top: 30%!important;
   }
   .title-one h5,.title-two h5,.title-three h5{
     font-size: 4vw!important;
@@ -73,21 +106,21 @@
     font-size: 3vw!important;
   }
   .w1,.w2,.w3,.w0{
-    max-width:33%!important;
-    flex: 0 0 33%!important;
+    max-width:50%!important;
+    flex: 0 0 50%!important;
   }
 }
 @media (max-width: 824px) {
 
   .title-one h5,.title-two h5,.title-three h5{
-    font-size: 4vw!important;
+    font-size: 5vw!important;
   }
   .title-one p, .title-two p, .title-three p {
-    font-size: 2vw!important;
+    font-size: 2.5vw!important;
   }
   .title-one ,.title-two ,.title-three {
-    right: 37%!important;
-    top: 17%!important;
+    right: 35%!important;
+    top: 25%!important;
   }
   .clock-container{
     font-size: 24px!important;
@@ -150,8 +183,9 @@
     font-size: 2vw!important;
   }
   .title-one ,.title-two ,.title-three {
-    right: 37%!important;
-    top: 17%!important;
+    right: 32%!important;
+    top: 30%!important;
+
   }
   .w1,.w2,.w3,.w0{
     max-width:50%!important;
@@ -173,10 +207,13 @@
 }
 
 @media (max-width: 665px) {
- .temp-raft,.temp-bargasht{
-  flex: 0 0 50%!important;
-  max-width: 50%!important;
- }
+  .title-one, .title-two, .title-three {
+    right: 30%!important;
+    top: 22%!important;
+}
+.chart-one{
+  padding: 0!important;
+}
  .temp-makhzan{
   flex: 0 0 100%!important;
   max-width: 100%!important;
@@ -215,9 +252,10 @@
     margin: auto;
   }
   .title-one,.title-two,.title-three{
-    right: 37%!important;
-    top:25%!important
+    right: 30%!important;
+    top:28%!important
   }
+
   .container{
     padding: 0!important;
   }
@@ -226,15 +264,16 @@
 }
 .power-btn{
   position: absolute;
-  top: 40%;
-  left: 30%;
+  top: 35%;
+  left: 10%;
+
 }
 .title ,.desc{
   text-align: right!important;
 }
 .power{
-  width: 5rem!important;
-  height: 5rem!important;
+  width: 4rem!important;
+  height: 4rem!important;
 }
 }
 

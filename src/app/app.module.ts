@@ -71,8 +71,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { WebsocketService } from './services/websocket.service';
 import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
-const config: SocketIoConfig = { url: 'http://localhost:8080', options: {
-  'Access-Control-Allow-Origin': 'http://localhost:00'
+const config: SocketIoConfig = { url: 'http://localhost:8070', options: {
 } };
 @NgModule({
   declarations: [

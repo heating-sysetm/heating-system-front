@@ -1,133 +1,118 @@
-import { Component, OnInit } from '@angular/core';
+import { DataShareService } from 'src/app/services/data-share.service';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HCSoldGauge from 'highcharts/modules/solid-gauge';
 import * as ChartModuleMore from 'highcharts/highcharts-more.js';
 @Component({
   selector: 'app-solid-gauge',
   templateUrl: './solid-gauge.component.html',
-  styleUrls: ['./solid-gauge.component.scss']
+  styleUrls: ['./solid-gauge.component.scss'],
+  inputs: [`temp_tank`],
 })
 export class SolidGaugeComponent implements OnInit {
-option:any={
-  yAxis: {
+  option: any = {
+    yAxis: {
       min: 0,
       max: 100,
-      title: {
-          text: 'دمای رفت'
-      }
-  },
+    },
 
-  credits: {
-      enabled: false
-  },
+    credits: {
+      enabled: false,
+    },
 
-  series: [{
-      name: 'temp',
-      data: [80],
-      dataLabels: {
+    series: [
+      {
+        name: 'temp',
+        data: [80],
+        dataLabels: {
           format:
-              '<div style="text-align:center">' +
-              '<span class="temp" style="color: var(--foreground-white);font-size:25px">{y}</span><br/>' +
-              '<span class="temp-desc" style="color: var(--foreground-white);font-size:12px;opacity:0.4">سانتی گراد</span>' +
-              '</div>'
+            '<div style="text-align:center">' +
+            '<span class="temp" style="color: var(--foreground-white);font-size:36px">{y}</span><br/>' +
+            '<span class="temp-desc" style="color: var(--foreground-white);font-size:16px;opacity:0.4">دمای مخزن</span>' +
+            '</div>',
+        },
+        tooltip: {
+          valueSuffix: ' سانتی گراد',
+        },
       },
-      tooltip: {
-          valueSuffix: ' سانتی گراد'
-      }
-  }]
-
-}
-chartSpeed:any;
-public gaugeOptions:any = {
+    ],
+  };
+  chartSpeed: any;
+  gaugeOptions: any = {
     chart: {
-        type: 'solidgauge'
+      type: 'solidgauge',
     },
 
     title: null,
 
     pane: {
-        center: ['50%', '85%'],
-        size: '100%',
-        startAngle: -90,
-        endAngle: 90,
-        background: {
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || '#fcc',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-        }
+      center: ['50%', '85%'],
+      size: '100%',
+      startAngle: -90,
+      endAngle: 90,
+      background: {
+        backgroundColor:
+          Highcharts.defaultOptions.legend.backgroundColor || '#fcc',
+        innerRadius: '60%',
+        outerRadius: '100%',
+        shape: 'arc',
+      },
     },
 
     exporting: {
-        enabled: false
+      enabled: false,
     },
 
     tooltip: {
-        enabled: false
+      enabled: false,
     },
 
     // the value axis
     yAxis: {
-        stops: [
-            [0.1, '#22e0d1'], // blue
-            [0.5, '#ff9900'], // yellow
-            [0.9, '#d14200'] // red
-        ],
-        lineWidth: 0,
-        tickWidth: 0,
-        minorTickInterval: null,
-        tickAmount: 2,
-        title: {
-            y: -70
-        },
-        labels: {
-            y: 16
-        }
+      stops: [
+        [0.1, '#22e0d1'], // blue
+        [0.5, '#ff9900'], // yellow
+        [0.9, '#d14200'], // red
+      ],
+      lineWidth: 0,
+      tickWidth: 0,
+      minorTickInterval: null,
+      tickAmount: 2,
+      title: {
+        y: -70,
+      },
+      labels: {
+        y: 16,
+      },
     },
 
     plotOptions: {
-        solidgauge: {
-            dataLabels: {
-                y: 5,
-                borderWidth: 0,
-                useHTML: true
-            }
-        }
-    }
-};
-constructor() { }
+      solidgauge: {
+        dataLabels: {
+          y: 5,
+          borderWidth: 0,
+          useHTML: true,
+        },
+      },
+    },
+  };
+  constructor(private dataService: DataShareService) {}
 
-ngOnInit(): void {
+  ngOnInit(): void {
     ChartModuleMore.Highcharts;
     HCSoldGauge(Highcharts);
-    this.chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(this.gaugeOptions, this.option));
+    this.chartSpeed = Highcharts.chart(
+      'container-speed',
+      Highcharts.merge(this.gaugeOptions, this.option)
+    );
+  }
 
-  this.setInterval();
-}
-// The speed gauge
-
-
-// Bring life to the dials
-setInterval() {
-    // Speed
-    var point,
-        newVal,
-        inc;
-
+  ngOnChanges(changes: SimpleChanges) {
     if (this.chartSpeed) {
-        point = this.chartSpeed.series[0].points[0];
-        inc = Math.round((Math.random() - 0.5) * 100);
-        newVal = point.y + inc;
-
-        if (newVal < 0 || newVal > 100) {
-            newVal = point.y - inc;
-        }
-
+      var point = this.chartSpeed.series[0].points[0];
+      this.dataService.currentMytext.subscribe((newVal) => {
         point.update(newVal);
+      });
     }
-}
-
-
-
+  }
 }

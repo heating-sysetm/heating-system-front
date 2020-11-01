@@ -34,10 +34,10 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.getSelectionData();
     this.loading=false;
-    this.so.getMessages().subscribe((message: string) => {
-      console.log(message);
+    // this.so.getMessages().subscribe((message: string) => {
+    //   console.log(message);
       
-    });
+    // });
   }
 
   toggleTheme() {

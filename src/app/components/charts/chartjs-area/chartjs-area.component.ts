@@ -13,14 +13,14 @@ export class ChartjsAreaComponent implements OnInit {
   data:any= {
     labels: [ 'January', 'February', 'March', 'April', 'May', 'June' ],
     datasets: [{
-      label: 'دمای داخل ساختمان',
+      label: 'دمای رفت',
       backgroundColor: '#f66f200f',
       pointBackgroundColor: 'white',
       borderWidth: 1,
       borderColor: '#f26c05',
       data: [50, 55, 30, 41, 54, 50]
     },{
-      label: 'دمای بیرون ساختمان',
+      label: 'دمای برگشت',
       backgroundColor: '#00d4f61a',
       pointBackgroundColor: 'white',
       borderWidth: 1,
@@ -91,6 +91,17 @@ export class ChartjsAreaComponent implements OnInit {
       data:this.data,
       options:this.options
     });
+    setTimeout(() => {
+      this.data.datasets[0].data=[80, 45, 70, 10, 14, 36];
+      this.chart.update();
+    }, 2000);
+    // setInterval(function () {
+    //   var x = new Date().getTime(), // current time
+    //     y = Math.random();
+    //     this.data.datasets[0].data;
+        
+    //   series.addPoint([x, y], true, true);
+    // }, 1000);
     
   }
 

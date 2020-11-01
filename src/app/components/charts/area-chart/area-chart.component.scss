@@ -3,7 +3,9 @@
     max-width: 800px;
     margin: 1em auto;
 }
-
+#containder ::ng-deep *{
+    font-family: iran;
+}
 #container {
     height: 450px;
 }

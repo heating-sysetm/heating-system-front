@@ -6,7 +6,7 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./area-chart.component.scss']
 })
 export class AreaChartComponent implements OnInit {
-  public option:any= {
+  public option:any=  {
     chart: {
         type: 'area'
     },

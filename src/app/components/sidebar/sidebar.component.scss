@@ -68,7 +68,7 @@ a {
     z-index: 2;
     position: fixed;
     top: 1.4em;
-    right: 1.4em;
+    right: 1em;
     width: 3em;
     height: 3em;
     background: var(--background-secondary);
@@ -85,7 +85,7 @@ a {
  .s-sidebar__nav {
     z-index: 200;
     position: fixed;
-    right: -22em;
+    right: -24em;
     overflow: hidden;
     transition: all .3s ease-in;
     width: 22em;
@@ -176,9 +176,10 @@ a {
 //  
  
  /* Mobile First */
- @media (min-width: 42em) {
+ @media (min-width: 48em) {
     .s-layout__content {
-       margin-right: 4em;
+      margin-right: 1em;
+      margin-left: 1em;
     }
     
     /* Sidebar */
@@ -188,7 +189,7 @@ a {
     
     .s-sidebar__nav {
       //  width: 4em;
-       right: -22em;
+       right: -24em;
     }
     
     .s-sidebar__nav:hover,
@@ -199,7 +200,7 @@ a {
     }
  }
  
- @media (min-width: 68em) {
+ @media (min-width: 88em) {
     .s-layout__content {
        margin-right: 24em;
        margin-bottom: 4em;
