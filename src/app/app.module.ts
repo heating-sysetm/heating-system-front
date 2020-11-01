@@ -13,8 +13,6 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { ChartsModule } from 'ng2-charts';
-// import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
