@@ -13,7 +13,7 @@ import * as Exporting from 'highcharts/modules/exporting';
   selector: 'app-temp-one',
   templateUrl: './temp-one.component.html',
   styleUrls: ['./temp-one.component.scss'],
-  inputs: [`wtemp_one`],
+  inputs: [`changed`],
 })
 export class TempOneComponent implements OnInit {
   visibleValue: number = 0;
@@ -93,7 +93,7 @@ export class TempOneComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges){ 
       if(this.chart){
         var point = this.chart.series[0].points[0];
-        this.dataService.currentMytext.subscribe(
+        this.dataService.boyler_1.subscribe(
             (newVal) =>{
                 this.visibleValue = newVal;
                 point.update(newVal);

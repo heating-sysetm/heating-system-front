@@ -1,3 +1,4 @@
+import { ApiService } from './../../services/api.service';
 import { NotificationService } from './../../services/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -8,8 +9,6 @@ export interface User {
   id: string;
 }
 const ELEMENT_DATA: User[] = [
-  {id: '1', name: 'فائزه', username: 'faezeh', password: 'H1213464'},
-  {id: '2', name: 'علی', username: 'alinair', password: 'He468768765'}
 ];
 @Component({
   selector: 'app-users',
@@ -18,19 +17,23 @@ const ELEMENT_DATA: User[] = [
 })
 export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'username', 'password'];
-  dataSource = ELEMENT_DATA;
+  dataSource = [];
   public userForm: FormGroup;
   public loading =false;
   constructor(private notif:NotificationService,
-    private _formBuilder: FormBuilder) { }
+    private _formBuilder: FormBuilder,private api:ApiService) { }
+
 
   ngOnInit(): void {
+    this.getAllUsers();
     this.userForm = this._formBuilder.group({
-      name: ["", [Validators.required,Validators.maxLength(16),Validators.minLength(4)]],
-      username: ["", [Validators.required,Validators.maxLength(26),Validators.minLength(3)]],
-      password : ["", Validators.required,Validators.maxLength(16),Validators.minLength(4)],
+      name: ["", [Validators.required]],
+      username: ["", [Validators.required]],
+      password : ["", Validators.required],
     });
   }
+
+
   check(){
     if(this.userForm.controls.name.invalid){
       this.notif.createError('خطا', 'نام و نام خانوادگی به درستی وارد نشده است');
@@ -45,7 +48,38 @@ export class UsersComponent implements OnInit {
     }
     return true;
   }
+
+
   addUser(){
-    if(this.check()){}
+    if(this.check()){
+      console.log(this.userForm.value);
+      this.api.addUser(this.userForm.value).subscribe((result)=>{
+        if(result['status'] ==200){
+          this.notif.createSuccess('خطا', 'کاربر با موفقیت افزوده شد');
+        }else
+        {
+          this.notif.createError('خطا', 'امکان افزودن کاربر وجود ندارد');
+        }
+      })
+    }
+  }
+
+
+
+  getAllUsers(){
+    this.api.getusers().subscribe(result=>{
+      let users = result['data'];
+      users.forEach(user => {
+        let temp={
+          id:user.id,
+          name:user.name,
+          username:user.username,
+          password:user.password
+        }
+        ELEMENT_DATA.push(temp);
+        console.log(ELEMENT_DATA);
+        this.dataSource=ELEMENT_DATA; 
+      });      
+    });
   }
 }

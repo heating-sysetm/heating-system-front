@@ -5,13 +5,13 @@ import * as Highcharts from 'highcharts';
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss'],
-  inputs: [`gaz_data`],
+  inputs: [`changed`],
 })
 export class LineChartComponent implements OnInit {
   options: any = {
     chart: {
       type: 'spline',
-      animation: true, // don't animate in old IE
+      // animation: Highcharts.svg, // don't animate in old IE
       marginRight: 10,
     },
 
@@ -38,7 +38,7 @@ export class LineChartComponent implements OnInit {
 
     xAxis: {
       type: 'datetime',
-      tickPixelInterval: 150,
+      ShowFirstLabel:false,
     },
 
     yAxis: {
@@ -77,9 +77,9 @@ export class LineChartComponent implements OnInit {
             time = new Date().getTime(),
             i;
 
-          for (i = -19; i <= 0; i += 1) {
+          for (i = -4; i <= 0; i += 1) {
             data.push({
-              x: time + i * 5000,
+              x: time + i * 4000,
               y: Math.random(),
             });
           }
@@ -96,12 +96,22 @@ export class LineChartComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.chart) {
-      var series = this.chart.series[0];
-      this.dataService.currentMytext.subscribe((newVal) => {
-        var x = new Date().getTime(); // current time
-        series.addPoint([x, newVal], true, true);
-      });
-    }
+      if (this.chart) {
+        let series = this.chart.series[0];
+        this.dataService.gasData.subscribe((newVal) => {
+          let x = new Date().getTime(),
+            y = Number(newVal);
+            // console.log(x);
+            
+          series.addPoint([x, y], true, true);
+        });
+      }
+
+      // setTimeout(() => {
+      //   let series = this.chart.series[0];
+      //   let x = new Date().getTime(),
+      //       y = 15;
+      //     series.addPoint([x, y], true, true);
+      // }, 4000);
   }
 }

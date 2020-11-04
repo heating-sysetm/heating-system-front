@@ -7,26 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  wtemp_one:number;
-  wtemp_three:number;
-  wtemp_two:number;
-  temp_out:number;
-  temp_tank:number;
-  gaz_data:number;
+  changed:number;
+
   constructor(private dataService:DataShareService) { }
 
   ngOnInit(): void {
-    this.dataService.currentMytext.subscribe(
-      (mytext) => {
-        this.wtemp_one = mytext;
-        this.wtemp_two = mytext;
-        this.wtemp_three = mytext;
-        this.temp_out=mytext;
-        this.temp_tank=mytext;
-        this.gaz_data=mytext;
+    this.dataService.changes.subscribe(
+      (data) => {
+        this.changed =data;
       }
     );
   }
-
 
 }

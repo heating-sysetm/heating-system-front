@@ -12,7 +12,7 @@ import * as Exporting from 'highcharts/modules/exporting';
   selector: 'app-temp-two',
   templateUrl: './temp-two.component.html',
   styleUrls: ['./temp-two.component.scss'],
-  inputs: [`wtemp_two`],
+  inputs: [`changed`],
 })
 export class TempTwoComponent implements OnInit {
   option: any = {
@@ -95,7 +95,7 @@ export class TempTwoComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges){ 
     if(this.chart){
         var point = this.chart.series[0].points[0];
-        this.dataService.currentMytext.subscribe(
+        this.dataService.boyler_2.subscribe(
             (newVal) =>{
                 this.visibleValue = newVal;
                 point.update(newVal);

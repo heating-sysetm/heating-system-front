@@ -7,7 +7,7 @@ import * as ChartModuleMore from 'highcharts/highcharts-more.js';
   selector: 'app-solid-gauge-three',
   templateUrl: './solid-gauge-three.component.html',
   styleUrls: ['./solid-gauge-three.component.scss'],
-  inputs: [`temp_out`],
+  inputs: [`changed`],
 })
 export class SolidGaugeThreeComponent implements OnInit {
   option: any = {
@@ -110,8 +110,8 @@ export class SolidGaugeThreeComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (this.chartSpeed) {
       var point = this.chartSpeed.series[0].points[0];
-      this.dataService.currentMytext.subscribe((newVal) => {
-        point.update(newVal);
+      this.dataService.outData.subscribe((newVal) => {
+        point.update(Number(newVal));
       });
     }
   }

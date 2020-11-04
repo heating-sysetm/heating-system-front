@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, SimpleChanges } from '@angular/core';
 import { Chart } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
+import { DataShareService } from 'src/app/services/data-share.service';
 @Component({
   selector: 'app-chartjs-area',
   templateUrl: './chartjs-area.component.html',
-  styleUrls: ['./chartjs-area.component.scss']
+  styleUrls: ['./chartjs-area.component.scss'],
+  inputs: [`changed`]
 })
 export class ChartjsAreaComponent implements OnInit { 
   @ViewChild('myCanvas') canvas: ElementRef;
@@ -81,7 +83,7 @@ export class ChartjsAreaComponent implements OnInit {
   };
   
 
-  constructor(private _http: HttpClient) { 
+  constructor(private dataService: DataShareService) { 
        
   }
 
@@ -91,27 +93,27 @@ export class ChartjsAreaComponent implements OnInit {
       data:this.data,
       options:this.options
     });
-    setTimeout(() => {
-      this.data.datasets[0].data=[80, 45, 70, 10, 14, 36];
-      this.chart.update();
-    }, 2000);
-    // setInterval(function () {
-    //   var x = new Date().getTime(), // current time
-    //     y = Math.random();
-    //     this.data.datasets[0].data;
-        
-    //   series.addPoint([x, y], true, true);
-    // }, 1000);
-    
   }
 
 
-
-
-
-
-  dailyForecast() {
-    return this._http.get("http://samples.openweathermap.org/data/2.5/history/city?q=Warren,OH&appid=b6907d289e10d714a6e88b30761fae22");
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.chart) {
+      this.dataService.tempDates.subscribe(data=>{
+        this.data.labels=data;
+        console.log(data);
+        
+        this.chart.update();
+      });
+      this.dataService.outputData.subscribe((newVal) => {
+        this.data.datasets[0].data=newVal;
+        this.chart.update();
+      });
+      this.dataService.inputData.subscribe((newVal) => {
+        this.data.datasets[1].data=newVal;
+        this.chart.update();
+      });
+      
+    }
   }
 
 }

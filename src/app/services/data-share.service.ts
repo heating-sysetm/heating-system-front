@@ -14,7 +14,33 @@ export class DataShareService {
   public currentUser: Observable<User>;
 
   private mytextSource = new Subject<number>();
-  currentMytext = this.mytextSource.asObservable();
+  changes = this.mytextSource.asObservable();
+
+  private gasSens = new Subject<number>();
+  gasData = this.gasSens.asObservable();
+
+  private boyler_1_Sens = new Subject<number>();
+  boyler_1 = this.boyler_1_Sens.asObservable();
+  private boyler_2_Sens = new Subject<number>();
+  boyler_2 = this.boyler_2_Sens.asObservable();
+  private boyler_3_Sens = new Subject<number>();
+  boyler_3 = this.boyler_3_Sens.asObservable();
+
+  private cisternSens = new Subject<any>();
+  cisternData = this.cisternSens.asObservable();
+  private outSens = new Subject<any>();
+  outData = this.outSens.asObservable();
+
+  private outputSens = new Subject<any>();
+  outputData = this.outputSens.asObservable();
+  private inputSens = new Subject<any>();
+  inputData = this.inputSens.asObservable();
+
+  private date = new Subject<any>();
+  tempDates = this.date.asObservable();
+
+
+
   subscription: Subscription;
   
   constructor() {
@@ -58,8 +84,38 @@ export class DataShareService {
   }
 
   changeMytext(mytext: number) {
-    // const source = interval(4000);
-    // source.subscribe(() => this.mytextSource.next(Math.round((Math.random() - 0.5) * 20)+40));
+     this.mytextSource.next(mytext);
   }
 
+  changeGasData(data : number){
+    this.gasSens.next(data);
+  }
+
+  changeBoyler1Data(data : number){
+    this.boyler_1_Sens.next(data);
+  }
+  changeBoyler2Data(data : number){
+    this.boyler_2_Sens.next(data);
+  }
+  changeBoyler3Data(data : number){
+    this.boyler_3_Sens.next(data);
+  }
+  changeCisternData(data : number){
+    this.cisternSens.next(data);
+  }
+
+  changeOutTempData(data : number){
+    this.outSens.next(data);
+  }
+
+  changeOutputData(data : Array<any>){
+    this.outputSens.next(data);
+  }
+  changeInputData(data : Array<any>){
+    this.inputSens.next(data);
+  }
+
+  changeDate(data : Array<any>){
+    this.date.next(data);
+  }
 }

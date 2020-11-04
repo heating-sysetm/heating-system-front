@@ -7,7 +7,7 @@ import * as ChartModuleMore from 'highcharts/highcharts-more.js';
   selector: 'app-solid-gauge',
   templateUrl: './solid-gauge.component.html',
   styleUrls: ['./solid-gauge.component.scss'],
-  inputs: [`temp_tank`],
+  inputs: [`changed`],
 })
 export class SolidGaugeComponent implements OnInit {
   option: any = {
@@ -110,8 +110,8 @@ export class SolidGaugeComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (this.chartSpeed) {
       var point = this.chartSpeed.series[0].points[0];
-      this.dataService.currentMytext.subscribe((newVal) => {
-        point.update(newVal);
+      this.dataService.cisternData.subscribe((newVal) => {
+        point.update(Number(newVal));
       });
     }
   }

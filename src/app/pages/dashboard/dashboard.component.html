@@ -18,17 +18,17 @@
           </div>
           <div class="col-lg-3 col-md-6 col-sm-6 widget w1">
             <div>
-              <app-temp-one [wtemp_one]="wtemp_one"></app-temp-one>
+              <app-temp-one [changed]="changed"></app-temp-one>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-6 widget w2">
             <div>
-              <app-temp-two [wtemp_two]="wtemp_two"></app-temp-two>
+              <app-temp-two [changed]="changed"></app-temp-two>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-6 widget w3">
             <div>
-              <app-temp-three [wtemp_three]="wtemp_three"></app-temp-three>
+              <app-temp-three [changed]="changed"></app-temp-three>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
                 <h5 class="px-4 pt-4 pb-2">دمای لوله های رفت و برگشت (°C)</h5>
               </div>
               <div class="chart text-center px-4 py-2">
-                <app-chartjs-area></app-chartjs-area>
+                <app-chartjs-area [changed]="changed"></app-chartjs-area>
               </div>
             </div>
           </div>
@@ -58,12 +58,12 @@
                 </div>
                 <div class="row mb-2">
                   <div class="temp temp-raft col-lg-12 col-md-6">
-                    <app-solid-gauge [temp_tank]="temp_tank"></app-solid-gauge>
+                    <app-solid-gauge [changed]="changed"></app-solid-gauge>
                   </div>
 
                   <div class="temp temp-makhzan col-lg-12 col-md-6">
                     <app-solid-gauge-three
-                      [temp_out]="temp_out"
+                      [changed]="changed"
                     ></app-solid-gauge-three>
                   </div>
                 </div>
@@ -75,7 +75,7 @@
                   <h5 class="px-4 py-4">میزان کربن منواکسید</h5>
                 </div>
                 <div class="chart text-center px-4 py-2">
-                  <app-line-chart [gaz_data]="gaz_data"></app-line-chart>
+                  <app-line-chart [changed]="changed"></app-line-chart>
                 </div>
               </div>
             </div>
