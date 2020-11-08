@@ -12,10 +12,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UsersComponent } from './pages/users/users.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
-import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
-import { ClockComponent } from './components/charts/clock/clock.component';
-import { AreaChartComponent } from './components/charts/area-chart/area-chart.component';
-import { charts } from 'highcharts';
 import { ChartsComponent } from './pages/charts/charts.component';
 
 
