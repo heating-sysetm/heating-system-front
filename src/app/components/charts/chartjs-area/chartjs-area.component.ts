@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import {
   Component,
   OnInit,
@@ -19,7 +20,18 @@ export class ChartjsAreaComponent implements OnInit {
   chart: any;
   gradient: any;
   data: any = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    labels: [
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+    ],
     datasets: [
       {
         label: 'دمای رفت',
@@ -27,7 +39,7 @@ export class ChartjsAreaComponent implements OnInit {
         pointBackgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#f26c05',
-        data: [50, 55, 30, 41, 54, 50],
+        data: [10, 12, 15, 12, 16, 14, 18, 18, 19, 20],
       },
       {
         label: 'دمای برگشت',
@@ -35,12 +47,12 @@ export class ChartjsAreaComponent implements OnInit {
         pointBackgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#00d4f6',
-        data: [20, 45, 70, 10, 14, 36],
+        data: [15, 11, 12, 18, 19, 15, 16, 14, 13, 17],
       },
     ],
   };
   min = 0;
-  max = 70;
+  max = 50;
   options: any = {
     responsive: true,
     maintainAspectRatio: true,
@@ -71,8 +83,8 @@ export class ChartjsAreaComponent implements OnInit {
             beginAtZero: true,
             steps: 20,
             stepValue: 20,
-            max: 33,
-            min: 23,
+            suggestedMax: this.max + 10,
+            min: 0,
           },
         },
       ],
@@ -103,15 +115,23 @@ export class ChartjsAreaComponent implements OnInit {
   };
 
   loading = true;
-  constructor(private dataService: DataShareService) {}
+  constructor(
+    private dataService: DataShareService,
+    public translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
-        this.chart = new Chart('canvas', {
-          type: 'line',
-          data: this.data,
-          options: this.options,
-        });
-    
+    if(this.translate.currentLang=="en"){
+      this.chart.data.datasets[0].label = 'output'; //change all labels
+      this.chart.data.datasets[1].label = 'input';
+      this.chart.update();
+    }
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: this.data,
+      options: this.options,
+    });
+    // }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -130,7 +150,7 @@ export class ChartjsAreaComponent implements OnInit {
         this.data.datasets[1].data = newVal;
         this.max = newVal[0] - 1;
         this.chart.update();
-        this.loading=false;
+        this.loading = false;
       });
     }
   }

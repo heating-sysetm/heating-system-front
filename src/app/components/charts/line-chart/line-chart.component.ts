@@ -77,10 +77,10 @@ export class LineChartComponent implements OnInit {
             time = new Date().getTime(),
             i;
 
-          for (i = -4; i <= 0; i += 1) {
+          for (i = -5; i <= 0; i += 1) {
             data.push({
               x: time + i * 4000,
-              y: Math.random(),
+              y: 0,
             });
           }
           return data;

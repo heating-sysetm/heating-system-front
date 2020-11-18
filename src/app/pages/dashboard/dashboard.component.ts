@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { DataShareService } from 'src/app/services/data-share.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   changed:number;
-
-  constructor(private dataService:DataShareService) { }
+  loading=true;
+  constructor(private dataService:DataShareService,public translate: TranslateService) {
+  }
 
   ngOnInit(): void {
     this.dataService.changes.subscribe(
       (data) => {
         this.changed =data;
+        this.loading=false;
       }
     );
   }

@@ -3,8 +3,15 @@
 	height: 250px;
     float: left;
     color: var(--foreground-white)!important;
+
 }
 
+.ch-desc2 span{
+    position: absolute;
+    top: 90%;
+    right: 46%;
+
+}
 
 ::ng-deep .temps .highcharts-background{
     fill: var(--background-tertiary);

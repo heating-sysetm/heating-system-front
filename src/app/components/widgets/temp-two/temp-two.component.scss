@@ -1,15 +1,42 @@
-.title-two{
-    z-index: 100;
-    position: absolute;
-    top: 30%;
-    right: 30%;
-    text-align: center;
-    color: var(--foreground-default);
-    h5{
-        font-size: 2.5vw;
-    }
+.title-two {
+  right: 35%;
+}
+.text-align {
+  text-align: left;
 }
 
-.temp-desc{
-    color:var(--foreground-default);
+.rtl {
+  .title-two {
+    right: 45%;
+  }
+  .text-align {
+    text-align: right;
+  }
+}
+
+.title-two {
+  z-index: 10;
+  position: absolute;
+  top: 30%;
+  text-align: center;
+  color: var(--foreground-default);
+  h5 {
+    font-size: 2.5vw;
+  }
+}
+
+.temp-desc {
+  color: var(--foreground-default);
+}
+
+.highcharts-figure,
+#container-three,
+::ng-deep .highcharts-container {
+  height: 150px;
+  width: 150px;
+}
+
+.w-icon3 {
+  font-size: 3em;
+  color: #91e8e1;
 }

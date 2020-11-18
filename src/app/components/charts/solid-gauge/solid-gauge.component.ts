@@ -23,12 +23,12 @@ export class SolidGaugeComponent implements OnInit {
     series: [
       {
         name: 'temp',
-        data: [80],
+        data: [32],
         dataLabels: {
           format:
             '<div style="text-align:center">' +
             '<span class="temp" style="color: var(--foreground-white);font-size:36px">{y}</span><br/>' +
-            '<span class="temp-desc" style="color: var(--foreground-white);font-size:16px;opacity:0.4">دمای مخزن</span>' +
+            // '<span class="temp-desc" style="color: var(--foreground-white);font-size:16px;opacity:0.4">دمای مخزن</span>' +
             '</div>',
         },
         tooltip: {

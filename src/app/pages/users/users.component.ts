@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from './../../services/api.service';
 import { NotificationService } from './../../services/notification.service';
 import { Component, OnInit } from '@angular/core';
@@ -21,7 +22,7 @@ export class UsersComponent implements OnInit {
   public userForm: FormGroup;
   public loading =false;
   constructor(private notif:NotificationService,
-    private _formBuilder: FormBuilder,private api:ApiService) { }
+    private _formBuilder: FormBuilder,private api:ApiService,public translate: TranslateService) { }
 
 
   ngOnInit(): void {
@@ -51,6 +52,8 @@ export class UsersComponent implements OnInit {
 
 
   addUser(){
+    console.log(this.translate.currentLang);
+    
     if(this.check()){
       console.log(this.userForm.value);
       this.api.addUser(this.userForm.value).subscribe((result)=>{
