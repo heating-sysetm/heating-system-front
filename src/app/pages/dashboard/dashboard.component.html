@@ -1,87 +1,118 @@
-<div class="dasboard">
+<!--  -->
+<!-- <app-loading *ngIf="loading"></app-loading> -->
+<div [class.rtl]="('dir' | translate) === 'rtl'">
+
+  <div class="dasboard">
     <div class="main-container">
-        <div class="header-widgets">
-            <div class="p-2">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 w0">
-                        <div class="card status-card p-4 text-center">
-                            <div class="title">
-                                <h5>وضعیت دیگ ها</h5>
-                            </div>
-                            <div class="power-btn my-2">
-                                <button class="power"><i class="fa fa-power-off"></i></button>
-                            </div>
-                            <div class="desc mt-3 mb-2">
-                                <p>روشن</p>
-                            </div>
-                            
-                        </div>
+      <div class="header-widgets">
+        <div class="p-2">
+          <div class="row res-padd">
+            <div class="col-lg-3 col-md-6 col-sm-6 w0">
+              <div class="w-card">
+                <div class="row text-align mt-4">
+  
+                  <div class="col-8">
+                    <div class="title px-2 mt-3">
+                      <h4>{{ 'Dashboard.WidgetOne.Title' | translate }}</h4>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 widget w1">
-                        <div>
-                            <app-temp-one></app-temp-one>
-                        </div>
+                    <div class="desc px-2 mt-3">
+                      <p>{{ 'Dashboard.WidgetOne.Desc' | translate }}</p>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 widget w2">
-                        <div>
-                            <app-temp-two></app-temp-two>
-                        </div>
+                  </div>
+    
+                  <div class="col-4 bg-blue">
+                    <div class="power-btn">
+                      <button class="power"><i class="fa fa-power-off"></i></button>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 widget w3">
-                        <div>
-                            <app-temp-three></app-temp-three>
-                        </div>
-                    </div>
+                  </div>
+    
+    
                 </div>
+              </div>
             </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 widget w1">
+              <div class="w-card p-2">
+                    <app-temp-one [changed]="changed"></app-temp-one>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 widget w2">
+              <div  class="w-card p-2">
+                <app-temp-two [changed]="changed"></app-temp-two>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 widget w3">
+              <div  class="w-card p-2">
+                <app-temp-three [changed]="changed"></app-temp-three>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="live-chart">
-            <div class="p-2">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
-                        <div class="card p-2">
-                            <div class="title text-right pt-4">
-                                <h5 class="text-center"> دمای لوله ها و مخزن </h5>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-4 col-sm-4 temp temp-raft">
-                                    <app-solid-gauge></app-solid-gauge>
-                                </div>
-                                <div class="col-lg-12 col-md-4 col-sm-4 temp temp-bargasht">
-                                    <app-solid-gauge-two></app-solid-gauge-two>
-                                </div>
-                                <div class="col-lg-12 col-md-4 col-sm-4 temp temp-makhzan">
-                                    <app-solid-gauge-three></app-solid-gauge-three>
-                                </div>
-                            </div>
-                        </div>
+      </div>
+  
+      <div class="live-chart mt-4">
+        <div class="p-2">
+          <div class="">
+            <div class="row">
+              <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+                <div class="card">
+                  <div class="title text-align pt-4 pr-2">
+                    <h5 class="text-align mx-4 mt-2">{{ 'Dashboard.Charts.ChartOne.Title' | translate }} (°C)</h5>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="temp temp-raft col-lg-12 col-md-6">
+                      <app-solid-gauge [changed]="changed"></app-solid-gauge>
                     </div>
-                    <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
-                        <div class="card">
-                            <div class="chart-one">
-                                <div class="title text-right p-2">
-                                    <h5 class="px-4 pt-4 pb-2"> دمای داخل و بیرون ساختمان </h5>
-                                </div>
-                                <div class="chart text-center px-4 py-2">
-                                    <app-chartjs-area></app-chartjs-area>
-                                </div>
-                            </div>
-                            <div class="chart-two">
-                                <div class="title text-right p-2">
-                                    <h5 class="px-4 py-2"> میزان کربن منواکسید </h5>
-                                </div>
-                                <div class="chart text-center px-4 py-2">
-                                    <app-line-chart></app-line-chart>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                        
+  
+                    <div class="temp temp-makhzan col-lg-12 col-md-6">
+                      <app-solid-gauge-three
+                        [changed]="changed"
+                      ></app-solid-gauge-three>
                     </div>
-                    
+                  </div>
                 </div>
+              </div>
+              <div class="col-lg-9 col-md-12 col-sm-12 mb-4">
+                <div class="card">
+                  <div class="chart-one p-4">
+                    <div class="title text-align p-2">
+                      <h5 class="mx-2 pb-2">{{ 'Dashboard.Charts.ChartTwo.Title' | translate }} (°C)</h5>
+                    </div>
+                    <div class="chart text-center px-4 py-2">
+                      <app-chartjs-area [changed]="changed"></app-chartjs-area>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="my-2">
+            <div class="row">
+  
+              <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                <div class="chart-two card">
+                  <div class="title text-align p-2">
+                    <h5 class="px-4 py-4">{{ 'Dashboard.Charts.ChartThree.Title' | translate }}</h5>
+                  </div>
+                  <div class="chart text-center px-4 py-2">
+                    <app-line-chart [changed]="changed"></app-line-chart>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
+                <div class="card p-4">
+                  <!-- <div class="title text-align pt-4 pr-2">
+                    <h5 class="text-align mr-4 mt-2">دمای لوله ها و مخزن (°C)</h5>
+                  </div> -->
+                  <app-humidity-chart></app-humidity-chart>
+                </div>
+              </div>
+              
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  
 </div>

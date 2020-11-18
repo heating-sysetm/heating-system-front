@@ -1,103 +1,117 @@
-import { Component, OnInit } from '@angular/core';
+import { DataShareService } from 'src/app/services/data-share.service';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.scss']
+  styleUrls: ['./line-chart.component.scss'],
+  inputs: [`changed`],
 })
 export class LineChartComponent implements OnInit {
-
-  options: any= {
+  options: any = {
     chart: {
-        type: 'spline',
-        animation: true, // don't animate in old IE
-        marginRight: 10,
-        events: {
-            load: function () {
-
-                // set up the updating of the chart each second
-                var series = this.series[0];
-                setInterval(function () {
-                    var x = (new Date()).getTime(), // current time
-                        y = Math.random();
-                    series.addPoint([x, y], true, true);
-                }, 1000);
-            }
-        }
+      type: 'spline',
+      // animation: Highcharts.svg, // don't animate in old IE
+      marginRight: 10,
     },
 
     time: {
-        useUTC: false
+      useUTC: false,
     },
 
     title: {
-        text: 'کربن منواکسید'
+      text: 'کربن منواکسید',
     },
 
     accessibility: {
-        announceNewData: {
-            enabled: true,
-            minAnnounceInterval: 15000,
-            announcementFormatter: function (allSeries, newSeries, newPoint) {
-                if (newPoint) {
-                    return 'New point added. Value: ' + newPoint.y;
-                }
-                return false;
-            }
-        }
+      announceNewData: {
+        enabled: true,
+        minAnnounceInterval: 15000,
+        announcementFormatter: function (allSeries, newSeries, newPoint) {
+          if (newPoint) {
+            return 'New point added. Value: ' + newPoint.y;
+          }
+          return false;
+        },
+      },
     },
 
     xAxis: {
-        type: 'datetime',
-        tickPixelInterval: 150
+      type: 'datetime',
+      ShowFirstLabel:false,
     },
 
     yAxis: {
-        title: {
-            text: 'مقدار',
-            visiblity:false
+      title: {
+        text: 'مقدار',
+        visiblity: false,
+      },
+      plotLines: [
+        {
+          value: 0,
+          width: 1,
+          color: '#808080',
         },
-        plotLines: [{
-            value: 0,
-            width: 1,
-            color: '#808080'
-        }]
+      ],
     },
 
     tooltip: {
-        headerFormat: '<b>{series.name}</b><br/>',
-        pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
+      headerFormat: '<b>{series.name}</b><br/>',
+      pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}',
     },
 
     legend: {
-        enabled: false
+      enabled: false,
     },
 
     exporting: {
-        enabled: false
+      enabled: false,
     },
 
-    series: [{
+    series: [
+      {
         name: 'Random data',
         data: (function () {
-            // generate an array of random data
-            var data = [],
-                time = (new Date()).getTime(),
-                i;
+          // generate an array of random data
+          var data = [],
+            time = new Date().getTime(),
+            i;
 
-            for (i = -19; i <= 0; i += 1) {
-                data.push({
-                    x: time + i * 1000,
-                    y: Math.random()
-                });
-            }
-            return data;
-        }())
-    }]
-};
-  constructor() {}
+          for (i = -5; i <= 0; i += 1) {
+            data.push({
+              x: time + i * 4000,
+              y: 0,
+            });
+          }
+          return data;
+        })(),
+      },
+    ],
+  };
+  chart: any;
+  constructor(private dataService: DataShareService) {}
 
   ngOnInit(): void {
-    Highcharts.chart('container-line',this.options );
+    this.chart = Highcharts.chart('container-line', this.options);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+      if (this.chart) {
+        let series = this.chart.series[0];
+        this.dataService.gasData.subscribe((newVal) => {
+          let x = new Date().getTime(),
+            y = Number(newVal);
+            // console.log(x);
+            
+          series.addPoint([x, y], true, true);
+        });
+      }
+
+      // setTimeout(() => {
+      //   let series = this.chart.series[0];
+      //   let x = new Date().getTime(),
+      //       y = 15;
+      //     series.addPoint([x, y], true, true);
+      // }, 4000);
   }
 }

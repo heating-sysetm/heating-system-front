@@ -17,7 +17,7 @@ export const PERSIAN_DATE_FORMATS = {
 };
 
 export interface MDate {
-  strt_date: string;
+  start_date: string;
   end_time: string;
 }
 

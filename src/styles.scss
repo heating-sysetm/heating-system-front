@@ -1,23 +1,9 @@
-@font-face {
-  font-family: Avini;
-  src: url(./assets/fonts/aviny.ttf);
-}
-@font-face {
-  font-family: Dima;
-  src: url(./assets/fonts/DimaBarf.ttf);
-}
+
 @font-face {
   font-family: iran;
   src: url(./assets/fonts/iran.ttf);
 }
-@font-face {
-  font-family: shabnam;
-  src: url(./assets/fonts/Shabnam.ttf);
-}
-@font-face {
-  font-family: yekan;
-  src: url(./assets/fonts/yekanbold.ttf);
-}
+
 /* Primary Styles */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -29,9 +15,6 @@ body {
   color: #333;
 }
 
-h1 {
- font-size: 1.4em;
-}
 
 em {
   font-style: normal;
@@ -75,7 +58,7 @@ i{
     --background-light: #FF9A00;
     --background-input:#f3f3f3;
     --background-ul-li:#686767;
-    --background-ul-hover: rgb(88, 95, 91);
+    --background-ul-hover: #3a3a39;
   
     --primary-default: #5dfdcb;
     --primary-dark: #24b286;
@@ -134,4 +117,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 figure {
   margin: 0 0 0rem;
+}
+
+button{
+  outline: none!important;
 }

@@ -54,6 +54,7 @@ export const dark: Theme = {
     "--background-light": "#FF9A00",
     "--background-input":"#f3f3f3",
     "--background-ul-li":"#686767",
+    "--background-ul-hover": "#3a3a39",
 
     "--primary-default": "#5DFDCB",
     "--primary-dark": "#24B286",

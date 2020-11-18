@@ -5,9 +5,12 @@
   fill: var(--background-tertiary)!important;
 }
 
+::ng-deep #container-line .highcharts-title{
+  fill: var(--foreground-white)!important;
+}
   
   #container-line {
-    height: 300px;
+    height: 450px;
   }
  
   

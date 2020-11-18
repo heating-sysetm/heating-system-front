@@ -27,8 +27,8 @@ export class SolidGaugeTwoComponent implements OnInit {
         dataLabels: {
             format:
                 '<div style="text-align:center">' +
-                '<span class="temp" style="color: var(--foreground-white);font-size:25px">{y}</span><br/>' +
-                '<span class="temp-desc" style="color: var(--foreground-white);font-size:12px;opacity:0.4">سانتی گراد</span>' +
+                '<span class="temp" style="color: var(--foreground-white);font-size:36px">{y} <span class="mx-2" style="font-size:12px">°C</span></span><br/>' +
+                '<span class="temp-desc" style="color: var(--foreground-white);font-size:16px;opacity:0.4">سانتی گراد</span>' +
                 '</div>'
         },
         tooltip: {

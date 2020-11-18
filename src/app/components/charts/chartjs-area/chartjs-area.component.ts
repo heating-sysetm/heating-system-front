@@ -1,73 +1,107 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  SimpleChanges,
+} from '@angular/core';
 import { Chart } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
+import { DataShareService } from 'src/app/services/data-share.service';
 @Component({
   selector: 'app-chartjs-area',
   templateUrl: './chartjs-area.component.html',
-  styleUrls: ['./chartjs-area.component.scss']
+  styleUrls: ['./chartjs-area.component.scss'],
+  inputs: [`changed`],
 })
-export class ChartjsAreaComponent implements OnInit { 
+export class ChartjsAreaComponent implements OnInit {
   @ViewChild('myCanvas') canvas: ElementRef;
-  chart :any;
-  gradient:any;
-  data:any= {
-    labels: [ 'January', 'February', 'March', 'April', 'May', 'June' ],
-    datasets: [{
-      label: 'دمای داخل ساختمان',
-      backgroundColor: '#f66f200f',
-      pointBackgroundColor: 'white',
-      borderWidth: 1,
-      borderColor: '#f26c05',
-      data: [50, 55, 30, 41, 54, 50]
-    },{
-      label: 'دمای بیرون ساختمان',
-      backgroundColor: '#00d4f61a',
-      pointBackgroundColor: 'white',
-      borderWidth: 1,
-      borderColor: '#00d4f6',
-      data: [20, 45, 70, 10, 14, 36]
-    }],
+  chart: any;
+  gradient: any;
+  data: any = {
+    labels: [
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+      'nan',
+    ],
+    datasets: [
+      {
+        label: 'دمای رفت',
+        backgroundColor: '#f66f200f',
+        pointBackgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#f26c05',
+        data: [10, 12, 15, 12, 16, 14, 18, 18, 19, 20],
+      },
+      {
+        label: 'دمای برگشت',
+        backgroundColor: '#00d4f61a',
+        pointBackgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#00d4f6',
+        data: [15, 11, 12, 18, 19, 15, 16, 14, 13, 17],
+      },
+    ],
   };
-  options:any = {
-    
+  min = 0;
+  max = 50;
+  options: any = {
     responsive: true,
     maintainAspectRatio: true,
     animation: {
       easing: 'easeInOutQuad',
-      duration: 520
+      duration: 520,
     },
     scales: {
-      xAxes: [{
-        gridLines: {
-          color: 'rgba(237, 255, 255, 0.1)',
-          lineWidth: 1
-        },ticks: {
-          fontColor: 'white', // labels such as 10, 20, etc
+      xAxes: [
+        {
+          gridLines: {
+            color: 'rgba(237, 255, 255, 0.1)',
+            lineWidth: 1,
+          },
+          ticks: {
+            fontColor: 'white', // labels such as 10, 20, etc
+          },
         },
-      }],
-      yAxes: [{
-        gridLines: {
-          color: 'rgba(200, 200, 200, 0.08)',
-          lineWidth: 1
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            color: 'rgba(200, 200, 200, 0.08)',
+            lineWidth: 1,
+          },
+          ticks: {
+            fontColor: 'white', // labels such as 10, 20, etc
+            beginAtZero: true,
+            steps: 20,
+            stepValue: 20,
+            suggestedMax: this.max + 10,
+            min: 0,
+          },
         },
-        ticks: {
-          fontColor: 'white', // labels such as 10, 20, etc
-        },
-      }]
+      ],
     },
     elements: {
       line: {
-        tension: 0.4
-      }
+        tension: 0.4,
+      },
     },
     legend: {
       position: 'bottom',
       labels: {
-        fontColor: 'white'
-      }
+        fontColor: 'white',
+      },
     },
     point: {
-      backgroundColor: 'white'
+      backgroundColor: 'white',
     },
     tooltips: {
       titleFontFamily: 'Open Sans',
@@ -76,31 +110,48 @@ export class ChartjsAreaComponent implements OnInit {
       caretSize: 5,
       cornerRadius: 2,
       xPadding: 10,
-      yPadding: 10
-    }
+      yPadding: 10,
+    },
   };
-  
 
-  constructor(private _http: HttpClient) { 
-       
-  }
+  loading = true;
+  constructor(
+    private dataService: DataShareService,
+    public translate: TranslateService
+  ) {}
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
+    if(this.translate.currentLang=="en"){
+      this.chart.data.datasets[0].label = 'output'; //change all labels
+      this.chart.data.datasets[1].label = 'input';
+      this.chart.update();
+    }
     this.chart = new Chart('canvas', {
       type: 'line',
-      data:this.data,
-      options:this.options
+      data: this.data,
+      options: this.options,
     });
-    
+    // }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.chart) {
+      this.dataService.tempDates.subscribe((data) => {
+        this.data.labels = data;
+        this.chart.update();
+      });
+      this.dataService.outputData.subscribe((newVal) => {
+        this.data.datasets[0].data = newVal;
+        this.max = newVal[0] + 1;
 
-
-
-
-
-  dailyForecast() {
-    return this._http.get("http://samples.openweathermap.org/data/2.5/history/city?q=Warren,OH&appid=b6907d289e10d714a6e88b30761fae22");
+        this.chart.update();
+      });
+      this.dataService.inputData.subscribe((newVal) => {
+        this.data.datasets[1].data = newVal;
+        this.max = newVal[0] - 1;
+        this.chart.update();
+        this.loading = false;
+      });
+    }
   }
-
 }

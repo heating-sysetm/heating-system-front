@@ -1,28 +1,4 @@
-<div class="loading" *ngIf="loading">
-  <div class="loader loader--style5">
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-       width="44px" height="60px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-      <rect x="0" y="0" width="4" height="10" fill="#FF9A00">
-        <animateTransform attributeType="xml"
-          attributeName="transform" type="translate"
-          values="0 0; 0 20; 0 0"
-          begin="0" dur="0.6s" repeatCount="indefinite" />
-      </rect>
-      <rect x="10" y="0" width="4" height="10" fill="#FF9A00">
-        <animateTransform attributeType="xml"
-          attributeName="transform" type="translate"
-          values="0 0; 0 20; 0 0"
-          begin="0.2s" dur="0.6s" repeatCount="indefinite" />
-      </rect>
-      <rect x="20" y="0" width="4" height="10" fill="#FF9A00">
-        <animateTransform attributeType="xml"
-          attributeName="transform" type="translate"
-          values="0 0; 0 20; 0 0"
-          begin="0.4s" dur="0.6s" repeatCount="indefinite" />
-      </rect>
-    </svg>
-  </div>
-</div>
+<app-loading *ngIf="loading"></app-loading>
 <div class="main">
   <div class="container">
     <div class="login-container">
@@ -46,20 +22,20 @@
             <h2 class="text"> ورود به سامانه </h2>
           </div>
           <!-- form body -->
-          <div class="form-content">
+          <div class="form-content pt-4">
             <div class="form">
               <form [formGroup]="userInfo">
 
                 <div class="form-input  mx-2">
                   <i class="fa fa-lock icons"></i>
-                  <input formControlName="username" pattern="[a-zA-Z0-9-]+" minlength="4" maxlength="16"
+                  <input dir="ltr" formControlName="username" pattern="[a-zA-Z0-9-]+" minlength="4" maxlength="16"
                   matTooltip="تنها حروف و اعداد مجاز می باشند" matTooltipPosition="right"
                    class="rounded-pill text-center" type="text" placeholder="نام کاربری"/>
                 </div>
 
                 <div class="form-input my-4 mx-2">
                   <i class="fa fa-key icons"></i>
-                  <input formControlName="password" pattern="[a-zA-Z0-9-]+" minlength="4" maxlength="16"
+                  <input dir="ltr" formControlName="password" pattern="[a-zA-Z0-9-]+" minlength="4" maxlength="16"
                   matTooltip="تنها حروف و اعداد مجاز می باشند" matTooltipPosition="right"
                   class="rounded-pill text-center" type="password" placeholder="رمزعبور"/>
                 </div>
