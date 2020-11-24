@@ -2,3 +2,18 @@ a {
     text-decoration: none;
     color: inherit;
   } 
+
+  .red{
+    color: red!important;
+  }
+  .green{
+    color: lime;
+  }
+
+  .mat-card{
+    box-shadow: none!important;
+  }
+
+  .modal-backdrop{
+    z-index: -1!important;
+  }

@@ -1,20 +1,49 @@
 <div [class.rtl]="('dir' | translate) === 'rtl'">
+  <mat-card class="card-menu mb-2">
+    <div class="status">
+      <i class="fa fa-circle green mx-2" *ngIf="data.power"></i>
+      <i class="fa fa-circle red mx-2" *ngIf="!data.power"></i>
+    </div>
+    <button mat-button [matMenuTriggerFor]="menu" class="w-100">
+      بویلر شماره {{data.num}}
+      <i class="fa fa-sort-down mx-2"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <i class="fa fa-eye mx-2"></i>
+        مشاهده
+      </button>
+      <button mat-menu-item data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-thermometer-half mx-2"></i>
+        تنظیم دما
+      </button>
+      <button mat-menu-item *ngIf="data.power" (click)="changePowerStatus()">
+        <i class="fa fa-power-off mx-2"></i>
+        خاموش کردن
+      </button>
+      <button mat-menu-item *ngIf="!data.power" (click)="changePowerStatus()">
+        <i class="fa fa-power-off mx-2"></i>
+        روشن کردن
+      </button>
+    </mat-menu>
+  </mat-card>
   <div class="row text-align">
-    <div class="col-7">
+    <div class="col-6">
       <div class="title px-2 mt-4" >
-        <h1 class="">45<small dir="rtl" class="mx-2" style="font-size: 14px;">(°C)</small></h1>
+        <h1 class="">45°</h1>
       </div>
       <div class="desc px-2 mt-2">
-        <p>{{ 'Dashboard.WidgetTwo.Desc' | translate }}</p>
+        <!-- <p>{{ 'Dashboard.WidgetTwo.Desc' | translate }}</p> -->
+        <p>دمای تعیین شده : °{{data.temp}}</p>
       </div>
     </div>
 
-    <div class="col-5">
+    <div class="col-6">
         <figure class="highcharts-figure polar">
-            <div id="container-one"></div>
+            <div id="{{data.id}}"></div>
         </figure>
         <div class="title-one title-w-temp">
-            <i class="fa fa-fire w-icon1"></i>
+            <i class="fa fa-fire w-icon{{data.color}}"></i>
         </div>
     </div>
 </div>
@@ -22,5 +51,40 @@
 
 
 
-
-
+<div id="myModal" dir="rtl" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <mat-card class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">تنظیم دمای بویلر</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-2 pt-2">
+            <h4>{{value}}°</h4>
+          </div>
+          <div class="col-10">
+            <mat-slider color="warn"
+              class="w-100"
+              thumbLabel [(ngModel)]="value"  
+              [displayWith]="formatLabel"
+              tickInterval="2"
+              min="1"
+              max="100"
+            ></mat-slider>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button mat-button color="warn" data-dismiss="modal">
+          بستن
+        </button>
+        <button
+        mat-button class="green"
+          data-dismiss="modal"
+        >
+          ثبت
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

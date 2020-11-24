@@ -1,0 +1,31 @@
+<!-- <div class="p-2">
+  <div class="row res-padd">
+    <div class="col-lg-3 col-md-6 col-sm-6 w0">
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 widget w1">
+      <div class="w-card p-2">
+        <app-temp-one [changed]="changed"></app-temp-one>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 widget w2">
+      <div class="w-card p-2">
+        <app-temp-two [changed]="changed"></app-temp-two>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 widget w3">
+      <div class="w-card p-2">
+        <app-temp-three [changed]="changed"></app-temp-three>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div>
+  <div class="row res-padd" >
+    <div class="col-lg-3 col-md-6 col-sm-6 widget w1"  *ngFor="let item of list">
+      <div class="w-card p-2">
+        <app-temp-one [changed]="changed" [data]="item"></app-temp-one>
+      </div>
+    </div>
+  </div>
+</div>

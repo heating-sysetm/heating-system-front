@@ -58,17 +58,20 @@ import { PathLocationStrategy, LocationStrategy, CommonModule } from '@angular/c
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { WidgetsComponent } from './components/widgets/widgets.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:8070', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     CommonModule,
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    AppRoutingModule,
     HttpClientModule,
     SimpleNotificationsModule.forRoot(),
     SocketIoModule.forRoot(config),
@@ -82,7 +85,6 @@ const config: SocketIoConfig = { url: 'http://localhost:8070', options: {} };
         deps: [HttpClient]
       }
     }),
-    FormsModule,
     ReactiveFormsModule,
     // ChartsMod/ule,
     // NgxChartsModule,

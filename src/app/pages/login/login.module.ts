@@ -1,7 +1,6 @@
 import { LoginRoutingModule } from './login-routing.module';
 import { LoadingModule } from './../../components/loading/loading.module';
 import { LoadingComponent } from './../../components/loading/loading.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -39,7 +38,6 @@ import { LoginComponent } from './login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { BrowserModule } from '@angular/platform-browser';
 
 
 

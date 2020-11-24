@@ -1,25 +1,27 @@
 .title-one {
-  right: 35%;
+  right: 43%;
 }
 .text-align {
   text-align: left;
 }
-
+.status {
+  right: 5%;
+}
 .rtl {
   .title-one {
-    right: 45%;
+    right: 40%;
   }
   .text-align {
     text-align: right;
   }
+  .status {
+    left: 5%;
+  }
+}
+.highcharts-figure{
+  margin: auto;
 }
 
-.highcharts-figure,
-#container-one,
-::ng-deep .highcharts-container {
-  height: 150px;
-  width: 150px;
-}
 ::ng-deep .polar .highcharts-background {
   fill: var(--background-tertiary) !important;
 }
@@ -31,9 +33,8 @@
 }
 .title-one {
   position: absolute;
-  top: 30%;
+  top: 33%;
   text-align: center;
-  // background-color: var(--background-secondary);
   color: var(--foreground-default);
   h5 {
     font-size: 2.5vw;
@@ -47,4 +48,55 @@
 .w-icon1 {
   font-size: 3em;
   color: #8085e9;
+}
+
+.status {
+  position: absolute;
+  top: 25%;
+  i {
+    font-size: x-large;
+  }
+}
+
+.modal-content {
+  background-color: var(--background-tertiary) !important;
+  color: white;
+}
+
+hr {
+  border-top: 1px solid rgb(255, 255, 255);
+  margin-top: 0 !important;
+}
+
+::ng-deep .highcharts-root {
+  border-radius: 5px;
+}
+
+.mat-card {
+  padding: 5px !important;
+  background-color: var(--background-tertiary);
+}
+
+.highcharts-figure,
+#container-one,
+::ng-deep .highcharts-container {
+  height: 150px;
+  width: 150px;
+}
+
+.w-icon4 {
+  font-size: 3em;
+  color: #8085e9;
+}
+.w-icon8 {
+  font-size: 3em;
+  color: #f55b5b;
+}
+.w-icon9 {
+  font-size: 3em;
+  color: #91e8e1;
+}
+.w-icon5 {
+  font-size: 3em;
+  color: #f15c80;
 }

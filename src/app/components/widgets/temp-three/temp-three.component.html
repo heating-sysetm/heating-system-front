@@ -1,15 +1,44 @@
 <div [class.rtl]="('dir' | translate) === 'rtl'">
+  <mat-card class="card-menu mb-2">
+    <div class="status">
+      <i class="fa fa-circle green mx-2" *ngIf="power"></i>
+      <i class="fa fa-circle red mx-2" *ngIf="!power"></i>
+    </div>
+    <button mat-button [matMenuTriggerFor]="menu" class="w-100">
+      بویلر شماره ۱
+      <i class="fa fa-sort-down mx-2"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <i class="fa fa-eye mx-2"></i>
+        مشاهده
+      </button>
+      <button mat-menu-item data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-thermometer-half mx-2"></i>
+        تنظیم دما
+      </button>
+      <button mat-menu-item *ngIf="power" (click)="changePowerStatus()">
+        <i class="fa fa-power-off mx-2"></i>
+        خاموش کردن
+      </button>
+      <button mat-menu-item *ngIf="!power" (click)="changePowerStatus()">
+        <i class="fa fa-power-off mx-2"></i>
+        روشن کردن
+      </button>
+    </mat-menu>
+  </mat-card>
   <div class="row text-align">
-    <div class="col-7">
+    <div class="col-6">
       <div class="title px-2 mt-4">
-        <h1 class="">45<small dir="rtl" class="mx-2" style="font-size: 14px;">(°C)</small></h1>
+        <h1 class="">45°</h1>
       </div>
       <div class="desc px-2 mt-2">
-        <p>{{ 'Dashboard.WidgetFour.Desc' | translate }}</p>
+        <!-- <p>{{ 'Dashboard.WidgetFour.Desc' | translate }}</p> -->
+        <p>دمای تعیین شده : °{{value}}</p>
       </div>
     </div>
   
-    <div class="col-5">
+    <div class="col-6">
       <figure class="highcharts-figure polar">
         <div id="container-three"></div>
       </figure>

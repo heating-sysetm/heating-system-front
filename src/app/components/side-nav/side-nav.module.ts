@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { ClockComponent } from './../charts/clock/clock.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SideNavComponent } from './side-nav.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -53,7 +52,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
   declarations: [SideNavComponent,ClockComponent],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,

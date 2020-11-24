@@ -38,6 +38,7 @@
     "highcharts": "^8.2.0",
     "jalali-moment": "^3.3.8",
     "jquery": "^3.5.1",
+    "ng-clock-picker-lib": "^1.2.2",
     "ng2-charts": "^2.4.2",
     "ngx-echarts": "^5.1.2",
     "ngx-socket-io": "^3.2.0",

@@ -1,25 +1,51 @@
 
     .title-three{
-        right: 35%;
+        right: 43%;
     }
     .text-align{
         text-align: left;
     }
+    .status{
+        right: 5%;
+        // left: 0;
+      }
 
 .rtl{
     .title-three{
-        right: 45%;
+        right: 40%;
     }
     .text-align{
         text-align: right;
     }
+    .status{
+        left: 5%;
+        // left: 0;
+      }
 }
 
-
+.status{
+    position: absolute;
+    top: 25%;
+    i{
+      font-size: x-large;
+    }
+  }
+  ::ng-deep .highcharts-root{
+    border-radius: 5px;
+  }
+  
+  
+  
+  
+  
+  .mat-card{
+    padding: 5px!important;
+    background-color: var(--background-tertiary);
+  }
 
 .title-three{
     position: absolute;
-    top: 30%;
+    top: 33%;
     text-align: center;
     color: var(--foreground-default);
     h5{

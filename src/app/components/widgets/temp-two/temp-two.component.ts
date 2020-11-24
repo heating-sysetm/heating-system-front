@@ -83,6 +83,9 @@ export class TempTwoComponent implements OnInit {
   };
   chart: any;
   visibleValue: number = 0;
+  power = true;
+  temp=0;
+  value=10;
   constructor(private dataService: DataShareService) {
   }
 
@@ -103,4 +106,22 @@ export class TempTwoComponent implements OnInit {
           );
       }
   }
+  changePowerStatus() {
+    if (this.power) {
+      this.power = !this.power;
+    } else {
+      this.power = !this.power;
+    }
+  }
+
+  formatLabel(value: number) {
+    if (value >= 1) {
+      return Math.round(value / 1) + '°';
+    }
+    this.value=value;
+    console.log(this.value);
+    
+    return value;
+  }
+
 }
