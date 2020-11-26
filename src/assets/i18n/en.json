@@ -11,22 +11,14 @@
         "Logout":"Logout"
     },
     "Dashboard":{
-        "WidgetOne":{
-            "Title":"Status",
-            "Desc":"On"
-        },
-        "WidgetTwo":{
-            "Title":"",
-            "Desc":"boyler 1"
-        },
-        "WidgetThree":{
-            "Title":"",
-            "Desc":"boyler 2"
-        },
-        "WidgetFour":{
-            "Title":"",
-            "Desc":"boyler 3"
-        },
+        
+            "Exp-boylers":"All boylers",
+            "Exp-in-out":" Input and Output pip / Cistern / Out",
+            "Exp-gas":"Flammable Gases",
+            "Widgets":{
+                "Title":"boyler",
+                "Temp":"Stated"
+            },
         "Charts":{
             "ChartOne":{
                 "Title":"Out & Cistern",

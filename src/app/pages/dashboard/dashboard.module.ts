@@ -41,9 +41,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ChartjsAreaComponent } from './../../components/charts/chartjs-area/chartjs-area.component';
 import { SolidGaugeThreeComponent } from './../../components/charts/solid-gauge-three/solid-gauge-three.component';
 import { SolidGaugeTwoComponent } from './../../components/charts/solid-gauge-two/solid-gauge-two.component';
-import { TempThreeComponent } from './../../components/widgets/temp-three/temp-three.component';
-import { TempTwoComponent } from './../../components/widgets/temp-two/temp-two.component';
-import { TempOneComponent } from './../../components/widgets/temp-one/temp-one.component';
+import { TempOneComponent, DialogOverviewExampleDialog } from './../../components/widgets/temp-one/temp-one.component';
 import { LineChartComponent } from './../../components/charts/line-chart/line-chart.component';
 import { SolidGaugeComponent } from './../../components/charts/solid-gauge/solid-gauge.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -56,15 +54,14 @@ import { NgClockPickerLibModule } from 'ng-clock-picker-lib';
   declarations: [
     DashboardComponent,
     TempOneComponent,
-    TempTwoComponent,
-    TempThreeComponent,
     SolidGaugeComponent,
     SolidGaugeTwoComponent,
     SolidGaugeThreeComponent,
     ChartjsAreaComponent,
     LineChartComponent,
     HumidityChartComponent,
-    WidgetsComponent
+    WidgetsComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     CommonModule,
@@ -86,7 +83,7 @@ import { NgClockPickerLibModule } from 'ng-clock-picker-lib';
     // MatChipsModule,
     // MatStepperModpages/dashboardule,
     // MatDatepickerModule,
-    // MatDialogModule,
+    MatDialogModule,
     // MatDividerModule,
     MatExpansionModule,
     // MatGridListModule,

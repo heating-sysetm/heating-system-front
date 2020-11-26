@@ -8,7 +8,7 @@
         <mat-accordion>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <mat-panel-title> This is the expansion title </mat-panel-title>
+              <mat-panel-title> {{ "Dashboard.Exp-boylers" | translate }} </mat-panel-title>
             </mat-expansion-panel-header>
             <app-widgets></app-widgets>
           </mat-expansion-panel>
@@ -16,11 +16,11 @@
       </div>
 
       <div class="live-chart">
-        <div class="p-2">
+        <div class="px-2 my-2">
           <mat-accordion>
             <mat-expansion-panel>
               <mat-expansion-panel-header>
-                <mat-panel-title> This is the expansion title </mat-panel-title>
+                <mat-panel-title> {{ "Dashboard.Exp-in-out" | translate }} </mat-panel-title>
               </mat-expansion-panel-header>
               <div class="">
                 <div class="row">
@@ -28,9 +28,7 @@
                     <div class="card">
                       <div class="title text-align pt-4 pr-2">
                         <h5 class="text-align mx-4 mt-2">
-                          {{
-                            "Dashboard.Charts.ChartOne.Title" | translate
-                          }}
+                          {{ "Dashboard.Charts.ChartOne.Title" | translate }}
                           (°C)
                         </h5>
                       </div>
@@ -54,9 +52,7 @@
                       <div class="chart-one p-4">
                         <div class="title text-align p-2">
                           <h5 class="mx-2 pb-2">
-                            {{
-                              "Dashboard.Charts.ChartTwo.Title" | translate
-                            }}
+                            {{ "Dashboard.Charts.ChartTwo.Title" | translate }}
                             (°C)
                           </h5>
                         </div>
@@ -72,40 +68,38 @@
               </div>
             </mat-expansion-panel>
           </mat-accordion>
-          <div class="my-2">
-            <mat-accordion>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    This is the expansion title
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="row">
-                  <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
-                    <div class="chart-two card">
-                      <div class="title text-align p-2">
-                        <h5 class="px-4 py-4">
-                          {{ "Dashboard.Charts.ChartThree.Title" | translate }}
-                        </h5>
-                      </div>
-                      <div class="chart text-center px-4 py-2">
-                        <app-line-chart [changed]="changed"></app-line-chart>
-                      </div>
+        </div>
+        <div class="px-2">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title> {{ "Dashboard.Exp-gas" | translate }} </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                  <div class="chart-two card">
+                    <div class="title text-align p-2">
+                      <h5 class="px-4 py-4">
+                        {{ "Dashboard.Charts.ChartThree.Title" | translate }}
+                      </h5>
                     </div>
-                  </div>
-
-                  <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
-                    <div class="card p-4">
-                      <!-- <div class="title text-align pt-4 pr-2">
-                        <h5 class="text-align mr-4 mt-2">دمای لوله ها و مخزن (°C)</h5>
-                      </div> -->
-                      <app-humidity-chart></app-humidity-chart>
+                    <div class="chart text-center px-4 py-2">
+                      <app-line-chart [changed]="changed"></app-line-chart>
                     </div>
                   </div>
                 </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
+
+                <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
+                  <div class="card p-4">
+                    <!-- <div class="title text-align pt-4 pr-2">
+                      <h5 class="text-align mr-4 mt-2">دمای لوله ها و مخزن (°C)</h5>
+                    </div> -->
+                    <app-humidity-chart></app-humidity-chart>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
         </div>
       </div>
     </div>

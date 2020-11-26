@@ -3,14 +3,14 @@
     padding: 5%;
     background-color: var(--background-default);
     height: 100%;
-    min-height: 47rem;
+    min-height: 60rem;
   }
 
   .container{
     padding: 2% 8%;
     border-radius: var(--round-25);
     background-color: var(--background-secondary);
-    box-shadow: 0 .22rem .8rem rgba(0,0,0,0.55)!important;
+    box-shadow: 0 0.15rem 0.2rem rgba(0,0,0,0.55)!important;
   }
 
   .login-container {
@@ -57,7 +57,7 @@
     height: 50px;
     border: none;
     // box-shadow: 0 .22rem .5rem rgba(0,0,0,0.35)!important;
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.15rem 0.25rem rgba(0,0,0,0.55)!important;
     background-color:#FF9A00;
     color: #fff;
     font-size: 24px;
@@ -83,7 +83,7 @@
     outline: none;
     border: none;
     // box-shadow: 0 .22rem .5rem rgba(0,0,0,0.35)!important;
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.15rem 0.25rem rgba(0,0,0,0.55)!important;
     background-color: var(--background-input)!important;
   }
 

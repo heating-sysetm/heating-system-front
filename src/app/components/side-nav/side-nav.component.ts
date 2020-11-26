@@ -33,6 +33,17 @@ export class SideNavComponent implements OnDestroy {
   allHouses: house[] = [];
   loading=true;
   selected = '';
+  tsel=1;
+  times=[
+    {value:1,viewValue:'1s'},
+    {value:2,viewValue:'2s'},
+    {value:5,viewValue:'5s'},
+    {value:10,viewValue:'10s'},
+    {value:30,viewValue:'30s'},
+    {value:1,viewValue:'1m'},
+    {value:5,viewValue:'5m'},
+    {value:10,viewValue:'10m'},
+];
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private them: ThemeService,
     formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,

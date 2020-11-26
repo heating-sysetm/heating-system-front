@@ -11,21 +11,12 @@
         "Logout":"خروج"
     },
     "Dashboard":{
-        "WidgetOne":{
-            "Title":"وضعیت موتورخانه",
-            "Desc":"روشن"
-        },
-        "WidgetTwo":{
-            "Title":"",
-            "Desc":"بویلر شماره ۱"
-        },
-        "WidgetThree":{
-            "Title":"",
-            "Desc":"بویلر شماره ۲"
-        },
-        "WidgetFour":{
-            "Title":"",
-            "Desc":"بویلر شماره ۳"
+        "Exp-boylers":"بویلر ها",
+        "Exp-in-out":" مخزن / کالکتورهای رفت و برگشت / بیرون",
+        "Exp-gas":"گازهای اشتعال آور",
+        "Widgets":{
+            "Title":"بویلر",
+            "Temp":"دمای تعیین شده"
         },
         "Charts":{
             "ChartOne":{

@@ -2,6 +2,9 @@
   .s-sidebar__nav-link em {
     right: 4em!important;
   }
+  .home-selector,.time-selector{
+    text-align: right!important;
+  }
 
   .s-sidebar__nav-link > i {
     right: -15px!important;
@@ -37,6 +40,9 @@
   }
 }
 
+.home-selector , .time-selector{
+  text-align: left!important;
+}
   .s-sidebar__nav-link em {
     left: 4em;
   }
@@ -298,3 +304,8 @@ i {
 .menu-toggle{
   font-size: 20px;
 }
+
+.time-selector ::ng-deep .mat-form-field-infix{
+  width: 80px;
+}
+

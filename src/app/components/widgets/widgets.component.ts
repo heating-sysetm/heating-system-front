@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-export interface chart{
+export interface Chart{
   id:string,
   power:boolean,
   temp:number,
   num:number,
-  color:number
+  color:number,
+  modal:string
 }
 @Component({
   selector: 'app-widgets',
@@ -13,13 +14,14 @@ export interface chart{
 })
 export class WidgetsComponent implements OnInit {
   changed:number;
-  list:chart[]=[
+  list:Chart[]=[
     {
       id:'boyler1',
       power:true,
       temp:23,
       num:1,
-      color:4
+      color:4,
+      modal:"#modal1"
     }
     ,
     {
@@ -27,21 +29,24 @@ export class WidgetsComponent implements OnInit {
       power:false,
       temp:44,
       num:2,
-      color:9
+      color:9,
+      modal:"#modal2"
     },
     {
       id:'boyler-3',
       power:true,
       temp:50,
       num:3,
-      color:8
+      color:8,
+      modal:"#modal3"
     },
     {
       id:'boyler-4',
       power:true,
       temp:70,
       num:4,
-      color:5
+      color:5,
+      modal:"#modal4"
     }
   ]
   constructor() { }
