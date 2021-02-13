@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TempThreeComponent } from './temp-three.component';
+import { EventDialogComponent } from './event-dialog.component';
 
-describe('TempThreeComponent', () => {
-  let component: TempThreeComponent;
-  let fixture: ComponentFixture<TempThreeComponent>;
+describe('EventDialogComponent', () => {
+  let component: EventDialogComponent;
+  let fixture: ComponentFixture<EventDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TempThreeComponent ]
+      declarations: [ EventDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TempThreeComponent);
+    fixture = TestBed.createComponent(EventDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

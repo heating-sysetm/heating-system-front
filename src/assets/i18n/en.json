@@ -1,5 +1,6 @@
 {
     "dir": "ltr",
+    "font":"BreeSerifRegular",
     "Navbar":{
         "Title":"University of Zanjan",
         "SelectionHome":"dashboard",
@@ -11,27 +12,22 @@
         "Logout":"Logout"
     },
     "Dashboard":{
-        "WidgetOne":{
-            "Title":"Status",
-            "Desc":"On"
-        },
-        "WidgetTwo":{
-            "Title":"",
-            "Desc":"boyler 1"
-        },
-        "WidgetThree":{
-            "Title":"",
-            "Desc":"boyler 2"
-        },
-        "WidgetFour":{
-            "Title":"",
-            "Desc":"boyler 3"
+        
+        "Widgets":{
+            "W1":{
+                "Title":"Status",
+            "Status":"ON"
+            },
+            "Desc":{
+                "Title":" boiler",
+                "Temp":"temp"
+            }
         },
         "Charts":{
             "ChartOne":{
-                "Title":"Out & Cistern",
-                "Cistern":"Cistern",
-                "Out":"Out"
+                "Title":"Weather & Cistern",
+                "Humidity":"Humidity",
+                "OutTemp":"Out"
             },
             "ChartTwo":{
                 "Title":"Collectors"
@@ -40,7 +36,7 @@
                 "Title":"Flammable gases"
             },
             "ChartFour":{
-                "Title":"Humidity"
+                "Title":"Cistern"
             }
         }
   

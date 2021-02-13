@@ -1,3 +1,4 @@
+import { TempOneComponent } from './components/widgets/temp-one/temp-one.component';
 import { AreaChartComponent } from './components/charts/area-chart/area-chart.component';
 import { SettingModule } from './pages/setting/setting.module';
 import { UsersModule } from './pages/users/users.module';
@@ -17,6 +18,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UsersComponent } from './pages/users/users.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { ChartsComponent } from './pages/charts/charts.component';
+import { WidgetsComponent } from './components/widgets/widgets.component';
+import { WeatherComponent } from './components/weather/weather.component';
 
 
 const routes: Routes = [
@@ -68,9 +71,9 @@ const routes: Routes = [
     ] 
   },
 
-  {
-    path:'test',component:AreaChartComponent
-  }
+  // {
+  //   path:'test',component:WeatherComponent
+  // }
   // {path:'**',component:NotFoundComponent},
 ];
 

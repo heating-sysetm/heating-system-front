@@ -9,18 +9,7 @@
       </button>
       <div class="header w-100">
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-6 text-center">
-            <mat-form-field class="home-selector mt-3" appearance="fill">
-              <mat-label>{{ "Navbar.SelectionHome" | translate }}</mat-label>
-              <mat-select [(value)]="selected">
-                <mat-option
-                  [value]="option.value"
-                  *ngFor="let option of allHouses"
-                  >{{ option.viewValue }}</mat-option
-                >
-              </mat-select>
-            </mat-form-field>
-          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6"></div>
           <div class="col-lg-4 col-md-4 col-sm-6 text-center">
             <div class="clock-card w-100 vertical-center">
               <app-clock></app-clock>
@@ -41,13 +30,18 @@
                     </div>
                   </li>
                   <li>
-                    <div class="mx-2" [matBadge]="simpleContent">
-                      <button mat-icon-button>
+                    <div class="mx-2" *ngIf="notifs.length>0" [matBadge]="notifs.length">
+                      <button mat-icon-button (click)="openDialog()">
+                        <i class="fa fa-bell ico"></i>
+                      </button>
+                    </div>
+                    <div class="mx-2" *ngIf="notifs.length<1">
+                      <button mat-icon-button (click)="openDialog()">
                         <i class="fa fa-bell ico"></i>
                       </button>
                     </div>
                   </li>
-                  <li>
+                  <!-- <li>
                     <div class="">
                       <button
                         mat-icon-button
@@ -61,7 +55,7 @@
                         <button mat-menu-item (click)="faLang()" class="text-center">FA</button>
                       </mat-menu>
                     </div>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
               <div class="col-7">
@@ -98,24 +92,24 @@
               </div>
             </li>
             <li>
-              <a class="s-sidebar__nav-link" [routerLink]="['dashboard']">
+              <a class="s-sidebar__nav-link" [routerLink]="['dashboard']" [routerLinkActive]="'is-active'">
                 <i class="fa fa-home"></i>{{ "Navbar.Home" | translate }}
               </a>
             </li>
             <li>
-              <a class="s-sidebar__nav-link" [routerLink]="['users']">
+              <a class="s-sidebar__nav-link" [routerLink]="['users']" [routerLinkActive]="'is-active'">
                 <i class="fa fa-users"></i>{{ "Navbar.Users" | translate }}
               </a>
             </li>
             <li>
-              <a class="s-sidebar__nav-link" [routerLink]="['calendar']">
+              <a class="s-sidebar__nav-link" [routerLink]="['calendar']" [routerLinkActive]="'is-active'">
                 <i class="fa fa-calendar-week"></i
                 >{{ "Navbar.Calendar" | translate }}
               </a>
             </li>
             <li>
               <a
-                class="s-sidebar__nav-link cursor-pointer"
+                class="s-sidebar__nav-link cursor-pointer" [routerLinkActive]="'is-active'"
                 [routerLink]="['charts']"
               >
                 <i class="fa fa-chart-pie"></i>{{ "Navbar.Charts" | translate }}
@@ -123,7 +117,7 @@
             </li>
             <li>
               <a
-                class="s-sidebar__nav-link cursor-pointer"
+                class="s-sidebar__nav-link cursor-pointer" [routerLinkActive]="'is-active'"
                 [routerLink]="['setting']"
               >
                 <i class="fa fa-cog"></i>{{ "Navbar.Setting" | translate }}

@@ -1,25 +1,24 @@
+import { DataShareService } from './../../../services/data-share.service';
 declare var require: any;
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import * as Highcharts from 'highcharts/highcharts';
-const HighchartsMore = require("highcharts/highcharts-more.src");
+const HighchartsMore = require('highcharts/highcharts-more.src');
 HighchartsMore(Highcharts);
-const HC_solid_gauge = require("highcharts/modules/solid-gauge.src");
+const HC_solid_gauge = require('highcharts/modules/solid-gauge.src');
 HC_solid_gauge(Highcharts);
-import * as Exporting from 'highcharts/modules/exporting';
-
-
 @Component({
   selector: 'app-gauge-temp',
   templateUrl: './gauge-temp.component.html',
-  styleUrls: ['./gauge-temp.component.scss']
+  styleUrls: ['./gauge-temp.component.scss'],
+  inputs: [`changed`],
 })
 export class GaugeTempComponent implements OnInit {
 
   option:any={
+
     chart: {
         type: 'solidgauge',
         height: '110%',
-        plotBackgroundColor: '#303030',
 
     },
 
@@ -35,14 +34,15 @@ export class GaugeTempComponent implements OnInit {
         backgroundColor: 'none',
         shadow: false,
         style: {
-            fontSize: '16px'
+            fontSize: '16px',
+            color: '#fff'
         },
         valueSuffix: '%',
-        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}</span>',
+        pointFormat: '<span style="font-size:2.5em; color: {point.color}; font-weight: bold">{point.y}</span><br><span>{series.name}</span>',
         positioner: function (labelWidth) {
             return {
-                x: (this.chart.chartWidth - labelWidth) / 2,
-                y: (this.chart.plotHeight / 2) + 15
+                x: (this.chart.chartWidth - labelWidth) / 2+5,
+                y: (this.chart.plotHeight / 3)+55
             };
         }
     },
@@ -54,6 +54,13 @@ export class GaugeTempComponent implements OnInit {
             outerRadius: '112%',
             innerRadius: '88%',
             backgroundColor: Highcharts.color(Highcharts.getOptions().colors[0])
+                .setOpacity(0.3)
+                .get(),
+            borderWidth: 0
+        }, { // Track for Exercise
+            outerRadius: '87%',
+            innerRadius: '63%',
+            backgroundColor: Highcharts.color(Highcharts.getOptions().colors[4])
                 .setOpacity(0.3)
                 .get(),
             borderWidth: 0
@@ -79,46 +86,48 @@ export class GaugeTempComponent implements OnInit {
     },
 
     series: [{
-        name: 'Move',
+        name: 'دما',
         data: [{
             color: Highcharts.getOptions().colors[0],
             radius: '112%',
             innerRadius: '88%',
-            y: 60
+            y: 80
+        }]
+    }, {
+        name: 'رطوبت',
+        data: [{
+            color: Highcharts.getOptions().colors[4],
+            radius: '87%',
+            innerRadius: '63%',
+            y: 65
         }]
     }]
-    
-
 }
 chart:any;
-    // HighchartsMore.import ;(Highcharts);
-    // HighchartsSolidGauge(Highcharts);
-  constructor() { 
-    // HighchartsMore.Highcharts;
-    // HighchartsSolidGauge.factory(Highcharts);
-  }
+  chartSpeed: any;
+  constructor(private dataService: DataShareService) {}
 
   ngOnInit(): void {
     this.option.chart.renderTo = 'gauge-container';
-    this.chart = new Highcharts.Chart(this.option)
-    // Highcharts.chart('container',this.option);
+    this.chartSpeed = new Highcharts.Chart(this.option);
+    
   }
-// Add some life
-// function (chart) {
-//     if (!chart.renderer.forExport) {
-//         setInterval(function () {
-//             var point = chart.series[0].points[0],
-//                 newVal,
-//                 inc = Math.round((Math.random() - 0.5) * 20);
 
-//             newVal = point.y + inc;
-//             if (newVal < 0 || newVal > 200) {
-//                 newVal = point.y - inc;
-//             }
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.chartSpeed) {
+        // console.log(this.chartSpeed.series);
+        
+      var point = this.chartSpeed.series[0].points[0];
+      this.dataService.outData.subscribe((newVal) => {
+          console.log(point);
+          
+        point.update(Number(newVal));
+      });
+      var point2 = this.chartSpeed.series[1].points[0];
+      this.dataService.outHData.subscribe((newVal) => {
+        point2.update(Number(newVal));
+      });
+    }
+  }
 
-//             point.update(newVal);
-
-//         }, 3000);
-//     }
-// });
 }

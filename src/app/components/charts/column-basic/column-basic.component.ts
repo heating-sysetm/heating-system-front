@@ -1,80 +1,85 @@
+import { DataShareService } from 'src/app/services/data-share.service';
+import { ApiService } from 'src/app/services/api.service';
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+
 @Component({
   selector: 'app-column-basic',
   templateUrl: './column-basic.component.html',
   styleUrls: ['./column-basic.component.scss']
 })
 export class ColumnBasicComponent implements OnInit {
-  public options: any ={
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'میانگین دما'
-    },
-    subtitle: {
-        text: '(لوله های رفت و برگشت، مخزن، بیرون و داخل ساختمان)'
-    },
-    xAxis: {
-        categories: [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec'
-        ],
-        crosshair: true
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'دما (°C)'
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: 'Tokyo',
-        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+  public options: any={};
 
-    }, {
-        name: 'New York',
-        data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-    }, {
-        name: 'London',
-        data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-    }, {
-        name: 'Berlin',
-        data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
-    }]
-}
-  constructor() { }
+  constructor(private api:ApiService,private datashare:DataShareService) { }
 
   ngOnInit(): void {
-    Highcharts.chart('column',this.options );
+    Highcharts.setOptions({
+        lang: {
+          resetZoom: "ریست"
+        }
+      });
+
+      this.datashare.isChanged.subscribe(res=>{
+        this.loadChart();
+       });
+    
   }
   
+   loadChart(){
+    this.api.getInOutValues(this.datashare.start_time.value,this.datashare.end_time.value).subscribe(result=>{
+        var temp_data=result['data'].data1;
+        var temp_data2=result['data'].data2;
+        this.options={
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'دمای کالکتورهای رفت و برگشت'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: '(دما (سانتی گراد'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null,
+                }
+            },
+            
+            series: [{
+                type: 'line',
+                name: 'USD to EUR',
+                data: temp_data,
+                color: '#ff6459'
+            },
+            {
+                type: 'line',
+                name: '°C',
+                data: temp_data2,
+                color: '#539ffd'
+            }]
+        }
+        Highcharts.chart('column',this.options );
+    },err=>{});
+  }
+
+
 }

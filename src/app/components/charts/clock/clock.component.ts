@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ export class ClockComponent implements OnInit {
 
   date:string;
 
-  constructor(){
+  constructor(public translate: TranslateService){
    //   let now = moment(); // add this 2 of 4
      //navigator.language || navigator.userLanguage; 
 
@@ -20,9 +21,10 @@ export class ClockComponent implements OnInit {
     setInterval(() =>{
    const currentDate = new Date();
    this.date = currentDate.toLocaleTimeString();
-   this.date=this.date.replace('PM','ب.ظ');
-   this.date=this.date.replace('AM','ب.ظ');
-   
+   if (this.translate.currentLang=='fa') {
+    this.date=this.date.replace('PM','ب.ظ');
+    this.date=this.date.replace('AM','ب.ظ');
+   }   
     }, 1000);
   }
 

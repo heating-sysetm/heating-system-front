@@ -1,13 +1,13 @@
+
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadingModule } from './../../components/loading/loading.module';
-import { UsersComponent } from './users.component';
+import { UsersComponent, DialogOverviewDialog } from './users.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { SimpleNotificationsModule } from 'angular2-notifications';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -50,7 +50,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [UsersComponent],
+  declarations: [UsersComponent,DialogOverviewDialog],
   imports: [
     CommonModule,
     UsersRoutingModule,

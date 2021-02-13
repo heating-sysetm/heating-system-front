@@ -3,13 +3,15 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import * as moment from 'jalali-moment';
 import { User } from '../model/User';
 import { interval, Subscription } from 'rxjs';
-
+import * as jalaliMoment from 'jalali-moment';
 @Injectable({
   providedIn: 'root',
 })
 export class DataShareService {
   public start_time: BehaviorSubject<any>;
   public end_time: BehaviorSubject<any>;
+  public isChanged:BehaviorSubject<any>;
+
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -18,6 +20,9 @@ export class DataShareService {
 
   private gasSens = new Subject<number>();
   gasData = this.gasSens.asObservable();
+
+  private boyler_Sensors = new Subject<[]>();
+  boylers = this.boyler_Sensors.asObservable();
 
   private boyler_1_Sens = new Subject<number>();
   boyler_1 = this.boyler_1_Sens.asObservable();
@@ -30,6 +35,10 @@ export class DataShareService {
   cisternData = this.cisternSens.asObservable();
   private outSens = new Subject<any>();
   outData = this.outSens.asObservable();
+
+  private outHSens = new Subject<any>();
+  outHData = this.outHSens.asObservable();
+
 
   private outputSens = new Subject<any>();
   outputData = this.outputSens.asObservable();
@@ -45,16 +54,33 @@ export class DataShareService {
   
   constructor() {
     this.start_time = new BehaviorSubject(
-      this.format(this.today(), 'jYYYY-jMM-jDD')
+      this.getGDate(this.today(),'')
     );
     this.end_time = new BehaviorSubject(
-      this.format(this.today(), 'jYYYY-jMM-jDD')
+      this.getGDate(this.today(),'23:59')
+    );
+    this.isChanged= new BehaviorSubject(
+      false
     );
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('currentUser'))
     );
     this.currentUser = this.currentUserSubject.asObservable();
   }
+
+
+  getGDate(date,time){ 
+    if (time=='') {
+      return jalaliMoment.from(this.format(date, 'jYYYY-jMM-jDD'), 'fa', 'YYYY-MM-DD').format('YYYY-MM-DD');
+    }else{
+      // var h=time.slice(0,2);
+      // var m=time.slice(3,5);
+      return jalaliMoment.from(this.format(date, 'jYYYY-jMM-jDD'), 'fa', 'YYYY-MM-DD').format('YYYY-MM-DD')+' '+time;
+    }
+  }
+
+
+
 
   today(): moment.Moment {
     return moment().locale('fa');
@@ -91,6 +117,10 @@ export class DataShareService {
     this.gasSens.next(data);
   }
 
+  changeBoylersData(data){
+    this.boyler_Sensors.next(data);
+  }
+
   changeBoyler1Data(data : number){
     this.boyler_1_Sens.next(data);
   }
@@ -106,6 +136,10 @@ export class DataShareService {
 
   changeOutTempData(data : number){
     this.outSens.next(data);
+  }
+
+  changeOutHumData(data : number){
+    this.outHSens.next(data);
   }
 
   changeOutputData(data : Array<any>){

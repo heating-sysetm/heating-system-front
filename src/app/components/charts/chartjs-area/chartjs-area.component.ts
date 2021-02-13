@@ -39,7 +39,7 @@ export class ChartjsAreaComponent implements OnInit {
         pointBackgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#f26c05',
-        data: [10, 12, 15, 12, 16, 14, 18, 18, 19, 20],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       },
       {
         label: 'دمای برگشت',
@@ -47,12 +47,12 @@ export class ChartjsAreaComponent implements OnInit {
         pointBackgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#00d4f6',
-        data: [15, 11, 12, 18, 19, 15, 16, 14, 13, 17],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       },
     ],
   };
   min = 0;
-  max = 50;
+  max = 100;
   options: any = {
     responsive: true,
     maintainAspectRatio: true,
@@ -64,26 +64,26 @@ export class ChartjsAreaComponent implements OnInit {
       xAxes: [
         {
           gridLines: {
-            color: 'rgba(237, 255, 255, 0.1)',
+            color: 'rgba(200, 200, 200, 0.2)',
             lineWidth: 1,
           },
           ticks: {
-            fontColor: 'white', // labels such as 10, 20, etc
+            fontColor: '#ff5722', // labels such as 10, 20, etc
           },
         },
       ],
       yAxes: [
         {
           gridLines: {
-            color: 'rgba(200, 200, 200, 0.08)',
+            color: 'rgba(200, 200, 200, 0.2)',
             lineWidth: 1,
           },
           ticks: {
-            fontColor: 'white', // labels such as 10, 20, etc
+            fontColor: '#ff5722', // labels such as 10, 20, etc
             beginAtZero: true,
             steps: 20,
             stepValue: 20,
-            suggestedMax: this.max + 10,
+            suggestedMax: 100,
             min: 0,
           },
         },
@@ -97,11 +97,11 @@ export class ChartjsAreaComponent implements OnInit {
     legend: {
       position: 'bottom',
       labels: {
-        fontColor: 'white',
+        fontColor: '#7b7b7b',
       },
     },
     point: {
-      backgroundColor: 'white',
+      backgroundColor: '#7b7b7b',
     },
     tooltips: {
       titleFontFamily: 'Open Sans',
@@ -126,32 +126,41 @@ export class ChartjsAreaComponent implements OnInit {
       this.chart.data.datasets[1].label = 'input';
       this.chart.update();
     }
+
+    // }
+    this.dataService.outputData.subscribe((newVal) => {
+      this.data.datasets[0].data.shift(1);
+      this.data.datasets[0].data.push(newVal);
+      // this.max = newVal[0] + 1;
+      this.data.labels.shift(1);
+      let minut=new Date().getMinutes();
+      let second=new Date().getSeconds()
+      if (minut<10 && second>10) {
+        this.data.labels.push('0'+minut+':'+second);
+      }else if (minut>10 && second<10) {
+        this.data.labels.push(minut+':'+'0'+second);
+      }else if (minut<10 && second<10) {
+        this.data.labels.push('0'+minut+':'+'0'+second);
+      }else{
+        this.data.labels.push(minut+':'+second);
+        this.data.labels.fontColor='#000';
+      }
+      
+      // console.log(this.data.labels);
+      this.chart.update();
+    });
+    this.dataService.inputData.subscribe((newVal) => {
+      this.data.datasets[1].data.shift(1);
+      this.data.datasets[1].data.push(newVal);
+      // this.max = newVal[0] - 10;
+      this.chart.update();
+      this.loading = false;
+    });
     this.chart = new Chart('canvas', {
       type: 'line',
       data: this.data,
       options: this.options,
     });
-    // }
+  }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.chart) {
-      this.dataService.tempDates.subscribe((data) => {
-        this.data.labels = data;
-        this.chart.update();
-      });
-      this.dataService.outputData.subscribe((newVal) => {
-        this.data.datasets[0].data = newVal;
-        this.max = newVal[0] + 1;
-
-        this.chart.update();
-      });
-      this.dataService.inputData.subscribe((newVal) => {
-        this.data.datasets[1].data = newVal;
-        this.max = newVal[0] - 1;
-        this.chart.update();
-        this.loading = false;
-      });
-    }
-  }
-}

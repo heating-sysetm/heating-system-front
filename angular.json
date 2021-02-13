@@ -33,7 +33,7 @@
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss",
               "src/assets/css/responsive.css",
-              "src/assets/css/style.css"
+              "src/assets/css/style.css",
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
@@ -110,7 +110,9 @@
             "styles": [
               "src/assets/vendor/fontawesome-free/css/all.min.css",
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css",
+              "./node_modules/jqwidgets-ng/jqwidgets/styles/jqx.dark.css"
             ],
             "scripts": []
           }
