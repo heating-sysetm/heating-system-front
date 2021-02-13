@@ -1,5 +1,6 @@
 {
     "dir": "ltr",
+    "font":"BreeSerifRegular",
     "Navbar":{
         "Title":"University of Zanjan",
         "SelectionHome":"dashboard",
@@ -12,18 +13,21 @@
     },
     "Dashboard":{
         
-            "Exp-boylers":"All boylers",
-            "Exp-in-out":" Input and Output pip / Cistern / Out",
-            "Exp-gas":"Flammable Gases",
-            "Widgets":{
-                "Title":"boyler",
-                "Temp":"Stated"
+        "Widgets":{
+            "W1":{
+                "Title":"Status",
+            "Status":"ON"
             },
+            "Desc":{
+                "Title":" boiler",
+                "Temp":"temp"
+            }
+        },
         "Charts":{
             "ChartOne":{
-                "Title":"Out & Cistern",
-                "Cistern":"Cistern",
-                "Out":"Out"
+                "Title":"Weather & Cistern",
+                "Humidity":"Humidity",
+                "OutTemp":"Out"
             },
             "ChartTwo":{
                 "Title":"Collectors"
@@ -32,7 +36,7 @@
                 "Title":"Flammable gases"
             },
             "ChartFour":{
-                "Title":"Humidity"
+                "Title":"Cistern"
             }
         }
   

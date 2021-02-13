@@ -19,6 +19,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { ChartsComponent } from './pages/charts/charts.component';
 import { WidgetsComponent } from './components/widgets/widgets.component';
+import { WeatherComponent } from './components/weather/weather.component';
 
 
 const routes: Routes = [
@@ -70,9 +71,9 @@ const routes: Routes = [
     ] 
   },
 
-  {
-    path:'test',component:WidgetsComponent
-  }
+  // {
+  //   path:'test',component:WeatherComponent
+  // }
   // {path:'**',component:NotFoundComponent},
 ];
 

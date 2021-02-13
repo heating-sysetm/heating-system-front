@@ -14,9 +14,8 @@ import { AreaChartComponent } from './../../components/charts/area-chart/area-ch
 import { ChartsComponent } from './charts.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ChartsRoutingModule } from './charts-routing.module';
-
 @NgModule({
   declarations: [
     ChartsComponent,
@@ -27,7 +26,7 @@ import { ChartsRoutingModule } from './charts-routing.module';
     LineRotatedComponent,
     ColumnRotatedTwoComponent,
     ColumnRotatedThreeComponent,
-    GaugeTempComponent,
+    // GaugeTempCompoSnent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +39,7 @@ import { ChartsRoutingModule } from './charts-routing.module';
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
+    NgxMaterialTimepickerModule
   ],
 })
 export class ChartsModule {}

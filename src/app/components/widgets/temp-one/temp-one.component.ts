@@ -13,16 +13,12 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-temp-one',
   templateUrl: './temp-one.component.html',
   styleUrls: ['./temp-one.component.scss'],
-  inputs: [`changed`, `data`],
+  // inputs: [`changed`],
 })
 export class TempOneComponent implements OnInit {
   visibleValue = 0;
@@ -106,9 +102,17 @@ export class TempOneComponent implements OnInit {
         },
       ],
     };
+    // console.log('xx');
   }
 
   ngOnInit(): void {
+    this.dataService.changes.subscribe((data) => {
+      if (this.chart) {
+        var point = this.chart.series[0].points[0];
+        this.visibleValue = this.data.temp;
+        point.update(this.visibleValue);
+      }
+    });
     setTimeout(() => {
       if (this.data) {
         this.option.chart.renderTo = String(this.data.id);
@@ -117,15 +121,7 @@ export class TempOneComponent implements OnInit {
     }, 50);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.chart) {
-      var point = this.chart.series[0].points[0];
-      this.dataService.boyler_1.subscribe((newVal) => {
-        this.visibleValue = newVal;
-        point.update(newVal);
-      });
-    }
-  }
+
 
   changePowerStatus() {
     if (this.data.power) {
@@ -164,7 +160,7 @@ export class DialogOverviewExampleDialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  
+
   formatLabel(value: number) {
     if (value >= 1) {
       return Math.round(value / 1) + '°';

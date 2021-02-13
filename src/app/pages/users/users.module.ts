@@ -1,6 +1,7 @@
+
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadingModule } from './../../components/loading/loading.module';
-import { UsersComponent } from './users.component';
+import { UsersComponent, DialogOverviewDialog } from './users.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -49,7 +50,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [UsersComponent],
+  declarations: [UsersComponent,DialogOverviewDialog],
   imports: [
     CommonModule,
     UsersRoutingModule,

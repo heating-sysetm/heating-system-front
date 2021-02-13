@@ -27,7 +27,7 @@ export class SolidGaugeComponent implements OnInit {
         dataLabels: {
           format:
             '<div style="text-align:center">' +
-            '<span class="temp" style="color: var(--foreground-white);font-size:36px">{y}</span><br/>' +
+            '<span class="temp" style="color: var(--foreground-light);font-size:36px">{y}</span><br/>' +
             // '<span class="temp-desc" style="color: var(--foreground-white);font-size:16px;opacity:0.4">دمای مخزن</span>' +
             '</div>',
         },
@@ -113,6 +113,6 @@ export class SolidGaugeComponent implements OnInit {
       this.dataService.cisternData.subscribe((newVal) => {
         point.update(Number(newVal));
       });
-    }
+    }    
   }
 }

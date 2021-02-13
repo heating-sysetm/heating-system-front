@@ -1,5 +1,5 @@
 .title-one {
-  right: 43%;
+  right: 41%;
 }
 .text-align {
   text-align: left;
@@ -9,7 +9,7 @@
 }
 .rtl {
   .title-one {
-    right: 42%;
+    right: 40%;
   }
   .text-align {
     text-align: right;
@@ -33,7 +33,7 @@
 }
 .title-one {
   position: absolute;
-  top: 33%;
+  top: 30%;
   text-align: center;
   color: var(--foreground-default);
   h5 {
@@ -58,9 +58,13 @@
   }
 }
 
+ h1,.desc p{
+  color: var(--foreground-light) !important;
+}
+
 .modal-content {
   background-color: var(--background-tertiary) !important;
-  color: white;
+  color: var(--foreground-light);
 }
 
 hr {
@@ -102,4 +106,24 @@ hr {
 }
 
 
+.temp-chart ::ng-deep .mat-menu-panel {
+  background: var(--background-tertiary) !important;
+}
 
+.temp-chart::ng-deep  .mat-button-wrapper {
+  color: var(--foreground-light) !important;
+}
+
+.temp-chart::ng-deep .mat-menu-item {
+  color: var(--foreground-light) !important;
+  i{
+      color: var(--foreground-light) !important;
+  }
+}
+
+::ng-deep .mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb, .mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb-label {
+  background-color: var(--background-buttons)!important;
+}
+::ng-deep .mat-slider-horizontal .mat-slider-ticks-container{
+  background-color: var(--background-buttons)!important;
+}

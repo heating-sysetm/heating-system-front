@@ -10,7 +10,8 @@ HC_solid_gauge(Highcharts);
 @Component({
   selector: 'app-humidity-chart',
   templateUrl: './humidity-chart.component.html',
-  styleUrls: ['./humidity-chart.component.scss']
+  styleUrls: ['./humidity-chart.component.scss'],
+  inputs:['changed']
 })
 export class HumidityChartComponent implements OnInit {
   option: any = {
@@ -91,12 +92,10 @@ export class HumidityChartComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges){ 
     if(this.chart){
         var point = this.chart.series[0].points[0];
-        this.dataService.boyler_3.subscribe(
-            (newVal) =>{
-                this.visibleValue = newVal;
-                point.update(newVal);
-            } 
-          );
+        this.dataService.cisternData.subscribe((newVal) => {
+          point.update(Number(newVal));
+          this.visibleValue = newVal;
+        });
       }
   }
 

@@ -20,7 +20,7 @@ export class LineChartComponent implements OnInit {
     },
 
     title: {
-      text: 'کربن منواکسید',
+      text: 'درصد گازهای قابل اشتعال',
     },
 
     accessibility: {
@@ -43,8 +43,7 @@ export class LineChartComponent implements OnInit {
 
     yAxis: {
       title: {
-        text: 'مقدار',
-        visiblity: false,
+        text: 'درصد',
       },
       plotLines: [
         {
@@ -70,21 +69,21 @@ export class LineChartComponent implements OnInit {
 
     series: [
       {
-        name: 'Random data',
+        name: 'گازهای قابل اشتعال',
         data: (function () {
           // generate an array of random data
           var data = [],
             time = new Date().getTime(),
             i;
 
-          for (i = -5; i <= 0; i += 1) {
+          for (i = -15; i <= 0; i += 1) {
             data.push({
-              x: time + i * 4000,
+              x: time + i * 1500,
               y: 0,
             });
           }
           return data;
-        })(),
+        }()),
       },
     ],
   };

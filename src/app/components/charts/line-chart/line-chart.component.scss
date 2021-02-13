@@ -6,11 +6,21 @@
 }
 
 ::ng-deep #container-line .highcharts-title{
-  fill: var(--foreground-white)!important;
+  fill: var(--foreground-light)!important;
 }
   
   #container-line {
     height: 450px;
   }
  
+  ::ng-deep .highcharts-credits{
+    display: none;
+}
   
+  ::ng-deep tspan {
+    fill: var(--foreground-input)!important;
+  }
+
+  ::ng-deep text {
+    fill: var(--foreground-input)!important;
+  }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
 @Component({
   selector: 'app-column-rotated-three',
@@ -6,68 +6,84 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./column-rotated-three.component.scss']
 })
 export class ColumnRotatedThreeComponent implements OnInit {
-
-
-  option:any={
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'دمای مخزن آب بهداشتی'
-    },
-    xAxis: {
-        type: 'category',
-        labels: {
-            rotation: -45,
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        },
-        
-    },
-    yAxis: {
-        min: 0,
-        title: {
-          text: 'دما (°C)'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-        pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
-    },
-    series: [{
-        name: 'Population',
-        data: [
-            
-            ['شنبه', 11.2],
-            ['یکشنبه', 11.1],
-            ['دوشنبه', 10.6],
-            ['سه شنبه', 10.6],
-            ['چهار شنبه', 10.6],
-            ['پنج شنبه', 10.3],
-            ['جمعه', 9.8],
-        ],
-        dataLabels: {
-            enabled: true,
-            rotation: -90,
-            color: '#FFFFFF',
-            align: 'right',
-            format: '{point.y:.1f}', // one decimal
-            y: 10, // 10 pixels down from the top
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        }
-    }]
-}
+    data:any;
+    title:any='';
+    option: any;
+    showChart=false;
+    id:any='';
+    chart: any;
+    timezone = new Date().getTimezoneOffset();
   constructor() { }
 
   ngOnInit(): void {
-    Highcharts.chart('column-rotated-three',this.option );
+      if (this.showChart) {
+        setTimeout(() => {
+            Highcharts.setOptions({
+                lang: {
+                  resetZoom: "ریست"
+                },
+              });
+            if (this.data) {
+              this.option.chart.renderTo = String(this.id);
+              this.chart = new Highcharts.Chart(this.option);
+            }
+          }, 50);
+      }
   }
+
+  @Input('data')
+  public set items(items: any) {
+    this.data = items.data;
+    this.title=items.title;
+    this.id=items.id;
+    this.option={
+        chart: {
+            zoomType: 'x'
+        },
+        title: {
+            text: this.title
+        },
+        xAxis: {
+            type: 'datetime'
+        },
+        yAxis: {
+            title: {
+                text: 'درصد '
+            }
+        },
+        legend: {
+            enabled: false
+        },
+
+        plotOptions: {
+            area: {
+                
+                marker: {
+                    radius: 2
+                },
+                lineWidth: 1,
+                states: {
+                    hover: {
+                        lineWidth: 1
+                    }
+                },
+                threshold: null
+            }
+        },
+    
+        series: [
+        {
+            type: 'area',
+            name: '٪',
+            data: this.data,
+            color: '#ff5c5c'
+        }]
+    }
+    this.showChart=true;
+    
+  }
+
+
+
 
 }

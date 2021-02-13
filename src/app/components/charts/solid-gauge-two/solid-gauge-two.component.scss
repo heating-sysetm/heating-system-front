@@ -2,16 +2,20 @@
 	width: 100%;
 	height: 300px;
     float: left;
-    color: var(--foreground-white)!important;
+    color: var(--foreground-light)!important;
 }
 
 ::ng-deep .temps .highcharts-background{
     fill: var(--background-tertiary);
 }
 .temp,.temp-desc,h6{
-    color: var(--foreground-white);
+    color: var(--foreground-light);
 }
 ::ng-deep  .highcharts-axis-labels text, ::ng-deep .highcharts-yaxis-labels text{
-    color: var(--foreground-white)!important;
-    fill: var(--foreground-white)!important;
+    color: var(--foreground-light)!important;
+    fill: var(--foreground-light)!important;
 } 
+
+::ng-deep .highcharts-credits{
+    display: none;
+}

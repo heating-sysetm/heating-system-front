@@ -50,6 +50,8 @@ import { DashboardComponent } from './dashboard.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { NgClockPickerLibModule } from 'ng-clock-picker-lib';
+import { GaugeTempComponent } from 'src/app/components/charts/gauge-temp/gauge-temp.component';
+import { WeatherComponent } from 'src/app/components/weather/weather.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -61,7 +63,7 @@ import { NgClockPickerLibModule } from 'ng-clock-picker-lib';
     LineChartComponent,
     HumidityChartComponent,
     WidgetsComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,GaugeTempComponent,WeatherComponent
   ],
   imports: [
     CommonModule,
@@ -97,7 +99,7 @@ import { NgClockPickerLibModule } from 'ng-clock-picker-lib';
     MatProgressSpinnerModule,
     // MatRadioModule,
     // MatRippleModule,
-    // MatSelectModule,
+    MatSelectModule,
     // MatSidenavModule,
     MatSliderModule,
     MatSlideToggleModule,
