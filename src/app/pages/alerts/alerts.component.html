@@ -1,0 +1,80 @@
+<div class="container my-4">
+    <div>
+      <div class="panels">
+        <div class="user-table panel">
+          <div class="text-right my-4 mx-2">
+            <h4 class="title" [style.display]="'inline-grid'">هشدار ها</h4>
+            <button class="add-btn" mat-raised-button [style.float]="'left'"> <strong>افزودن هشدار </strong>
+              <i class="fa fa-plus mr-4"></i>
+            </button>
+          </div>
+          <div class="table-panel">
+            <table
+              mat-table
+              [dataSource]="dataSource"
+              class="mat-elevation-z8 w-100"
+            >
+  
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef class="text-center">
+                  نام سنسور
+                </th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                  {{ element.name }}
+                </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef class="text-center">
+                  نوع سنسور
+                </th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                  {{ element.username }}
+                </td>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef class="text-center">تلفن</th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                  نام دستگاه
+                </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="password" >
+                <th mat-header-cell *matHeaderCellDef class="text-center">
+                  شماره پورت
+                </th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                  {{ element.password }}
+                </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="isAdmin">
+                <th mat-header-cell *matHeaderCellDef class="text-center">سطح دسترسی</th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                  <span *ngIf="element.isAdmin">ادمین</span>
+                  <span *ngIf="!element.isAdmin">ناظر</span>
+                </td>
+              </ng-container>
+
+  
+              <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef class="text-center">حذف</th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                  <button mat-button ><i class="fa fa-trash"></i></button>
+                </td>
+              </ng-container>
+  
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr
+                mat-row
+                *matRowDef="let row; columns: displayedColumns"
+              ></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

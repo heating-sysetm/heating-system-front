@@ -13,7 +13,10 @@
     margin-right: 0!important;
 }
 
-
+::ng-deep .mat-calendar-body-selected {
+    background-color: var(--foreground-quaternary);
+    color: #fff;
+}
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: var(--background-tertiary);
 }

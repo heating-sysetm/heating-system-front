@@ -27,6 +27,7 @@ export class TempOneComponent implements OnInit {
   chart: any;
   data: any;
   option: any;
+  colors=['#8085e9','#91e8e1','#f55b5b','#f15c80'];
   constructor(
     public dialog: MatDialog,
     private dataService: DataShareService
@@ -106,6 +107,16 @@ export class TempOneComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.updateChart();
+    setTimeout(() => {
+      if (this.data) {
+        this.option.chart.renderTo = String(this.data.id);
+        this.chart = new Highcharts.Chart(this.option);
+      }
+    }, 50);
+  }
+
+  updateChart(){
     this.dataService.changes.subscribe((data) => {
       if (this.chart) {
         var point = this.chart.series[0].points[0];
@@ -150,6 +161,7 @@ export class TempOneComponent implements OnInit {
 })
 export class DialogOverviewExampleDialog {
   value = 0;
+  
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Chart

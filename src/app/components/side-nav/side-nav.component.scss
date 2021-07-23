@@ -288,14 +288,32 @@ i{
   display: inline-flex;
   margin: 0;
   height: 100%;
-
-  transform: translateY(30%);
 }
 
 #menu li {
   display: inline;
 }
+::ng-deep .mat-menu-panel {
+  button{
+    font-size: 18px;
+    font-family: iran;
+    text-align: right;
+    i{
+      font-size: 16px;
+    }
+  }
+}
 
+::ng-deep  .mat-button-wrapper {
+  color: var(--foreground-light) !important;
+}
+
+ ::ng-deep .mat-menu-item {
+  color: var(--foreground-light) !important;
+  i{
+      color: var(--foreground-light) !important;
+  }
+}
 ::ng-deep .cdk-overlay-pane .mat-menu-panel {
   min-width: 60px !important;
 }

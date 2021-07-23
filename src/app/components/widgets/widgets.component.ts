@@ -18,7 +18,7 @@ export interface Chart{
   styleUrls: ['./widgets.component.scss'],
 })
 export class WidgetsComponent implements OnInit {
-  boylers:Array<any>;
+  boylers:Array<any>=[1,2,3,4];
   list:Chart[]=[
     {
       id:'boyler1',
@@ -62,6 +62,11 @@ export class WidgetsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.loadData();
+
+  }
+
+  loadData(){
     var count:any=0;
     this.dataService.boylers.subscribe((boylers) => {
       for (let index = 0; index < boylers.length; index++) {

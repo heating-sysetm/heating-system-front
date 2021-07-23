@@ -1,0 +1,19 @@
+<div class="chart-one p-4" dir="rtl">
+    <div class="title text-right p-2">
+        <h5 class="mx-2 pb-2">
+            وضعیت پمپ ها
+        </h5>
+    </div>
+    <div class="row">
+        <div class="col-2" *ngFor="let item of [1,2,3]">
+            <div class="pomp-status-card">
+                <span [style.display]="'inline-grid'" class="text-right float-right">
+                    <h5>پمپ شماره ۱</h5>
+                    <p>روشن</p>
+                </span>
+                
+                <button class="place-status-btn" mat-mini-fab></button>  
+            </div>
+          </div>
+    </div>
+</div>

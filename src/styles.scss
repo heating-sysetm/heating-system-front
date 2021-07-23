@@ -17,7 +17,7 @@
   --foreground-default:#fff;
   --foreground-secondary:#fff;
   --foreground-tertiary: #F97676;
-  --foreground-quaternary:#f5a34e;
+  --foreground-quaternary:#ff9728;
   --background-buttons:#fd5e53;
   --foreground-light:#fff;
   --foreground-input:#8e8c8c;
@@ -58,7 +58,9 @@ body {
   color: #333;
   
 }
-
+.full-width {
+  width: 100%;
+}
 .loading {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -69,6 +71,7 @@ body {
   overflow: auto; /* Enable scroll if needed */
   background-color: var(--background-default); /* Fallback color */
 }
+
 
 /* Primary Styles */
 *,
@@ -100,7 +103,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
-*,
+*,h2,
 .mat-tooltip {
   font-family: iran;
 }

@@ -50,7 +50,9 @@ export class SideNavComponent implements OnDestroy {
     this.loading = false;
     this.api.getNotifs().subscribe(
       (result) => {
-        console.log(result);
+        if (result) {
+          
+        }
         result['data'].forEach(element => {
           let str = element.createdAt;
           str = str.substring(11, str.length-5);

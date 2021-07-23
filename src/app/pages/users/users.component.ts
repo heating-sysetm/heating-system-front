@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit {
     'delete',
   ];
   dataSource = [];
-  public userForm: FormGroup;
+  
   public loading = false;
   constructor(public dialog: MatDialog,
     private notif: NotificationService,
@@ -43,51 +43,9 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsers();
-    this.userForm = this._formBuilder.group({
-      name: ['', [Validators.required]],
-      username: ['', [Validators.required]],
-      password: ['', Validators.required],
-      phone: ['', Validators.required],
-      isAdmin: [false, Validators.required],
-      sendSMS: [false, Validators.required],
-    });
+    
   }
 
-  check() {
-    if (this.userForm.controls.name.invalid) {
-      this.notif.createError(
-        'خطا',
-        'نام و نام خانوادگی به درستی وارد نشده است'
-      );
-      return false;
-    } else if (this.userForm.controls.password.invalid) {
-      this.notif.createError('خطا', 'نام کاربری به درستی وارد نشده است');
-      return false;
-    } else if (this.userForm.controls.password.invalid) {
-      this.notif.createError('خطا', 'نام کاربری به درستی وارد نشده است');
-      return false;
-    }
-    return true;
-  }
-
-  addUser() {
-    // console.log(this.translate.currentLang);
-
-    if (this.check()) {
-      console.log(this.userForm.value);
-      this.api.addUser(this.userForm.value).subscribe(
-        (result) => {
-          console.log('res', result);
-          this.dataSource = this.dataSource.concat([result['data']]);
-          this.notif.createSuccess('خطا', 'کاربر با موفقیت افزوده شد');
-        },
-        (err) => {
-          console.log(err);
-          this.notif.createError('خطا', 'امکان افزودن کاربر وجود ندارد');
-        }
-      );
-    }
-  }
 
   getAllUsers() {
     this.api.getusers().subscribe((result) => {

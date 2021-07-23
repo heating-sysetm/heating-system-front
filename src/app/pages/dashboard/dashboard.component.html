@@ -4,62 +4,20 @@
 <div [class.rtl]="('dir' | translate) === 'rtl'">
   <div class="dasboard">
     <div class="main-container">
-      <div>
-        <div>
-          <div class="row">
-            <div class="mx-2 home">
-              <mat-form-field class="home-selector mt-3" appearance="fill">
-                <mat-label>{{ "Navbar.SelectionHome" | translate }}</mat-label>
-                <mat-select [(value)]="selected" (selectionChange)="onHomeChange($event)">
-                  <mat-option 
-                    [value]="option.value"
-                    *ngFor="let option of allHouses"
-                    >{{ option.viewValue }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="mx-2 time">
-              <mat-form-field class="time-selector mt-3" appearance="fill">
-                <mat-label>بازه زمانی</mat-label>
-                <mat-select [(value)]="tsel"  (selectionChange)="onTimeChange($event)">
-                  <mat-option
-                    [value]="option.value"
-                    *ngFor="let option of times"
-                    >{{ option.viewValue }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <!-- <div class="mx-2 time">
-              <mat-form-field class="time-selector mt-3" appearance="fill">
-                <mat-label>{{ "Navbar.SelectionHome" | translate }}</mat-label>
-                <mat-select [(value)]="scSelect"  (selectionChange)="onCSChange($event)">
-                  <mat-option
-                    [value]="option.value"
-                    *ngFor="let option of cStatus"
-                    >{{ option.viewValue }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-            </div> -->
-          </div>
-        </div>
+      <div class="dashboar-header">
+        <app-dashboard-header></app-dashboard-header>
       </div>
-      <div class="header-widgets px-2">
-        <!-- <mat-accordion>
-          <mat-expansion-panel [expanded]="true" >
-            <mat-expansion-panel-header>
-              <mat-panel-title> {{ "Dashboard.Exp-boylers" | translate }} </mat-panel-title>
-            </mat-expansion-panel-header>
-            <app-widgets [changed]="changed"></app-widgets>
-          </mat-expansion-panel>
-        </mat-accordion> -->
-        <app-widgets [changed]="changed"></app-widgets>
+
+      <div class="dashboard-widgets">
+        <app-dashboard-status-bar></app-dashboard-status-bar>
+      </div>
+
+      <div class="header-widgets">
+        <app-dashboard-boyler-charts></app-dashboard-boyler-charts>
       </div>
 
       <div class="live-chart">
-        <div class="px-2 my-2">
+        <div class="my-2">
           <div class="">
             <div class="row">
               <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
@@ -70,23 +28,11 @@
                       (°C)
                     </h5>
                   </div>
-                <div class="p-4">
-                  <app-weather></app-weather>
-                  <app-humidity-chart [changed]="changed"></app-humidity-chart>
-                </div>
-                  <!-- <div class="row mb-2">
-                    <div class="temp temp-raft col-lg-12 col-md-6">
-                      <app-solid-gauge
-                        [changed]="changed"
-                      ></app-solid-gauge>
-                    </div>
+                  <div class="p-4">
+                    <app-weather></app-weather>
+                    <app-humidity-chart [changed]="changed"></app-humidity-chart>
+                  </div>
 
-                    <div class="temp temp-makhzan col-lg-12 col-md-6">
-                      <app-solid-gauge-three
-                        [changed]="changed"
-                      ></app-solid-gauge-three>
-                    </div>
-                  </div> -->
                 </div>
               </div>
               <div class="col-lg-9 col-md-12 col-sm-12 mb-4">
@@ -99,9 +45,7 @@
                       </h5>
                     </div>
                     <div class="chart text-center px-4 py-2">
-                      <app-chartjs-area
-                        [changed]="changed"
-                      ></app-chartjs-area>
+                      <app-chartjs-area [changed]="changed"></app-chartjs-area>
                     </div>
                   </div>
                 </div>
@@ -109,33 +53,27 @@
             </div>
           </div>
         </div>
-        <div class="px-2">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-              <div class="chart-two card">
-                <div class="title text-align p-2">
-                  <h5 class="px-4 py-4">
-                    {{ "Dashboard.Charts.ChartThree.Title" | translate }}
-                  </h5>
-                </div>
-                <div class="chart text-center px-4 py-2">
-                  
-                  <app-line-chart [changed]="changed"></app-line-chart>
-                </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+            <div class="chart-two card">
+              <div class="title text-align p-2">
+                <h5 class="px-4 py-4">
+                  {{ "Dashboard.Charts.ChartThree.Title" | translate }}
+                </h5>
+              </div>
+              <div class="chart text-center px-4 py-2">
+                <app-line-chart [changed]="changed"></app-line-chart>
               </div>
             </div>
-
-            <!-- <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
-              <div class="card p-4"> -->
-                <!-- <div class="title text-align pt-4 pr-2">
-                  <h5 class="text-align mr-4 mt-2">دمای لوله ها و مخزن (°C)</h5>
-                </div> -->
-                
-                <!-- <app-weather></app-weather> -->
-              <!-- </div>
-            </div> -->
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+            <div class="w-card ">
+              <app-pomps-status></app-pomps-status>
+            </div>
           </div>
         </div>
+
+
       </div>
     </div>
   </div>

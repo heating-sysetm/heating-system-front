@@ -1,0 +1,35 @@
+<div class="places-form " dir="rtl">
+  <h2 class="mb-2 px-4 text-center">افزودن داشبورد</h2>
+  <mat-dialog-content class="py-4 text-right">
+    <form [formGroup]="placeForm">
+      <mat-form-field class="mb-2 px-2 full-width text-right">
+        <mat-label>نام داشبورد</mat-label>
+        <input matInput formControlName="placeName" maxlength="46" matTooltipPosition="right"
+           type="text" placeholder="eneter name" />
+      </mat-form-field>
+      <div class="row mb-4">
+        <mat-form-field class="text-right col-4 px-2">
+          <mat-label>پورت دستگاه (Port)</mat-label>
+          <input matInput formControlName="port" pattern="[0-9-]+" minlength="4" maxlength="6" matTooltipPosition="right"
+             type="text" placeholder="enter port" />
+        </mat-form-field>
+        <mat-form-field class="text-right col-8 px-2">
+          <mat-label>آی پی دستگاه (ip)</mat-label>
+          <input matInput formControlName="ipNumber" pattern="[0-9-.]+" minlength="4" maxlength="12" matTooltipPosition="right"
+             type="text" placeholder="eneter ip" />
+        </mat-form-field>
+        <!-- placeholder="{{ 'Login.Form.Username' | translate }}" -->
+
+      </div>
+      
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="px-4 ">
+    <button mat-button class="cancel-btn" mat-dialog-close>
+      بازگشت
+    </button>
+    <button mat-button [mat-dialog-close]="true" class="add-btn" cdkFocusInitial>
+      <strong>افزودن</strong>
+    </button>
+  </mat-dialog-actions>
+</div>

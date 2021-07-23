@@ -1,7 +1,5 @@
 <div [class.rtl]="('dir' | translate) === 'rtl'">
-  <div
-    class="example-container"
-    [class.example-is-mobile]="mobileQuery.matches">
+  <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
     <mat-toolbar color="primary" class="example-toolbar">
       <button mat-icon-button (click)="snav.toggle()">
         <!-- <mat-icon>menu</mat-icon> -->
@@ -12,19 +10,16 @@
           <div class="col-lg-4 col-md-4 col-sm-6"></div>
           <div class="col-lg-4 col-md-4 col-sm-6 text-center">
             <div class="clock-card w-100 vertical-center">
-              <app-clock></app-clock>
+              <!-- <app-clock></app-clock> -->
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-6 text-center">
             <div class="row">
-              <div class="col-5">
+              <div class="col">
                 <ul id="menu">
                   <li>
                     <div dir="rtl" class="dark-mode text-center">
-                      <mat-slide-toggle
-                        checked="checked"
-                        (click)="toggleTheme()"
-                      >
+                      <mat-slide-toggle checked="checked" (click)="toggleTheme()">
                         <i class="fa fa-moon mx-1"></i>
                       </mat-slide-toggle>
                     </div>
@@ -41,95 +36,85 @@
                       </button>
                     </div>
                   </li>
-                  <!-- <li>
-                    <div class="">
-                      <button
-                        mat-icon-button
-                        class="lang-menu ico"
-                        [matMenuTriggerFor]="menu"
-                      >
-                        <i class="fa fa-globe"></i>
+                  <li>
+                    <button mat-raised-button [style.font-size]="'16px'" [style.padding]="'4px 8%'"
+                     [matMenuTriggerFor]="belowMenu">
+                      <i class="fa fa-user ml-2"></i>
+                    <strong [style.color]="'#FFF'">علی ندیرخانلو </strong>
+                    <i class="fa fa-chevron-down mr-2"></i>
+                    </button>
+                    <mat-menu #belowMenu="matMenu" xPosition="before">
+                      <button mat-menu-item>تغییر رمز
+                        <i class="fa fa-key ml-2"></i>
                       </button>
-                      <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)="enLang()" class="text-center">EN</button>
-                        <button mat-menu-item (click)="faLang()" class="text-center">FA</button>
-                      </mat-menu>
-                    </div>
-                  </li> -->
+                      <button mat-menu-item (click)="logout()">
+                        خروج
+                        <i class="fa fa-power-off ml-2"></i></button>
+                    </mat-menu>
+                  </li>
                 </ul>
               </div>
-              <div class="col-7">
-                <div class="znu-card">
-                  <h4>{{ "Navbar.Title" | translate }}</h4>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </mat-toolbar>
 
-    <mat-sidenav-container
-      class="example-sidenav-container"
-      [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-    >
-      <mat-sidenav
-        #snav
-        mode="over"
-        [fixedInViewport]="mobileQuery.matches"
-        fixedTopGap="56"
-      >
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav mode="over" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list class="s-sidebar__nav">
           <ul class="h-100">
             <li>
               <div class="logo-container">
                 <a class="">
-                  <img
-                    class="logo img-responsive"
-                    src="../../../assets/img/logo.png"
-                  />
+                  <img class="logo img-responsive" src="../../../assets/img/logo.png" />
                 </a>
               </div>
             </li>
             <li>
               <a class="s-sidebar__nav-link" [routerLink]="['dashboard']" [routerLinkActive]="'is-active'">
-                <i class="fa fa-home"></i>{{ "Navbar.Home" | translate }}
+                <i class="fa fa-home"></i>{{ "Navbar.Home" | translate }} ها
+              </a>
+            </li>
+            <li>
+              <a class="s-sidebar__nav-link" [routerLink]="['sensors']" [routerLinkActive]="'is-active'">
+                <i class="fa fa-thermometer-half"></i>سنسور ها
+              </a>
+            </li>
+            <li>
+              <a class="s-sidebar__nav-link" [routerLink]="['alerts']" [routerLinkActive]="'is-active'">
+                <i class="fa fa-exclamation-triangle"></i>هشدار ها
               </a>
             </li>
             <li>
               <a class="s-sidebar__nav-link" [routerLink]="['users']" [routerLinkActive]="'is-active'">
-                <i class="fa fa-users"></i>{{ "Navbar.Users" | translate }}
+                <i class="fa fa-users"></i>کاربران
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a class="s-sidebar__nav-link" [routerLink]="['calendar']" [routerLinkActive]="'is-active'">
                 <i class="fa fa-calendar-week"></i
                 >{{ "Navbar.Calendar" | translate }}
               </a>
-            </li>
+            </li> -->
             <li>
-              <a
-                class="s-sidebar__nav-link cursor-pointer" [routerLinkActive]="'is-active'"
-                [routerLink]="['charts']"
-              >
-                <i class="fa fa-chart-pie"></i>{{ "Navbar.Charts" | translate }}
+              <a class="s-sidebar__nav-link cursor-pointer" [routerLinkActive]="'is-active'" [routerLink]="['charts']">
+                <i class="fa fa-chart-pie"></i>تاریخچه
               </a>
             </li>
             <li>
-              <a
-                class="s-sidebar__nav-link cursor-pointer" [routerLinkActive]="'is-active'"
-                [routerLink]="['setting']"
-              >
+              <a class="s-sidebar__nav-link cursor-pointer" [routerLinkActive]="'is-active'" [routerLink]="['setting']">
                 <i class="fa fa-cog"></i>{{ "Navbar.Setting" | translate }}
               </a>
             </li>
 
-            <li>
+            <!-- <li>
               <hr />
-              <a class="s-sidebar__nav-link" (click)="logout()">
+              <a class="s-sidebar__nav-link" >
                 <i class="fa fa-power-off"></i>{{ "Navbar.Logout" | translate }}
               </a>
-            </li>
+            </li> -->
           </ul>
         </mat-nav-list>
       </mat-sidenav>

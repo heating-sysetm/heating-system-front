@@ -1,5 +1,5 @@
 .title-one {
-  right: 41%;
+  right: 43%;
 }
 .text-align {
   text-align: left;
@@ -9,7 +9,7 @@
 }
 .rtl {
   .title-one {
-    right: 40%;
+    right: 43%;
   }
   .text-align {
     text-align: right;
@@ -58,7 +58,7 @@
   }
 }
 
- h1,.desc p{
+ .desc p{
   color: var(--foreground-light) !important;
 }
 
@@ -107,7 +107,9 @@ hr {
 
 
 .temp-chart ::ng-deep .mat-menu-panel {
-  background: var(--background-tertiary) !important;
+  button{
+    font-size: 18px;
+  }
 }
 
 .temp-chart::ng-deep  .mat-button-wrapper {

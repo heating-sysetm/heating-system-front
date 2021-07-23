@@ -11,13 +11,7 @@ export class ClockComponent implements OnInit {
   date:string;
 
   constructor(public translate: TranslateService){
-   //   let now = moment(); // add this 2 of 4
-     //navigator.language || navigator.userLanguage; 
 
- //var test = moment('2016-01-24 14:23:45');
-
-       //ja-JP;
- //de-DE
     setInterval(() =>{
    const currentDate = new Date();
    this.date = currentDate.toLocaleTimeString();

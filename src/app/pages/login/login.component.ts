@@ -58,23 +58,23 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // this.router.navigate(['/pages/dashboard']);
-    if (this.check()) {
-      return;
-    }
-    this.loading = true;
-    this.authenticationService
-      .login(this.f.username.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        (data) => {
-          this.router.navigate(['/pages/dashboard']);
-        },
-        (error) => {
-          this.notif.createError('خطا', 'نام کاربری و یا رمزعبور نادرست می باشد ');
-          this.loading = false;
-        }
-      );
+    // if (this.check()) {
+    //   return;
+    // }
+    // this.loading = true;
+    // this.authenticationService
+    //   .login(this.f.username.value, this.f.password.value)
+    //   .pipe(first())
+    //   .subscribe(
+    //     (data) => {
+    //       this.router.navigate(['/pages/dashboard']);
+    //     },
+    //     (error) => {
+    //       this.notif.createError('خطا', 'نام کاربری و یا رمزعبور نادرست می باشد ');
+    //       this.loading = false;
+    //     }
+    //   );
+      this.router.navigate(['/pages/places']);
   }
 
   check() {

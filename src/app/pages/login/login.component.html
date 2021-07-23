@@ -5,14 +5,10 @@
       <div class="">
         <div class="logo-container text-right">
           <a class="">
-            <img class="logo img-responsive" src="../../../assets/img/logo.png"/>
+            <img class="logo img-responsive" src="../../../assets/img/logo.png" />
           </a>
         </div>
-        <!-- <div class="logo-container text-left">
-          <a class="">
-            <img class="img-responsive znu-logo" src="../../../assets/img/zan.png"/>
-          </a>
-        </div> -->
+
       </div>
       <div class="">
         <div class="form-container">
@@ -24,27 +20,24 @@
           <!-- form body -->
           <div class="form-content pt-4">
             <div class="form">
+
               <form [formGroup]="userInfo">
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-label>نام کاربری</mat-label>
+                  <input formControlName="username" matInput placeholder="" value="Sushi">
+                </mat-form-field>
+              
+                <mat-form-field class="full-width" appearance="fill">
+                  <mat-label>رمزعبور</mat-label>
+                  <input matInput formControlName="password"  placeholder=""/>
+                </mat-form-field>
 
-                <div class="form-input  mx-2">
-                  <i class="fa fa-lock icons"></i>
-                  <input dir="ltr" formControlName="username" pattern="[a-zA-Z0-9-]+" minlength="4" maxlength="16"
-                  matTooltip="تنها حروف و اعداد مجاز می باشند" matTooltipPosition="right"
-                   class="rounded-pill text-center" type="text" placeholder="نام کاربری"/>
-                </div>
-
-                <div class="form-input my-4 mx-2">
-                  <i class="fa fa-key icons"></i>
-                  <input dir="ltr" formControlName="password" pattern="[a-zA-Z0-9-]+" minlength="4" maxlength="16"
-                  matTooltip="تنها حروف و اعداد مجاز می باشند" matTooltipPosition="right"
-                  class="rounded-pill text-center" type="password" placeholder="رمزعبور"/>
-                </div>
 
                 <div class="check-box-container text-right my-2 mr-4">
-                    <mat-checkbox formControlName="autoLogin" class="example-margin text">مرا بخاطر بسپار</mat-checkbox>
+                  <mat-checkbox formControlName="autoLogin" class="example-margin text">مرا بخاطر بسپار</mat-checkbox>
                 </div>
-                <div class="form-action mx-2">
-                  <button mat-button class="login-btn rounded-pill" (click)="login()"> ورود </button>
+                <div class="form-action">
+                  <button mat-raised-button class="login-btn" (click)="login()"> <strong>ورود</strong> </button>
                 </div>
               </form>
             </div>

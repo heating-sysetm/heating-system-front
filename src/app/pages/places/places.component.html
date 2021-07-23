@@ -1,0 +1,45 @@
+<div class="place-container">
+    <div class="row">
+        <ng-container *ngFor="let item of places;let i =index">
+            <div class="col-md-4 col-lg-3 p-2">
+                <div class="place shadow-lg card">
+                    <div class="place-header mb-4 text-right">
+                        <span class="place-status">
+                            <button mat-fab class="place-status-btn"></button>
+                        </span>
+                        <app-option-menu></app-option-menu>
+                    </div>
+                    <div class="place-content mb-4">
+                        <h2 class="text-center mb-4">موتورخانه روغنی</h2>
+                        <div class="row widgets">
+                            <div class="col-7 row text-right">
+                                <span class="p-widgets-icon">
+                                    <i class="fa fa-exclamation-triangle triangle"></i></span>
+                                <span>
+                                    <h3><strong>5</strong></h3>
+                                    <p>هشدار ها</p>
+                                </span>
+                            </div>
+                            <div class="col-5 row text-right">
+                                <span class="p-widgets-icon2">
+                                    <i class="fa fa-thermometer-half thermometer"></i></span>
+                                <span>
+                                    <h3><strong>5</strong></h3>
+                                    <p>سنسور ها</p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-action">
+                        <button mat-button (click)="showDashboard(i)"><strong>نماش داشبورد</strong></button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <div class="col-md-4 col-lg-3 p-2">
+            <button mat-button title="add dashboard" class="place add-place" (click)="openDialog()">
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </div>
+</div>

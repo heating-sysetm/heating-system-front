@@ -1,3 +1,5 @@
+import { ClockModule } from './../charts/clock/clock.module';
+import { MaterialModule } from './../../modules/material/material.module';
 // import { jqxSchedulerModule } from 'jqwidgets-ng/jqxscheduler/public_api';
 import { HttpClient } from '@angular/common/http';
 import { ClockComponent } from './../charts/clock/clock.component';
@@ -50,46 +52,13 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
-  declarations: [SideNavComponent,ClockComponent,EventsDialog],
+  declarations: [SideNavComponent,EventsDialog],
   imports: [
     CommonModule,
-    
+    ClockModule,
     FormsModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatBadgeModule,
-    MatBottomSheetModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatStepperModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatTableModule,
-    MatSortModule,
-    MatTabsModule,
-    MatTooltipModule,
-    MatToolbarModule,
+    MaterialModule,
     RouterModule,TranslateModule
     
   ]

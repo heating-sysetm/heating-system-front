@@ -27,18 +27,13 @@
   width: 100%;
   display: block;
   margin: auto;
-  max-width: 530px;
+  max-width: 650px;
   padding: 0 10%;
 }
 
-.form {
-  margin-bottom: 3rem;
-}
-.form-input i {
-  position: absolute;
-  margin: 15px 15px 0px 0px;
-  color: var(--background-light);
-}
+// .form {
+//   margin-bottom: 3rem;
+// }
 
 
 .login-btn {
@@ -46,10 +41,10 @@
   height: 50px;
   border: none;
   // box-shadow: 0 .22rem .5rem rgba(0,0,0,0.35)!important;
-  box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.55) !important;
-  background-color: var(--background-light);
+  // box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.55) !important;
+  background-color: #ff9a00;
   color: #fff;
-  font-size: 24px;
+  font-size: 18px;
   outline: none;
   line-height: normal;
 }
@@ -58,19 +53,22 @@
 //     stroke: #FF5722 !important;
 // }
 
-::ng-deep .mat-checkbox-frame {
+::ng-deep .mat-checkbox-frame{
+
   border-color: var(--foreground-quaternary)!important;
 }
-
-input {
-  width: 100%;
-  height: 50px;
-  outline: none;
-  border: none;
-  // box-shadow: 0 .22rem .5rem rgba(0,0,0,0.35)!important;
-  box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.55) !important;
-  background-color: var(--background-input) !important;
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background-color:var(--foreground-quaternary)!important; ;
 }
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: var(--foreground-quaternary) !important;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label,
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: var(--foreground-quaternary) !important;
+}
+
+
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 600px) {
