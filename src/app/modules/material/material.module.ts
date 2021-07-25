@@ -67,12 +67,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
+    MatStepperModule,
     MatTabsModule,
     MatTooltipModule,MatToolbarModule
   ],
   exports: [
     MatAutocompleteModule,
     MatBadgeModule,
+    MatStepperModule,
     MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,

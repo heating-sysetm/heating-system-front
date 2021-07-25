@@ -8,8 +8,8 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class SensorFormModalComponent implements OnInit {
   sensorForm:FormGroup;
-  hosts: any[] = [{key:'هوشمند',value:1},{key:'دستی',value:0}];
-  sTypes: any[] = [{key:'هوشمند',value:1},{key:'دستی',value:0}];
+  hosts: any[] = [{key:'موتورخانه روغنی',value:1}];
+  sTypes: any[] = [{key:'دما',value:1},{key:'فشار',value:2},{key:'رطوبت',value:3},{key:'وضعیت',value:4}];
   dashboards:any[]=[];
   constructor(private fb:FormBuilder) { }
 

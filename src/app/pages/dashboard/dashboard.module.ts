@@ -24,6 +24,7 @@ import { DashboardComponent } from './dashboard.component';
 import { GaugeTempComponent } from 'src/app/components/charts/gauge-temp/gauge-temp.component';
 import { WeatherComponent } from 'src/app/components/weather/weather.component';
 import { DialogExampleDialog } from './dashboard-status-bar/dashboard-status-bar.component';
+import {AlertsModalModule} from '../../components/modals/alerts-modal/alerts-modal.module';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -42,6 +43,7 @@ import { DialogExampleDialog } from './dashboard-status-bar/dashboard-status-bar
     ReactiveFormsModule,
     DashboardStatusBarModule,
     DashboardRoutingModule,
+    AlertsModalModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

@@ -51,8 +51,20 @@
     }
 }
 .widgets{
-    padding:5% 2%; 
+    padding:5% 2%;
 }
 p{
     margin: 0;
+}
+
+.place-off{
+  background-color: gray;
+}
+
+.place-ok{
+  background-color: #5DFDCB;
+}
+
+.place-fail {
+  background-color: #EF3E36;
 }

@@ -1,35 +1,112 @@
 <div class="places-form " dir="rtl">
   <h2 class="mb-2 px-4 text-center">افزودن داشبورد</h2>
   <mat-dialog-content class="py-4 text-right">
-    <form [formGroup]="placeForm">
-      <mat-form-field class="mb-2 px-2 full-width text-right">
-        <mat-label>نام داشبورد</mat-label>
-        <input matInput formControlName="placeName" maxlength="46" matTooltipPosition="right"
-           type="text" placeholder="eneter name" />
-      </mat-form-field>
-      <div class="row mb-4">
-        <mat-form-field class="text-right col-4 px-2">
-          <mat-label>پورت دستگاه (Port)</mat-label>
-          <input matInput formControlName="port" pattern="[0-9-]+" minlength="4" maxlength="6" matTooltipPosition="right"
-             type="text" placeholder="enter port" />
-        </mat-form-field>
-        <mat-form-field class="text-right col-8 px-2">
-          <mat-label>آی پی دستگاه (ip)</mat-label>
-          <input matInput formControlName="ipNumber" pattern="[0-9-.]+" minlength="4" maxlength="12" matTooltipPosition="right"
-             type="text" placeholder="eneter ip" />
-        </mat-form-field>
-        <!-- placeholder="{{ 'Login.Form.Username' | translate }}" -->
+ 
+      <mat-horizontal-stepper linear #stepper>
+      <mat-step [stepControl]="placeForm">
+        <form [formGroup]="placeForm">
+          <ng-template matStepLabel>افزودن محل مانیتورینگ</ng-template>
+          <mat-form-field class="mb-2 px-2 full-width text-right">
+            <mat-label>نام محل</mat-label>
+            <input matInput formControlName="placeName" maxlength="46" matTooltipPosition="right"
+               type="text" placeholder="eneter name" required/>
+          </mat-form-field>
+          <div class="row mb-4">
+            <mat-form-field class="text-right col-4 px-2">
+              <mat-label>پورت دستگاه (Port)</mat-label>
+              <input matInput formControlName="port" pattern="[0-9-]+" minlength="4" maxlength="6" matTooltipPosition="right"
+                 type="text" placeholder="enter port" required/>
+            </mat-form-field>
+            <mat-form-field class="text-right col-8 px-2">
+              <mat-label>آی پی دستگاه (Ip)</mat-label>
+              <input matInput formControlName="ipNumber" pattern="[0-9-.]+" minlength="4" maxlength="12" matTooltipPosition="right"
+                 type="text" placeholder="eneter ip" required/>
+            </mat-form-field>
+          </div>
+          <button mat-button matStepperNext>بعدی</button>
+        </form>
+        
+      </mat-step>
+      <mat-step [stepControl]="equipmentForm">
+        <form [formGroup]="equipmentForm">
+          <ng-template matStepLabel>افزودن تجهیزات</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>نام تجهیز</mat-label>
+            <input matInput formControlName="eqName" placeholder="Ex. 1 Main St, New York, NY"
+                   required>
+          </mat-form-field>
+          <mat-form-field dir="rtl" class="text-right full-width mt-3" appearance="fill">
+            <mat-label>انتخاب نوع تجهیز</mat-label>
+            <mat-select
+              formControlName="eqType"
+            >
+            <mat-option></mat-option>
+              <mat-option [value]="eq.value" *ngFor="let eq of eqTypes">{{
+                eq.key
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+       
+        <form [formGroup]="sensorForm">
+          <ng-template matStepLabel>افزودن سنسور</ng-template>
 
-      </div>
-      
-    </form>
+
+          <mat-form-field appearance="fill">
+            <mat-label>نام سنسور</mat-label>
+            <input matInput formControlName="sensorName" placeholder="Ex. 1 Main St, New York, NY"
+                   required>
+          </mat-form-field>
+
+
+          <mat-form-field dir="rtl" class="text-right full-width mt-3" appearance="fill">
+            <mat-label> انتخاب تجهیز مربوطه</mat-label>
+            <mat-select
+              formControlName="sensorEquipment"
+            >
+            <mat-option></mat-option>
+              <mat-option [value]="eq.value" *ngFor="let eq of equipments">{{
+                eq.key
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field dir="rtl" class="text-right full-width mt-3" appearance="fill">
+            <mat-label>انتخاب نوع سنسور</mat-label>
+            <mat-select
+              formControlName="sensorType"
+            >
+            <mat-option></mat-option>
+              <mat-option [value]="sen.value" *ngFor="let sen of sensorTypes">{{
+                sen.key
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  
   </mat-dialog-content>
-  <mat-dialog-actions align="end" class="px-4 ">
+  <!-- <mat-dialog-actions align="end" class="px-4 ">
     <button mat-button class="cancel-btn" mat-dialog-close>
       بازگشت
     </button>
     <button mat-button [mat-dialog-close]="true" class="add-btn" cdkFocusInitial>
       <strong>افزودن</strong>
     </button>
-  </mat-dialog-actions>
+  </mat-dialog-actions> -->
 </div>
+
+

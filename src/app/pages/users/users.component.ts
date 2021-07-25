@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit {
     'delete',
   ];
   dataSource = [];
-  
+
   public loading = false;
   constructor(public dialog: MatDialog,
     private notif: NotificationService,
@@ -43,7 +43,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsers();
-    
+
   }
 
 
@@ -92,7 +92,16 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  openAddUserModal(){
+    const dialogRef = this.dialog.open(UserModalDialog, {
+      width: '250px',
+      data: {}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
 
 }
 
@@ -108,6 +117,23 @@ export class DialogOverviewDialog {
     public dialogRef: MatDialogRef<DialogOverviewDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
     flag=true;
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+
+@Component({
+  selector: 'app-user-modal',
+  templateUrl: './user-modal.html',
+})
+export class UserModalDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<UserModalDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  flag=true;
   onNoClick(): void {
     this.dialogRef.close();
   }

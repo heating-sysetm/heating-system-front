@@ -7,6 +7,7 @@ import { AlertsComponent } from './alerts.component';
 
 
 import { Routes, RouterModule } from '@angular/router';
+import {AlertsModalModule} from '../../components/modals/alerts-modal/alerts-modal.module';
 
 
 const routes: Routes = [
@@ -18,14 +19,14 @@ const routes: Routes = [
     exports: [RouterModule]
   })
   export class AlertsRoutingModule { }
-  
+
 
 @NgModule({
   declarations: [AlertsComponent],
   imports: [
     CommonModule,AlertsRoutingModule,MaterialModule,
     LoadingModule,
-    TranslateModule
+    TranslateModule,AlertsModalModule
   ]
 })
 export class AlertsModule { }

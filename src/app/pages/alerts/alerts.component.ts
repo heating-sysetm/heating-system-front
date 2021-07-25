@@ -4,6 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import { NotificationService } from './../../services/notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
+import {SensorFormModalComponent} from '../../components/modals/sensor-form-modal/sensor-form-modal.component';
+import {AlertsModalComponent} from '../../components/modals/alerts-modal/alerts-modal.component';
 
 export interface User {
   name: string;
@@ -23,15 +25,17 @@ const ELEMENT_DATA: User[] = [];
 export class AlertsComponent implements OnInit {
   name="";
   displayedColumns: string[] = [
-    'name',
-    'username',
-    'phone',
-    'password',
-    'isAdmin',
-    'delete',
+    'title',
+    'importance',
+    'basedOn',
+    'desc',
+    'avImportance',
+    'numberValue',
+    'status',
+    'options'
   ];
-  dataSource = [];
-  
+  dataSource = [{title:'چک دمای بویلر',importance:'زیاد',basedOn:'مقداری',desc:'توضیحاتی نیس',avImportance:'فعال',numberValue:'70',status:true}];
+
   public loading = false;
   constructor(public dialog: MatDialog,
     private notif: NotificationService,
@@ -40,6 +44,14 @@ export class AlertsComponent implements OnInit {
     public translate: TranslateService) { }
 
   ngOnInit(): void {
+  }
+
+  openSensorFormDialog() {
+    const dialogRef = this.dialog.open(AlertsModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

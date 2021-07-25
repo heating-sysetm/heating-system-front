@@ -1,53 +1,70 @@
-<!-- <div class="places-form " dir="rtl">
-    <h2 class="mb-2 px-4 text-center">افزودن داشبورد</h2>
+ <div class="places-form " dir="rtl">
+    <h2 class="mb-2 px-4 text-center">افزودن هشدار </h2>
     <mat-dialog-content class="py-4 text-right container">
-        <form [formGroup]="sensorForm" class="row">
+        <form [formGroup]="AlertForm" class="row">
+
+          <div class="col-6">
+            <mat-form-field class="full-width p-1">
+              <mat-label> عنوان هشدار</mat-label>
+              <input matInput autocomplete="off" class="" formControlName="title" maxlength="46" type="text"
+                     placeholder="" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-6">
+            <mat-form-field dir="rtl" class="text-right full-width" appearance="fill">
+              <mat-label> میزان اهمیت </mat-label>
+              <mat-select
+                formControlName="importance"
+              >
+                <mat-option></mat-option>
+                <mat-option [value]="option.value" *ngFor="let option of ATypes">{{
+                  option.key
+                  }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
 
             <div class="col-6">
-                <mat-form-field class="full-width">
-                    <mat-label> نام سنسور </mat-label>
-                    <input matInput autocomplete="off" class="" formControlName="sensorName" maxlength="46" type="text"
-                        placeholder="" />
-                </mat-form-field>
-            </div>
-
-            <div class="col-6">
-                <mat-form-field class="full-width">
-                    <mat-label> شماره پورت سنسور </mat-label>
-                    <input matInput autocomplete="off" class="" formControlName="sPortNumber" maxlength="46" type="text"
-                        placeholder="" />
-                </mat-form-field>
-            </div>
-
-            <div class="col-6">
-                <mat-form-field dir="rtl" class="text-right full-width mt-3" appearance="fill">
-                    <mat-label>انتخاب دستگاه مربوطه</mat-label>
+                <mat-form-field dir="rtl" class="text-right full-width" appearance="fill">
+                    <mat-label>بررسی بر اساس  </mat-label>
                     <mat-select
-                      formControlName="sDashboardId"
+                      formControlName="basedOn" (selectionChange)="onImportanceChange($event)"
                     >
                     <mat-option></mat-option>
-                      <mat-option [value]="option.value" *ngFor="let option of dashboards">{{
+                      <mat-option [value]="option.value" *ngFor="let option of options">{{
                         option.key
                       }}</mat-option>
                     </mat-select>
                   </mat-form-field>
             </div>
 
-            <div class="col-6">
-                <mat-form-field dir="rtl" class="text-right full-width mt-3" appearance="fill">
-                    <mat-label>انتخاب نوع سنسور</mat-label>
-                    <mat-select
-                      formControlName="sType"
-                    >
-                    <mat-option></mat-option>
-                      <mat-option [value]="option.value" *ngFor="let option of sTypes">{{
-                        option.key
-                      }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-            </div>
-
-
+          <div class="col-6 py-2" *ngIf="importanceValue==2" >
+            <mat-form-field class="full-width">
+              <mat-label> مقدار </mat-label>
+              <input matInput autocomplete="off" class="" formControlName="numberValue" maxlength="46" type="text"
+                     placeholder="" />
+            </mat-form-field>
+          </div>
+          <div class="col-6" *ngIf="importanceValue==1">
+            <mat-form-field dir="rtl" class="text-right full-width" appearance="fill">
+              <mat-label>وضعیت : </mat-label>
+              <mat-select
+                formControlName="avImportance"
+              >
+                <mat-option></mat-option>
+                <mat-option value="1">فعال</mat-option>
+                <mat-option value="2">غیرفعال</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <mat-form-field class="full-width">
+              <mat-label> توضیحات </mat-label>
+              <textarea matInput autocomplete="off" class="" formControlName="desc" maxlength="46" type="text"
+                        placeholder="" ></textarea>
+            </mat-form-field>
+          </div>
 
         </form>
     </mat-dialog-content>
@@ -59,4 +76,4 @@
             <strong>افزودن</strong>
         </button>
     </mat-dialog-actions>
-</div> -->
+</div>

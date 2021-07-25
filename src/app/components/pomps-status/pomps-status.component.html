@@ -5,14 +5,18 @@
         </h5>
     </div>
     <div class="row">
-        <div class="col-2" *ngFor="let item of [1,2,3]">
+        <div class="col-2" *ngFor="let item of items">
             <div class="pomp-status-card">
                 <span [style.display]="'inline-grid'" class="text-right float-right">
-                    <h5>پمپ شماره ۱</h5>
-                    <p>روشن</p>
+                    <h5>پمپ شماره {{item.status+1}}</h5>
+                    <p *ngIf="item.status==1">روشن</p>
+                  <p *ngIf="item.status==0" >خاموش</p>
+                  <p *ngIf="item.status==2">خطا</p>
                 </span>
-                
-                <button class="place-status-btn" mat-mini-fab></button>  
+
+                <button *ngIf="item.status==1" class="place-status-btn status-on" mat-mini-fab></button>
+              <button *ngIf="item.status==0" class="place-status-btn status-off" mat-mini-fab></button>
+              <button *ngIf="item.status==2" class="place-status-btn status-fail" mat-mini-fab></button>
             </div>
           </div>
     </div>

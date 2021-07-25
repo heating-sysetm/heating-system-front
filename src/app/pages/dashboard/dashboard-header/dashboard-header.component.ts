@@ -1,11 +1,11 @@
 import { EquipmentsModalComponent } from '../../../components/modals/equipments-modal/equipments-modal.component';
-import { PlaceModalFormComponent } from './../../../components/place-modal-form/place-modal-form.component';
 import { ApiService } from './../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/services/websocket.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DataShareService } from 'src/app/services/data-share.service';
 import { MatDialog } from '@angular/material/dialog';
+import {AlertsModalComponent} from '../../../components/modals/alerts-modal/alerts-modal.component';
 
 interface house {
   value: number;
@@ -39,8 +39,8 @@ scSelect=1;
     private ws:WebsocketService,
     private api:ApiService,
     public dialog: MatDialog,
-    public translate: TranslateService) { 
-      
+    public translate: TranslateService) {
+
     }
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ scSelect=1;
   getSelectionData(){
     this.allHouses=this.ws.homes;
     this.selected=this.ws.selected_port;
-    
+
   }
 
 
@@ -72,7 +72,7 @@ scSelect=1;
       this.ws.close()
       this.ws.runSocket(selectedPort);
     }
-    
+
   }
 
   openEquipmentsDialog() {
@@ -82,5 +82,11 @@ scSelect=1;
       console.log(`Dialog result: ${result}`);
     });
   }
+  openAlertsDialog() {
+    const dialogRef = this.dialog.open(AlertsModalComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

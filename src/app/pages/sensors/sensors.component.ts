@@ -24,14 +24,13 @@ export class SensorsComponent implements OnInit {
   name="";
   displayedColumns: string[] = [
     'name',
-    'username',
-    'phone',
-    'password',
-    'isAdmin',
-    'delete',
+    'type',
+    'host',
+    'port',
+    'options'
   ];
-  dataSource = [];
-  
+  dataSource = [{name:'دمای رفت' , type:'دما',host:'موترخانه روغنی',port:'5050'}];
+
   public loading = false;
   constructor(public dialog: MatDialog,
     private notif: NotificationService,

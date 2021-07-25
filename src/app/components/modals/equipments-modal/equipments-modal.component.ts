@@ -13,7 +13,7 @@ export class EquipmentsModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.eqForm = this.fb.group({
-      senesorId:[0,Validators.required],
+      sensorId:['',Validators.required],
       eqName:['',Validators.required],
     });
   }

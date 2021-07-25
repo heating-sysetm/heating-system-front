@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./places.component.scss']
 })
 export class PlacesComponent implements OnInit {
-  places:any[]=[1]
+  places:any[]=[{status:1}]
   constructor(public dialog: MatDialog,private router:Router) { }
 
   ngOnInit(): void {

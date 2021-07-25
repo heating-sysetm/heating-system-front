@@ -5,7 +5,9 @@
                 <div class="place shadow-lg card">
                     <div class="place-header mb-4 text-right">
                         <span class="place-status">
-                            <button mat-fab class="place-status-btn"></button>
+                            <button *ngIf="item.status==1" mat-fab class="place-status-btn place-ok"></button>
+                          <button *ngIf="item.status==0" mat-fab class="place-status-btn place-off"></button>
+                          <button *ngIf="item.status==2" mat-fab class="place-status-btn place-fail"></button>
                         </span>
                         <app-option-menu></app-option-menu>
                     </div>

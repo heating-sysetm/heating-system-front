@@ -9,3 +9,15 @@
     border-radius: 5px;
     height: 100%;
 }
+
+.status-off{
+  background-color: gray;
+}
+
+.status-on{
+  background-color: #5DFDCB;
+}
+
+.status-fail {
+  background-color: #EF3E36;
+}
