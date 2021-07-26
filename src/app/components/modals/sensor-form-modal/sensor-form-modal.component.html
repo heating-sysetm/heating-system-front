@@ -3,7 +3,7 @@
     <mat-dialog-content class="py-4 text-right container">
         <form [formGroup]="sensorForm" class="row">
 
-            <div class="col-6">
+            <div class="col-12">
                 <mat-form-field class="full-width">
                     <mat-label> نام سنسور </mat-label>
                     <input matInput autocomplete="off" class="" formControlName="sensorName" maxlength="46" type="text"
@@ -12,18 +12,10 @@
             </div>
 
             <div class="col-6">
-                <mat-form-field class="full-width">
-                    <mat-label> شماره پورت سنسور </mat-label>
-                    <input matInput autocomplete="off" class="" formControlName="sPortNumber" maxlength="46" type="text"
-                        placeholder="" />
-                </mat-form-field>
-            </div>
-
-            <div class="col-6">
                 <mat-form-field dir="rtl" class="text-right full-width mt-3" appearance="fill">
-                    <mat-label>انتخاب دستگاه مربوطه</mat-label>
+                    <mat-label>انتخاب تجهیز مربوطه</mat-label>
                     <mat-select
-                      formControlName="sDashboardId"
+                      formControlName="sensorEquipment"
                     >
                     <mat-option></mat-option>
                       <mat-option [value]="option.value" *ngFor="let option of hosts">{{
@@ -37,7 +29,7 @@
                 <mat-form-field dir="rtl" class="text-right full-width mt-3" appearance="fill">
                     <mat-label>انتخاب نوع سنسور</mat-label>
                     <mat-select
-                      formControlName="sType"
+                      formControlName="sensorType"
                     >
                     <mat-option></mat-option>
                       <mat-option [value]="option.value" *ngFor="let option of sTypes">{{
@@ -52,11 +44,13 @@
         </form>
     </mat-dialog-content>
     <mat-dialog-actions align="end" class="px-4 ">
-        <button mat-button class="cancel-btn" mat-dialog-close>
+        <div class="w-100 text-center">
+          <button mat-button class="cancel-btn" mat-dialog-close>
             بازگشت
         </button>
-        <button mat-button [mat-dialog-close]="true" class="add-btn" cdkFocusInitial>
+        <button mat-button [mat-dialog-close]="true" class="add-new-btn" cdkFocusInitial>
             <strong>افزودن</strong>
         </button>
+        </div>
     </mat-dialog-actions>
 </div>

@@ -52,6 +52,13 @@ const routes: Routes = [
           )
        },
        {
+        path: 'equipments',
+        loadChildren: () =>
+          import('./pages/equipments/equipments.module').then(
+            m=>m.EquipmentsModule
+          )
+       },
+       {
         path: 'alerts',
         loadChildren: () =>
           import('./pages/alerts/alerts.module').then(

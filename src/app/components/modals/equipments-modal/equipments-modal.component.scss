@@ -17,7 +17,19 @@ h2{
     line-height: normal;
   }
 
-  .cancel-btn{
+
+  .add-new-btn {
+    height: 50px;
+    width: 180px;
+    border: none;
+    background-color: var(--foreground-tertiary) !important;
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+    line-height: normal;
+  }
+  
+  .cancel-btn {
     height: 50px;
     width: 180px;
     border: none;
@@ -26,7 +38,19 @@ h2{
     outline: none;
     line-height: normal;
   }
-
+  
+  ::ng-deep .mat-stepper-horizontal,
+  .mat-stepper-vertical {
+    background-color: var(--background-tertiary) !important;
+  }
+  
+  ::ng-deep .mat-step-header .mat-step-icon-selected,
+  ::ng-deep .mat-step-header .mat-step-icon-state-done,
+  ::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: var(--background-light) !important;
+    color: #fff;
+  }
+  
 
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label,
 ::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {

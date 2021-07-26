@@ -1,38 +1,64 @@
-.places-form{
-    width: 50rem;
-    padding: 5%;
+.places-form {
+  width: 60rem;
+  padding: 5% 5% 0% 5%;
 }
 
-h2{
-  font-family: iran!important;
+h2 {
+  font-family: iran !important;
+}
+.m-auto {
+  display: block;
+  margin: auto;
 }
 .add-btn {
-    height: 50px;
-    width: 180px;
-    border: none;
-    background-color: var(--foreground-quaternary) !important;
-    color: #fff;
-    font-size: 18px;
-    outline: none;
-    line-height: normal;
-  }
+  height: 50px;
+  width: 180px;
+  border: none;
+  background-color: var(--background-light) !important;
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  line-height: normal;
+}
 
-  .cancel-btn{
-    height: 50px;
-    width: 180px;
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    outline: none;
-    line-height: normal;
-  }
+.add-new-btn {
+  height: 50px;
+  width: 180px;
+  border: none;
+  background-color: var(--foreground-tertiary) !important;
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  line-height: normal;
+}
 
+.cancel-btn {
+  height: 50px;
+  width: 180px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  line-height: normal;
+}
+
+::ng-deep .mat-stepper-horizontal,
+.mat-stepper-vertical {
+  background-color: var(--background-tertiary) !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected,
+::ng-deep .mat-step-header .mat-step-icon-state-done,
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+  background-color: var(--background-light) !important;
+  color: #fff;
+}
 
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-label,
 ::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
   color: var(--foreground-quaternary) !important;
 }
-::ng-deep  .mat-select-arrow {
+::ng-deep .mat-select-arrow {
   color: var(--foreground-light) !important;
 }
 
@@ -67,10 +93,10 @@ h2{
 }
 
 ::ng-deep .mat-select-panel {
-  background:var(--background-tertiary)!important;
-  color: var(--foreground-light)!important;
+  background: var(--background-tertiary) !important;
+  color: var(--foreground-light) !important;
 }
 
-::ng-deep  .mat-expansion-indicator::after {
-  color: var(--foreground-secondary)!important;
+::ng-deep .mat-expansion-indicator::after {
+  color: var(--foreground-secondary) !important;
 }

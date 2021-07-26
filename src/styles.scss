@@ -16,8 +16,8 @@
   
   --foreground-default:#fff;
   --foreground-secondary:#fff;
-  --foreground-tertiary: #F97676;
-  --foreground-quaternary:#ff9728;
+  --foreground-tertiary: rgb(6, 179, 0);
+  --foreground-quaternary:rgb(255, 136, 0);
   --background-buttons:#fd5e53;
   --foreground-light:#fff;
   --foreground-input:#8e8c8c;
@@ -30,7 +30,7 @@
   --background-default: #272727;
   --background-secondary: #424242;
   --background-tertiary: #2E3130;
-  --background-light: #FF9A00;
+  --background-light: rgb(255, 136, 0);
   --background-input:#f3f3f3;
   --background-ul-li:#686767;
   --background-ul-hover: #3a3a39;
@@ -72,6 +72,16 @@ body {
   background-color: var(--background-default); /* Fallback color */
 }
 
+.add-new-btn {
+  height: 50px;
+  width: 180px;
+  border: none;
+  background-color: var(--foreground-tertiary) !important;
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  line-height: normal;
+}
 
 /* Primary Styles */
 *,
@@ -157,3 +167,6 @@ button {
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before{
   background-color: var(--foreground-light);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -25,11 +25,11 @@ export class SensorsComponent implements OnInit {
   displayedColumns: string[] = [
     'name',
     'type',
-    'host',
-    'port',
+    'equipment',
+    'show',
     'options'
   ];
-  dataSource = [{name:'دمای رفت' , type:'دما',host:'موترخانه روغنی',port:'5050'}];
+  dataSource = [{name:'دمای رفت' , type:'دما',equipment:'بویلر شماره ۱',show:true}];
 
   public loading = false;
   constructor(public dialog: MatDialog,

@@ -369,7 +369,8 @@ i{
 ::ng-deep .mat-dialog-content{
   width: 70rem;
   max-width: 100%;
-  margin: 0!important;;
+  margin: 0!important;
+  max-height: unset!important;
 }
 
 .trash-icon{
