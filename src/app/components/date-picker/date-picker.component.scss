@@ -1,4 +1,8 @@
-
+#date-container .form{
+    width: 90%;
+    display: block;
+    margin: auto;
+}
 #date-container .mat-input-0::placeholder{
     font-size: 24px!important;
     padding: 0.5rem;
@@ -10,16 +14,16 @@
 }
 #date-container ::ng-deep .mat-input-element{
     color: var(--foreground-light)!important;
+    font-size: 16px;
 }
 
 #date-container ::ng-deep .mat-form-field-infix{
-    line-height: 0;
+    line-height: 1;
 }
 
 #date-container::ng-deep .mat-form-field-label{
-    padding: 2px;
-    margin: 1px;
-    text-align: center;
+    padding: 8px 0;
+    font-size: 16px;
 }
 
 #date-container::ng-deep .cdk-overlay-pane{
@@ -38,7 +42,7 @@
 }
 
 .date-picker{
-    border-radius: 25px;
+    border-radius: 5px;
     background-color: var(--background-tertiary);
 }
 #date-container::ng-deep .mat-button-wrapper {
@@ -59,8 +63,7 @@
 }
 
 .modal-fields{
-    margin-top: 10%;
-    margin-bottom: 5%;
+    margin: 2% 0;
 }
 .date-item{
     text-align: right;
@@ -75,10 +78,6 @@
 
 #add-filter{
     font-size: 16px;
-    position: absolute;
-    bottom: 30%;
-    float: left;
-    right: 15%;
 }
 
 
@@ -103,7 +102,7 @@ input:focus{
     height: 3em;
     display: block;
     box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.1) !important;
-    border-radius: 25px;
+    border-radius: 5px;
 }
 .hr{
     border: 0;
@@ -126,8 +125,6 @@ input:focus{
     outline: none;
     border-radius: 5px;
     color: var(--foreground-defualt);
-    position: absolute;
-    top: 33%;
   }
 
   .fa-clock{
@@ -140,9 +137,6 @@ input:focus{
 }
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before{
     background-color: var(--foreground-light);
-}
-::ng-deep .mat-form-field-label {
-    color: var(--foreground-input);
 }
 
 input {
@@ -157,3 +151,50 @@ input {
     color: var(--foreground-input);
     opacity: 0.9; /* Firefox */
   }
+
+
+  
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label,
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: var(--foreground-quaternary) !important;
+}
+::ng-deep  .mat-select-arrow {
+  color: var(--foreground-light) !important;
+}
+
+::ng-deep .mat-select-value {
+  color: var(--foreground-light) !important;
+}
+
+::ng-deep .mat-option {
+  color: var(--foreground-light) !important;
+}
+
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: var(--foreground-quaternary) !important;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  padding: 0.5em 1.5em 0 0.75em !important;
+  //   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)!important;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix {
+  padding: 0.25em 0 0.5em 0;
+}
+
+::ng-deep .mat-form-field-flex {
+  background: var(--background-tertiary) !important;
+}
+::ng-deep .mat-option.mat-active {
+  color: var(--foreground-quaternary) !important;
+}
+
+::ng-deep .mat-select-panel {
+  background:var(--background-tertiary)!important;
+  color: var(--foreground-light)!important;
+}
+
+::ng-deep  .mat-expansion-indicator::after {
+  color: var(--foreground-secondary)!important;
+}

@@ -23,6 +23,10 @@ export class EquipmentsModalComponent implements OnInit {
   public equipments: any[] = [{ key: 'دما', value: 10 }, { key: 'فشار', value: 11 },
   { key: 'تشخیص گاز', value: 12 }, { key: 'رطوبت', value: 12 },
   { key: 'وضعیت', value: 13 }, { key: 'سطح مایع', value: 14 },];
+
+  public dashboards: any[] = [{ key: 'موتورخاه روغنی', value: 10 }, { key: 'داشبورد ۱', value: 11 },
+  { key: 'داشبورد ۲', value: 12 },];
+
   public eqTypes = TypeOfEquipments;
 
   constructor(private fb:FormBuilder) { }
@@ -30,6 +34,7 @@ export class EquipmentsModalComponent implements OnInit {
   ngOnInit(): void {
     this.eqForm = this.fb.group({
       eqName: ['', []],
+      eqDashboard:[0,[]],
       eqType: [0, []]
     });
     this.sensorForm = this.fb.group({
@@ -38,6 +43,7 @@ export class EquipmentsModalComponent implements OnInit {
       sensorEquipment: [0],
     });
   }
+
 
   add(): void {
     const value = (this.eqForm.controls.eqName.value || '').trim();

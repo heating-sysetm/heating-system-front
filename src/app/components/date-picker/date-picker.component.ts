@@ -48,6 +48,11 @@ export class DatePickerComponent
       clockFaceTimeInactiveColor: '#fff',
     },
   };
+
+  public dashboards: any[] = [{ key: 'موتورخاه روغنی', value: 10 }, { key: 'داشبورد ۱', value: 11 },
+  { key: 'داشبورد ۲', value: 12 },];
+  equipments= [{key:'boiler 1',value:1}];
+  sensors= [{key:'دمای رفت ۱',value:1},{key:'دمای رفت 2',value:2}];
   constructor(
     private data_sharing: DataShareService,
     private notif: NotificationService
@@ -62,6 +67,9 @@ export class DatePickerComponent
       end_time: new FormControl([jalaliMoment, Validators.required]),
       stime: new FormControl(''),
       etime: new FormControl(''),
+      dashboard:new FormControl(0),
+      sensor:new FormControl(0),
+      equipment:new FormControl(0),
     });
   }
 

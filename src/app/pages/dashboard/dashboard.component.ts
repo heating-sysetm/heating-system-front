@@ -33,6 +33,7 @@ cStatus=[
 selected = 0;
 tsel=1000;
 scSelect=1;
+panelOpenState = true;
   constructor(private dataService:DataShareService,private ws:WebsocketService,
     private api:ApiService,public translate: TranslateService) {
   }

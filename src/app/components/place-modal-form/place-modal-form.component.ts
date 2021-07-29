@@ -50,13 +50,13 @@ export class PlaceModalFormComponent implements OnInit {
       port: ['', Validators.required],
     });
     this.equipmentForm = this._formBuilder.group({
-      eqName: ['', []],
-      eqType: [0, []]
+      eqName: ['', [Validators.required]],
+      eqType: [0, [Validators.required]]
     });
     this.sensorForm = this._formBuilder.group({
-      sensorName: [''],
-      sensorType: [0],
-      sensorEquipment: [0],
+      sensorName: ['',[Validators.required]],
+      sensorType: [0,[Validators.required]],
+      sensorEquipment: [0,[Validators.required]],
     });
   }
 

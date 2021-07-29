@@ -27,14 +27,14 @@
     color: var(--foreground-light);
 }
 .w-card{
-    border-radius: 25px;
+    border-radius: 5px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     background-color: var(--background-tertiary);
     background:var(--background-tertiary);
     height: 220px;
 }
 .card{
-    border-radius: 25px;
+    border-radius: 5px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
         background-color: var(--background-tertiary);
     background:var(--background-tertiary);
@@ -66,7 +66,9 @@
     background-color: var(--background-tertiary);
     background:var(--background-tertiary);
 }
-
+mat-expansion-panel-header{
+    height: 60px!important;
+}
 ::ng-deep .mat-expansion-panel-header-title{
     color: var(--foreground-light);
 }

@@ -1,9 +1,4 @@
 <div class="chart-one p-4" dir="rtl">
-    <div class="title text-right p-2">
-        <h5 class="mx-2 pb-2">
-            وضعیت پمپ ها
-        </h5>
-    </div>
     <div class="row">
         <div class="col-2" *ngFor="let item of items">
             <div class="pomp-status-card">
@@ -14,9 +9,9 @@
                   <p *ngIf="item.status==2">خطا</p>
                 </span>
 
-                <button *ngIf="item.status==1" class="place-status-btn status-on" mat-mini-fab></button>
+                <button *ngIf="item.status==1" class="blink_me place-status-btn status-on" mat-mini-fab></button>
               <button *ngIf="item.status==0" class="place-status-btn status-off" mat-mini-fab></button>
-              <button *ngIf="item.status==2" class="place-status-btn status-fail" mat-mini-fab></button>
+              <button *ngIf="item.status==2" class="blink_me place-status-btn status-fail" mat-mini-fab></button>
             </div>
           </div>
     </div>

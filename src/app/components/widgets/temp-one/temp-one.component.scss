@@ -9,7 +9,7 @@
 }
 .rtl {
   .title-one {
-    right: 43%;
+    right: 47%;
   }
   .text-align {
     text-align: right;
@@ -22,18 +22,18 @@
   margin: auto;
 }
 
-::ng-deep .polar .highcharts-background {
-  fill: var(--background-tertiary) !important;
+#boiler::ng-deep .polar .highcharts-background {
+  fill: var(--background-default) !important;
 }
-::ng-deep .polar .highcharts-plot-background {
-  fill: var(--background-tertiary) !important;
+#boiler::ng-deep .polar .highcharts-plot-background {
+  fill: var(--background-default) !important;
 }
 ::ng-deep .highcharts-credits {
   display: none;
 }
 .title-one {
   position: absolute;
-  top: 30%;
+  top: 33%;
   text-align: center;
   color: var(--foreground-default);
   h5 {
@@ -128,4 +128,31 @@ hr {
 }
 ::ng-deep .mat-slider-horizontal .mat-slider-ticks-container{
   background-color: var(--background-buttons)!important;
+}
+
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.status-btn{
+  height: 25px;
+  width: 25px;
+}
+.status-btn-on{
+  background-color:lime;
+}
+
+.status-btn-off{
+  background-color:dimgrey;
+}
+
+.status-btn-err{
+  background-color:red;
 }

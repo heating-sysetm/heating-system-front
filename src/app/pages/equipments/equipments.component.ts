@@ -1,3 +1,4 @@
+import { MatTableDataSource } from '@angular/material/table';
 import { EquipmentsModalComponent } from './../../components/modals/equipments-modal/equipments-modal.component';
 import { SensorFormModalComponent } from './../../components/modals/sensor-form-modal/sensor-form-modal.component';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,11 +17,13 @@ export class EquipmentsComponent implements OnInit {
   displayedColumns: string[] = [
     'name',
     'type',
+    'dashboardName',
     'numOfSensors',
     'show',
     'options'
   ];
-  dataSource = [{name:'دمای رفت' , type:'بویلر',numOfSensors:2,show:true}];
+  dataSource = new MatTableDataSource([{name:'دمای رفت' , type:'بویلر',dashboardName:'موتورخانه روغنی',numOfSensors:2,show:true},
+  {name:'دمای رفت' , type:'بویلر',dashboardName:'موتورخانه موسوی',numOfSensors:2,show:true}]);
 
   public loading = false;
   constructor(public dialog: MatDialog,
@@ -31,9 +34,13 @@ export class EquipmentsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   openEquipmentFormDialog() {
     const dialogRef = this.dialog.open(EquipmentsModalComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

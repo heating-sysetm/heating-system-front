@@ -1,3 +1,5 @@
+import { MaterialModule } from './../../modules/material/material.module';
+import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -37,8 +39,7 @@ import { ChartsRoutingModule } from './charts-routing.module';
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule,
-    MatInputModule,
+    MaterialModule,
     NgxMaterialTimepickerModule
   ],
 })

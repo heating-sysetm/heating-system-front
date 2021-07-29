@@ -1,3 +1,5 @@
+import { WidgetManagementModule } from './../../components/widget-management/widget-management.module';
+import { AlertBoxModule } from './../../components/alert-box/alert-box.module';
 import { SensorFormModalModule } from './../../components/modals/sensor-form-modal/sensor-form-modal.module';
 import { EquipmentsModalModule } from '../../components/modals/equipments-modal/equipments-modal.module';
 import { PompsStatusModule } from './../../components/pomps-status/pomps-status.module';
@@ -44,12 +46,14 @@ import {AlertsModalModule} from '../../components/modals/alerts-modal/alerts-mod
     DashboardStatusBarModule,
     DashboardRoutingModule,
     AlertsModalModule,
+    WidgetManagementModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
     TranslateModule,
     // NgClockPickerLibModule,
     MaterialModule,
+    AlertBoxModule,
     DashboardBoylerChartsModule,
     PompsStatusModule,EquipmentsModalModule,SensorFormModalModule
   ],

@@ -5,7 +5,10 @@
       <span class="title px-2 mt-4 d-flex" >
         <span><h1 [style.font-size]="'3em'" dir="ltr" [style.color]="colors[data.num-1]"><strong>{{data.temp}} °C</strong></h1></span>
       </span>
-      <div class="desc px-2">
+      <div class="desc px-2 row">
+        <button mat-mini-fab *ngIf="data.num<3" class="blink_me status-btn status-btn-on ml-2"  ></button>
+        <button mat-mini-fab *ngIf="data.num==3" class="status-btn status-btn-off ml-2"  ></button>
+        <button mat-mini-fab *ngIf="data.num==4" class="blink_me status-btn status-btn-err ml-2"  ></button>
         <h4> بویلر {{data.num}}</h4>
         <!-- <p>{{ "Dashboard.Widgets.Temp" | translate }} : °{{data.temp2}}</p> -->
       </div>
@@ -13,7 +16,7 @@
 
     </div>
 
-    <div class="col-5">
+    <div class="col-5" id="boiler">
         <figure class="highcharts-figure polar">
             <div id="{{data.id}}"></div>
         </figure>

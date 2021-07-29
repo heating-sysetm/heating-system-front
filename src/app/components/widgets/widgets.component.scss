@@ -29,14 +29,14 @@
     color: var(--foreground-light);
 }
 .w-card{
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    background-color: var(--background-tertiary);
-    background:var(--background-tertiary);
+    background-color: var(--background-default) !important;
+    background:var(--background-default) !important;
     height: 160px;
 }
 .card{
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     background-color: var(--background-tertiary);
     background:var(--background-tertiary);

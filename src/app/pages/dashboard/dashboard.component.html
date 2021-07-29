@@ -5,76 +5,102 @@
   <div class="dasboard">
     <div class="main-container">
       <div class="dashboar-header">
+        <!-- <app-weather></app-weather> -->
         <app-dashboard-header></app-dashboard-header>
       </div>
 
-      <div class="dashboard-widgets">
+      <div class="dashboard-widgets mb-3">
         <app-dashboard-status-bar></app-dashboard-status-bar>
       </div>
 
-      <div class="header-widgets">
-        <app-dashboard-boyler-charts></app-dashboard-boyler-charts>
-      </div>
 
-      <div class="live-chart">
-        <div class="my-2">
-          <div class="">
-            <div class="row">
-              <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
-                <div class="card">
-                  <div class="title text-align pt-4 pr-2">
-                    <h5 class="text-align mx-4 mt-2">
-                      {{ "Dashboard.Charts.ChartOne.Title" | translate }}
-                      (°C)
-                    </h5>
-                  </div>
-                  <div class="p-4">
-                    <app-weather></app-weather>
-                    <app-humidity-chart [changed]="changed"></app-humidity-chart>
-                  </div>
-
-                </div>
-              </div>
-              <div class="col-lg-9 col-md-12 col-sm-12 mb-4">
-                <div class="card">
-                  <div class="chart-one p-4">
-                    <div class="title text-align p-2">
-                      <h5 class="mx-2 pb-2">
-                        {{ "Dashboard.Charts.ChartTwo.Title" | translate }}
-                        (°C)
-                      </h5>
-                    </div>
-                    <div class="chart text-center px-4 py-2">
-                      <app-chartjs-area [changed]="changed"></app-chartjs-area>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-            <div class="chart-two card">
-              <div class="title text-align p-2">
-                <h5 class="px-4 py-4">
-                  {{ "Dashboard.Charts.ChartThree.Title" | translate }}
-                </h5>
-              </div>
-              <div class="chart text-center px-4 py-2">
-                <app-line-chart [changed]="changed"></app-line-chart>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-            <div class="w-card ">
-              <app-pomps-status></app-pomps-status>
-            </div>
-          </div>
-        </div>
-
+      <div class="mb-3 px-3">
+        <mat-expansion-panel  [expanded]="panelOpenState === true" [style.min-height]="'60px'" (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5> هشدار ها</h5>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-alert-box></app-alert-box>
+        </mat-expansion-panel>
 
       </div>
+
+      <div class="px-3 mb-3">
+        <mat-expansion-panel [expanded]="panelOpenState === true" [style.min-height]="'60px'" (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5>بویلرها</h5>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-dashboard-boyler-charts></app-dashboard-boyler-charts>
+        </mat-expansion-panel>
+      </div>
+
+      <div class="px-3 mb-3">
+        <mat-expansion-panel [expanded]="panelOpenState === true" [style.min-height]="'60px'" (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5>پمپ ها</h5>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-pomps-status></app-pomps-status>
+        </mat-expansion-panel>
+      </div>
+
+
+
+      <div class="px-3 mb-3">
+        <mat-expansion-panel [expanded]="panelOpenState === true" [style.min-height]="'60px'" (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5>میزان گاز های اشتعال آور</h5>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-line-chart [changed]="changed"></app-line-chart>
+        </mat-expansion-panel>
+      </div>
+
+      <div class="px-3 mb-3">
+        <mat-expansion-panel [expanded]="panelOpenState === true" [style.min-height]="'60px'" (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5>دمای لوله های رفت و برگشت</h5>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-chartjs-area [changed]="changed"></app-chartjs-area>
+        </mat-expansion-panel>
+      </div>
+
+      <div class="px-3 mb-3">
+        <mat-expansion-panel [expanded]="panelOpenState === true" [style.min-height]="'60px'" (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5>دمای مخزن و سایر سنسور ها</h5>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-widget-management></app-widget-management>
+        </mat-expansion-panel>
+      </div>
+
     </div>
   </div>
 </div>

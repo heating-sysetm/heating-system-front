@@ -29,12 +29,10 @@ export class AlertsComponent implements OnInit {
     'importance',
     'basedOn',
     'desc',
-    'avImportance',
-    'numberValue',
     'status',
     'options'
   ];
-  dataSource = [{title:'چک دمای بویلر',importance:'زیاد',basedOn:'مقداری',desc:'توضیحاتی نیس',avImportance:'فعال',numberValue:'70',status:true}];
+  dataSource = [{title:'چک دمای بویلر',importance:'زیاد',basedOn:'دما بویلر',desc:'توضیحاتی نیس',status:true}];
 
   public loading = false;
   constructor(public dialog: MatDialog,
